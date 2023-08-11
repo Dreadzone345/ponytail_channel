@@ -39,6 +39,15 @@ DIV#plmeta, DIV#chatheader, P#currenttitle, DIV#plmeta, #videowrap-header {backg
 /*#videowrap{max-height:100%;width:calc(100% - 34rem);padding:5;margin:5;}
 #chatwrap{float:right;width:34rem;height:calc(100% - 110px);padding:5;margin:5;}*/
 
+#userlist {
+    width: 10em;
+    scrollbar-width: none;
+}
+/*remove admin name differences*/
+.userlist_owner {
+    color: #A1C5FF;
+    font-weight: normal;
+}
 
 #picoverlay {
     position: fixed;
