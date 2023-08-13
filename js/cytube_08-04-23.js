@@ -27,7 +27,8 @@ var Shortcuts = {		// FORMAT: Keycode:'INSERT TEXT',	http://www.cambiaresearch.c
 var pixelArr = [
 	['dreadzone', 'https://cdn.discordapp.com/attachments/942639553120972820/948129632543195187/Aoyama.png'],
 	['haly', ''],
-	['literallyme',''],
+	['literallyme', ''],
+	['thepaizurikid', 'https://cdn.discordapp.com/attachments/1059317496227823646/1075156730398380032/Perrine_Revue_ver2.png']
 ]
 
 
@@ -213,9 +214,9 @@ observer.observe(userListCount.childNodes[1], {
 function userlistPixels () {
 	for (let i = 0; i < $('#userlist').children().length; i++) {
 		var user = $('#userlist').children()[i]
-		var userIndex = Pixels.findIndex(arr => arr.includes(user.innerText.toLowerCase()))
+		var userIndex = pixelArr.findIndex(arr => arr.includes(user.innerText.toLowerCase()))
 		if (userIndex != -1 && !user.childNodes[0].hasChildNodes()) {
-			$('#userlist').children().eq(i).children().eq(0).append($('<img/>', { 'class': 'userlist_pixel' }).attr("src", Pixels[userIndex][1]))
+			$('#userlist').children().eq(i).children().eq(0).append($('<img/>', { 'class': 'userlist_pixel' }).attr("src", pixelArr[userIndex][1]))
 		}
 	}
 }
