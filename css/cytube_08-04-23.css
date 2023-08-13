@@ -11,6 +11,11 @@
 .navbar{min-height:0;box-shadow: -5px 1px 10px rgba(0, 0, 0, 0.20);border:none;}
 .profile-box{right:0 !important;}
 
+/*Layout tweaks*/
+#chatwrap{padding:0;margin:0;}
+#videowrap{padding-bottom:10px; padding-top:0; padding-right:0; padding-left:0; margin:0;}
+#motdwrap{display: none! important;}
+
 #userlist {
             font-size: 7.61pt;
             background-color: #1C1E22;
@@ -36,8 +41,6 @@ DIV#plmeta, DIV#chatheader, P#currenttitle, DIV#plmeta, #videowrap-header {backg
 #drinkcount, #modflair, #footer, .server-whisper{
 	display:none;
 }
-/*#videowrap{max-height:100%;width:calc(100% - 34rem);padding:5;margin:5;}
-#chatwrap{float:right;width:34rem;height:calc(100% - 110px);padding:5;margin:5;}*/
 
 #userlist {
     width: 10em;
@@ -49,6 +52,19 @@ DIV#plmeta, DIV#chatheader, P#currenttitle, DIV#plmeta, #videowrap-header {backg
     font-weight: normal;
 }
 
+/*Spoiler Fix*/
+.spoiler a {
+    color: #000000;
+    background-color: #000000;
+    opacity: 0;
+}
+
+.spoiler:hover a {
+    color: #ffffff;
+    opacity: 1;
+}
+
+/*Image Overlay*/
 #picoverlay {
     position: fixed;
     top: 0;
