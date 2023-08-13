@@ -20,6 +20,16 @@ var Shortcuts = {		// FORMAT: Keycode:'INSERT TEXT',	http://www.cambiaresearch.c
 	ctrlalt:{},
 	altshift:{}
 };
+//Array of all users and their pixel
+//Format = [username,pixelurl]
+//usernames should be lowercase
+//This will need filled out (obviously)
+var pixelArr = [
+	['dreadzone', 'https://cdn.discordapp.com/attachments/942639553120972820/948129632543195187/Aoyama.png'],
+	['haly', ''],
+	['literallyme',''],
+]
+
 
 //Overwrite the custom media load function to skip the warning message if the URL is angelthump - Current in the Internal Scripts
 var playerType = window.CustomEmbedPlayer;
@@ -187,6 +197,28 @@ $("#chatline").on("keydown", function (ev) {
 		return false
 	}
 })
+//observer for user count
+var userListCount = document.querySelector('#chatheader')
+//observer runs whenever usercount changes
+var observer = new MutationObserver(entries => {
+	userlistPixels()
+})
+//watches for changes in the chatheader
+observer.observe(userListCount.childNodes[1], {
+	childList: true,
+	characterData: true
+})
+
+//assignment of userlist pixels
+function userlistPixels () {
+	for (let i = 0; i < $('#userlist').children().length; i++) {
+		var user = $('#userlist').children()[i]
+		var userIndex = Pixels.findIndex(arr => arr.includes(user.innerText.toLowerCase()))
+		if (userIndex != -1 && !user.childNodes[0].hasChildNodes()) {
+			$('#userlist').children().eq(i).children().eq(0).append($('<img/>', { 'class': 'userlist_pixel' }).attr("src", Pixels[userIndex][1]))
+		}
+	}
+}
 
 //Bot functions
 //to do
