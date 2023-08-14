@@ -74,6 +74,29 @@ $('#ytapiplayer a[href^="https://player.angelthump.com/?channel="] ~ button').cl
 
 //Dropdown menu
 
+//Convert :pic to Video if link contains video
+chatImageToVideo($("#messagebuffer"));
+
+function chatImageToVideo(div){
+	//convert image embeds that are actually videos to video embeds
+	div = $('#messagebuffer')
+	var videoFileTypes = [ ".webm", ".mp4", '.mov' ];
+	div.find("a>img")
+		.each(function(index, img){ 
+			if(videoFileTypes.some(function(ext){ return img.src.endsWith(ext);	})){
+				var toReplace = $(img).parent("a[href='" + img.src + "']");
+				if(toReplace.length == 0)
+					toReplace = $(img);
+				toReplace.replaceWith("<video autoplay loop muted src=\"" + img.src + "\">" + img.src + "</video>");
+				
+				if (SCROLLCHAT) {
+					scrollChat();
+				} else if ($(this).position().top < 0) {
+					scrollAndIgnoreEvent(msgBuf.scrollTop() + $(this).height());
+				}
+			}
+		});
+}
 
 //Image overlay
 $('#messagebuffer').off('click').click(e => { 
