@@ -3,7 +3,7 @@
 var Usercount_Text = "revuefag";
 var SpoilerImg = 'http://i.imgur.com/xzD4vqc.png';
 var Favicon_URL = '';
-var ChannelName_Caption = 'Ponytails R Moe';
+var ChannelName_Caption = "Ponytails 'R' Moe";
 var TitleBarDescription_Caption = '>Streaming:';
 var JoinText_Message = 'has made contact with the server.';
 var LeaveText_Message = 'has tried the restarting.';
@@ -30,6 +30,8 @@ $('.dropdown-toggle').each(function(){
 		});
 	}		
 });
+
+//Dropdown menu
 
 //Chat shortcuts
 var Shortcuts = {		// FORMAT: Keycode:'INSERT TEXT',	http://www.cambiaresearch.com/articles/15/javascript-char-codes-key-codes
@@ -61,24 +63,33 @@ var pixelArr = [
 	['speedy','https://cdn.discordapp.com/attachments/926181552805777558/1140021833467433080/Yukikaze_v3.png']
 ]
 
-//Overwrite the custom media load function to skip the warning message if the URL is angelthump - Current in the Internal Scripts
+/*Overwrite the custom media load function to skip the warning message if the URL is angelthump*/
 var playerType = window.CustomEmbedPlayer;
 playerType.prototype.originalLoad = playerType.prototype.load;
 playerType.prototype.load = function(data) { 
-    return ['https://player.angelthump.com/?channel=',].some(s => data.meta.embed.src.startsWith(s))  //Can add other links here
+    return ['https://player.angelthump.com/?channel=',].some(s => data.meta.embed.src.startsWith(s))  //Can add other links in array here
         ? playerType.__super__.load.call(this, data) 
         : playerType.prototype.originalLoad.call(this, data); 
 }
 //Click the embed button if the alert is already on the page before this runs
 $('#ytapiplayer a[href^="https://player.angelthump.com/?channel="] ~ button').click(); 
 
-//Dropdown menu
-
-//Convert :pic to Video if link contains video
+/*Convert :pic to Video if link contains video*/
+//Loads Videos already in Chat
 chatImageToVideo($("#messagebuffer"));
-
+//Monitor Chat
+var messages = document.querySelector("#messagebuffer.linewrap");
+//Runs when Chat changes - might not be efficient but MutationObserver is relatively lightweight
+var observer = new MutationObserver(entries => {
+	chatImageToVideo($("#messagebuffer"))
+});
+observer.observe(messages, {
+	childList: true,
+	characterData: true,
+	subtree: true
+});
+//convert image embeds that are actually videos to video embeds
 function chatImageToVideo(div){
-	//convert image embeds that are actually videos to video embeds
 	div = $('#messagebuffer')
 	var videoFileTypes = [ ".webm", ".mp4", '.mov' ];
 	div.find("a>img")
@@ -87,7 +98,7 @@ function chatImageToVideo(div){
 				var toReplace = $(img).parent("a[href='" + img.src + "']");
 				if(toReplace.length == 0)
 					toReplace = $(img);
-				toReplace.replaceWith("<video autoplay loop muted src=\"" + img.src + "\">" + img.src + "</video>");
+				toReplace.replaceWith("<video controls autoplay loop muted src=\"" + img.src + "\">" + img.src + "</video>");
 				
 				if (SCROLLCHAT) {
 					scrollChat();
@@ -98,7 +109,7 @@ function chatImageToVideo(div){
 		});
 }
 
-//Image overlay
+/*Image Overlay*/
 $('#messagebuffer').off('click').click(e => { 
 	let t = e.target, p = t.parentElement;
 	if(e.button != 0) return;
