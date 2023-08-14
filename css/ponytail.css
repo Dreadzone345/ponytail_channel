@@ -15,7 +15,25 @@
 #chatwrap{padding:0;margin:0;}
 #videowrap{padding-bottom:10px; padding-top:0; padding-right:0; padding-left:0; margin:0;}
 #motdwrap{display: none! important;}
+#drinkcount, #modflair, #footer, .server-whisper{
+	display:none;
+}
 
+/*Background Image*/
+body {
+background-image:url(https://media.discordapp.net/attachments/941880564665958441/1139390926486241452/SsReCYNJ.png);
+ background-position: bottom right; background-attachment: fixed; background-size: cover;            
+/*background-position: bottom left;*/
+            /*background-attachment: fixed;*/
+            /*background-size: fit;*/
+            /*-webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;*/
+}
+
+
+/*Userlist & Chat*/
 #userlist {
     font-size: 7.61pt;
     background-color: #1C1E22;
@@ -34,26 +52,19 @@
 .userlist_pixel {
     height: 16px !important;
 }
-
+/*Background for easier reading of some shit*/
+DIV#plmeta, DIV#chatheader, P#currenttitle, DIV#plmeta, #videowrap-header {background-color: #1C1E22;}
+/*#currenttitle, #chatheader, #messagebuffer, #userlist, #guestlogin, #chatline, #plmeta {border-color:#444444;}*/
 /*Alternate message backgrounds*/
 #messagebuffer {background-color: #272B30;}
 #messagebuffer div:nth-child(even) {background-color: #444444;}
 #messagebuffer div:nth-child(odd) {background-color: #272B30;}
 #messagebuffer div.nick-hover{ background-color: #111122;}
 #messagebuffer div.nick-highlight, #messagebuffer div.nick-highlight > a{ color: #FFFFFF;}
+
      
 /*Cursors */
 body a:hover{cursor:url(http://i.imgur.com/G9Q7JW4.png), auto;}
- 
-/*Background for easier reading of some shit*/
-DIV#plmeta, DIV#chatheader, P#currenttitle, DIV#plmeta, #videowrap-header {background-color: #1C1E22;}
-/*#currenttitle, #chatheader, #messagebuffer, #userlist, #guestlogin, #chatline, #plmeta {border-color:#444444;}*/
-
-#drinkcount, #modflair, #footer, .server-whisper{
-	display:none;
-}
-
-
 
 /*Spoiler Fix*/
 .spoiler a {
@@ -61,7 +72,6 @@ DIV#plmeta, DIV#chatheader, P#currenttitle, DIV#plmeta, #videowrap-header {backg
     background-color: #000000;
     opacity: 0;
 }
-
 .spoiler:hover a {
     color: #ffffff;
     opacity: 1;
