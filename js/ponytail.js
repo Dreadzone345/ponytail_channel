@@ -1,15 +1,16 @@
 ﻿/*Kuyashii*/
 /*Basic Details and Config*/
+$('.navbar-brand').text('Ponytails R Moe').css('padding', '0 10px 0 10px'); //Replaces var ChannelName_Caption = "Ponytails 'R' Moe";
 var Usercount_Text = "revuefag";
 var SpoilerImg = 'http://i.imgur.com/xzD4vqc.png';
 var Favicon_URL = '';
-var ChannelName_Caption = "Ponytails 'R' Moe";
-var TitleBarDescription_Caption = '>Streaming:';
+var TitleBarDescription_Caption = '>Streaming:'; //Not working; will fix
 var JoinText_Message = 'has made contact with the server.';
 var LeaveText_Message = 'has tried the restarting.';
 
 /*Navbar*/
 //wip
+//$('#nav-collapsible ul:first-child').prepend('<li>Test</li>');
 //Nests default Cytube Buttons under Cytube Settings
 $('.dropdown-toggle').each(function(){
 	if ($(this).text() == 'Account'){
@@ -60,7 +61,8 @@ var pixelArr = [
 	['okonogi','https://cdn.discordapp.com/attachments/926181552805777558/1140021808167387206/Keropoyo_v3.png'],
 	['sarlacc','https://cdn.discordapp.com/attachments/942639553120972820/1040386126009090138/Louise_winter.png'],
 	['shimarin','https://cdn.discordapp.com/attachments/942639553120972820/948454629618905088/Shima_rin.png'],
-	['speedy','https://cdn.discordapp.com/attachments/926181552805777558/1140021833467433080/Yukikaze_v3.png']
+	['speedy','https://cdn.discordapp.com/attachments/926181552805777558/1140021833467433080/Yukikaze_v3.png'],
+	['nonohara','https://cdn.discordapp.com/attachments/994346520633684068/1075516832666095696/nonohara.png']
 ]
 
 /*Overwrite the custom media load function to skip the warning message if the URL is angelthump*/
