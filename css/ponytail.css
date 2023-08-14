@@ -43,6 +43,15 @@ body {
 .userlist_pixel {
     height: 16px !important;
 }
+/*Adds funny image before name in chat*/
+.username::before{
+	content:"AA";
+	background:url('https://media.discordapp.net/attachments/926181552805777558/1140120983936712774/image.png');
+	background-size:16px !important;
+	background-repeat:no-repeat !important;
+	color:rgba(0,0,0,0);
+	text-shadow: none !important;
+}
 /*Background for easier reading of some shit*/
 DIV#plmeta, DIV#chatheader, P#currenttitle, DIV#plmeta, #videowrap-header {background-color: #1C1E22;}
 /*#currenttitle, #chatheader, #messagebuffer, #userlist, #guestlogin, #chatline, #plmeta {border-color:#444444;}*/
