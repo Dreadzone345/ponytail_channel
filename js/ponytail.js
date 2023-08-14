@@ -8,29 +8,44 @@ var TitleBarDescription_Caption = '>Streaming:';
 var JoinText_Message = 'has made contact with the server.';
 var LeaveText_Message = 'has tried the restarting.';
 
+/*Navbar*/
+//wip
+var HeaderDropMenu_Title = 'Stuff';
+var HeaderDropMenu_Items = [
+	['Stream Schedule', 'https://docs.google.com/spreadsheets/d/1tvK0EiLc1RJ6IbPF7CEHMUmys8ljAJcgoEIIPpCMh3A/'],
+	['Old Stream Schedule', 'https://docs.google.com/spreadsheets/d/1Ye0mzOVODl2IAo3MWjvZOtqSXq-KK_JR5RYbzjUmOY4/edit#gid=9190525'],
+	['Old Emotes', 'https://drive.google.com/folderview?id=0ByZgrUw4okC-STQyNUE0UXh5UU0&usp=drive_web'],
+];
+
 //Chat shortcuts
 var Shortcuts = {		// FORMAT: Keycode:'INSERT TEXT',	http://www.cambiaresearch.com/articles/15/javascript-char-codes-key-codes
 	ctrl:{
 		83:'[sp]',		// Spoiler
 	}, 
 	alt:{
-        83:'[/]'		// End shortcut
+        	83:'[/]'		// End shortcut
     },
 	ctrlshift:{},
 	ctrlalt:{},
 	altshift:{}
 };
+
 //Array of all users and their pixel
 //Format = [username,pixelurl]
 //usernames should be lowercase
 //This will need filled out (obviously)
 var pixelArr = [
 	['dreadzone', 'https://cdn.discordapp.com/attachments/942639553120972820/948129632543195187/Aoyama.png'],
-	['haly', ''],
-	['literallyme', ''],
-	['thepaizurikid', 'https://cdn.discordapp.com/attachments/1059317496227823646/1075156730398380032/Perrine_Revue_ver2.png']
+	['haly', 'https://media.discordapp.net/attachments/888275831217090620/1047503101571125338/Hitori_longer_anim_t3.gif'],
+	['literallyme', 'https://cdn.discordapp.com/attachments/942639553120972820/948129704685240350/Shinobu.png'],
+	['thepaizurikid', 'https://cdn.discordapp.com/attachments/1059317496227823646/1075156730398380032/Perrine_Revue_ver2.png'],
+	['colin_mochrie','https://cdn.discordapp.com/attachments/926181552805777558/1140021789381107722/Chen_v2.png'],
+	['gasp','https://cdn.discordapp.com/attachments/988611450073403422/1056480314043682816/Fubuki_v3-Messi.png'],
+	['okonogi','https://cdn.discordapp.com/attachments/926181552805777558/1140021808167387206/Keropoyo_v3.png'],
+	['sarlacc','https://cdn.discordapp.com/attachments/942639553120972820/1040386126009090138/Louise_winter.png'],
+	['shimarin','https://cdn.discordapp.com/attachments/942639553120972820/948454629618905088/Shima_rin.png'],
+	['speedy','https://cdn.discordapp.com/attachments/926181552805777558/1140021833467433080/Yukikaze_v3.png']
 ]
-
 
 //Overwrite the custom media load function to skip the warning message if the URL is angelthump - Current in the Internal Scripts
 var playerType = window.CustomEmbedPlayer;
@@ -42,6 +57,9 @@ playerType.prototype.load = function(data) {
 }
 //Click the embed button if the alert is already on the page before this runs
 $('#ytapiplayer a[href^="https://player.angelthump.com/?channel="] ~ button').click(); 
+
+//Dropdown menu
+
 
 //Image overlay
 $('#messagebuffer').off('click').click(e => { 
