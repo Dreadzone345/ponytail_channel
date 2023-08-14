@@ -10,12 +10,26 @@ var LeaveText_Message = 'has tried the restarting.';
 
 /*Navbar*/
 //wip
-var HeaderDropMenu_Title = 'Stuff';
-var HeaderDropMenu_Items = [
-	['Stream Schedule', 'https://docs.google.com/spreadsheets/d/1tvK0EiLc1RJ6IbPF7CEHMUmys8ljAJcgoEIIPpCMh3A/'],
-	['Old Stream Schedule', 'https://docs.google.com/spreadsheets/d/1Ye0mzOVODl2IAo3MWjvZOtqSXq-KK_JR5RYbzjUmOY4/edit#gid=9190525'],
-	['Old Emotes', 'https://drive.google.com/folderview?id=0ByZgrUw4okC-STQyNUE0UXh5UU0&usp=drive_web'],
-];
+//Nests default Cytube Buttons under Cytube Settings
+$('.dropdown-toggle').each(function(){
+	if ($(this).text() == 'Account'){
+		var name = $('#welcome').text().replace('Welcome, ', '');
+		$('#welcome').text('Welcome, ');
+		$('#welcome').append('<a class="dropdown-toggle" href="#" data-toggle="dropdown">' + name + ' <b class="caret"></b></a>'); 
+		$('#welcome').addClass('dropdown');
+		$(this).parent().find('.dropdown-menu').detach().appendTo('#welcome');
+		$(this).parent().remove();
+	} 
+	else if ($(this).text() == 'Layout'){ 
+		$(this).html($(this).html().replace('Layout','Cytube Settings</b>'));
+		$(this).parent().attr('ID','settingsMenu');
+		$('li a').each(function(){
+			if($(this).text() == 'Options'){
+				$(this).text('User Settings').detach().appendTo('#settingsMenu .dropdown-menu').wrap('<li></li>');
+			}
+		});
+	}		
+});
 
 //Chat shortcuts
 var Shortcuts = {		// FORMAT: Keycode:'INSERT TEXT',	http://www.cambiaresearch.com/articles/15/javascript-char-codes-key-codes
