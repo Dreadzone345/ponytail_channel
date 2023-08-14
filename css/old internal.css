@@ -1,0 +1,144 @@
+.username::before{
+	content:"AA";
+	background:url('https://media.discordapp.net/attachments/926181552805777558/1140120983936712774/image.png');
+	background-size:16px !important;
+	background-repeat:no-repeat !important;
+	color:rgba(0,0,0,0);
+	text-shadow: none !important;
+}
+
+#chatwrap{padding:0;margin:0;}
+#videowrap{padding-bottom:10px; padding-top:0; padding-right:0; padding-left:0; margin:0;}
+#motdwrap{display: none! important;}
+
+.spoiler a {
+    color: #000000;
+    background-color: #000000;
+    opacity: 0;
+}
+
+.spoiler:hover a {
+    color: #ffffff;
+    opacity: 1;
+}
+
+/*CSS pretty much complete now, anyone should be able to edit it. Backup at http://pastebin.com/FcpGvxi6 and http://pastebin.com/5Jz6980X*/
+/*Try to adhere to the formatting if you're going to add new code*/
+/*Backup of emotes is in the javascript section*/
+/*Limits the size of the image from the picture embeds*/
+#messagebuffer.linewrap img, #messagebuffer.linewrap video{max-width: 300px; max-height: 300px;}
+.profile-image { width:125px; height:auto; max-height:300px;}
+.profile-box {max-width: 137px; max-height: 500px !important;}
+.modal-dialog{
+width: 90%;}
+ 
+.panel-primary {
+border-color: white !important;
+}
+ 
+.panel-primary > .panel-heading {
+    background-color:black !important;
+    border-color: white !important;
+}
+/*Adds image to the user list window*/
+#userlist {
+            font-size: 7.61pt;
+            background-color: #1C1E22;
+            background-image: url(https://media.discordapp.net/attachments/944043842456395837/1140113458742972567/smug_teio2_50.png);
+            background-position: bottom center;
+            background-repeat: no-repeat;}
+ 
+/*Wallpaper*/
+/*Kud: http://i.imgur.com/ncl4gby.jpg*/
+/*Miku: http://i.imgur.com/ivMqyoM.jpg, http://i.imgur.com/Au1bWKb.jpg*/
+/*Original Paper: http://puu.sh/7QUn8.png*/
+/*Komori: http://i.imgur.com/X5CH02Y.jpg*/
+/*Oranges: http://www.nectarcafenj.com/files/oranges.jpg)*/
+/*Botes: http://puu.sh/aHrs6/2e36260f66.jpg*/
+/* halloween cuteness http://puu.sh/c2Uxe.png */
+body {
+background-image:url(https://media.discordapp.net/attachments/941880564665958441/1139390926486241452/SsReCYNJ.png);
+ background-position: bottom right; background-attachment: fixed; background-size: cover;            
+/*background-position: bottom left;*/
+            /*background-attachment: fixed;*/
+            /*background-size: fit;*/
+            /*-webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;*/
+}
+ 
+/*Changes the color of the textA1FBFF*/
+body, header, p, a, #mainpage {color:#A1C5FF !important;}
+ 
+/*Orenji*/
+/*body, header, p {color:#ffa500;}*/
+ 
+/*Footer*/
+P.text-muted.credit {font-size: 0px;} /*This part removes the previous text*/
+P.text-muted.credit:after {content: "In Memorial of: 2Wide4Me , PingPongYeti, ThuglyFegg, MassiveFaggot, FucknoBackup"; font-size: 14px;} /*Footer Text*/
+FOOTER#footer {opacity: 0.9;}
+ 
+/*Adds suffix to messages*/
+/*#messagebuffer div:after{content: "~de arimasu";}*/
+ 
+/*Alternate message backgrounds*/
+/*Alternate message backgrounds*/
+#messagebuffer {background-color: #272B30;}
+#messagebuffer div:nth-child(even) {background-color: #444444;}
+#messagebuffer div:nth-child(odd) {background-color: #272B30;}
+#messagebuffer div.nick-hover{ background-color: #111122;}
+#messagebuffer div.nick-highlight, #messagebuffer div.nick-highlight > a{ color: #FFFFFF;}
+ 
+/*Cursors */
+body a:hover{cursor:url(http://i.imgur.com/G9Q7JW4.png), auto;}
+ 
+/*Background for easier reading of some shit*/
+DIV#plmeta, DIV#chatheader, P#currenttitle, DIV#plmeta {background-color: #1C1E22;}
+//#currenttitle, #chatheader, #messagebuffer, #userlist, #guestlogin, #chatline, #plmeta {border-color:#444444;}
+ 
+/*For the spinning images*/
+.spin, .spintext{
+            -webkit-animation: spin 5ms linear infinite;
+            -moz-animation: spin 5ms linear infinite;
+            animation: spin 5ms linear infinite;}
+@-webkit-keyframes spin {100% {-webkit-transform: rotate(360deg); transform:rotate(360deg);}}
+@-moz-keyframes spin {100% {-moz-transform: rotate(360deg); transform:rotate(360deg);}}
+@keyframes spin {100% {-webkit-transform: rotate(360deg); transform:rotate(360deg);}}
+ 
+/*Flip images*/
+.hflip {
+display: inline-block;
+-moz-transform: scale(-1, 1);
+-webkit-transform: scale(-1, 1);
+-o-transform: scale(-1, 1);
+-ms-transform: scale(-1, 1);
+transform: scale(-1, 1);
+}
+.vflip {
+display: inline-block;
+-moz-transform: scale(1, -1);
+-webkit-transform: scale(1, -1);
+-o-transform: scale(1, -1);
+-ms-transform: scale(1, -1);
+transform: scale(1, -1);
+}
+/* _North's fun script :^) */
+SPAN#usercount.pointer:before {content: "";}
+#SPAN#username:before {content: "test";}
+SPAN#username {    
+    -webkit-transform: rotate(36000deg) /* rotateX(36000deg) */; 
+    transform: rotate(36000deg) /* rotateX(36000deg) */;
+    -webkit-transition: -webkit-transform 50.25s; 
+    transition: transform 50.25s;
+}
+DIV#motdwrap.well, .queue_entry {opacity: .95;}
+ 
+#.form-control {    
+    -webkit-transform: rotate(36000deg) /* rotateX(36000deg) */;
+    -moz-transform: rotate(36000deg) /* rotateX(36000deg) */;
+    transform: rotate(36000deg) /* rotateX(36000deg) */;
+    -webkit-transition: -webkit-transform 50.25s;
+    -moz-transition: -moz-transform 50.25s;
+    transition: transform 50.25s;
+}
