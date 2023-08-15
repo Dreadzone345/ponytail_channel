@@ -9,8 +9,8 @@ var JoinText_Message = 'has made contact with the server.';
 var LeaveText_Message = 'has tried the restarting.';
 
 /*Navbar*/
-//wip
-//$('#nav-collapsible ul:first-child').prepend('<li>Test</li>');
+//wip - probably want to make this a proper dropdown with other info?
+$('#nav-collapsible ul:first-child').prepend("<li class='dropdown'><a target='_blank' href='https://docs.google.com/spreadsheets/d/1tvK0EiLc1RJ6IbPF7CEHMUmys8ljAJcgoEIIPpCMh3A/'>Schedule</a></li>");
 //Nests default Cytube Buttons under Cytube Settings
 $('.dropdown-toggle').each(function(){
 	if ($(this).text() == 'Account'){
@@ -291,3 +291,190 @@ function userlistPixels () {
 
 //Bot functions
 //to do
+
+/*Playlist*/
+//Timing for when each video in the playlist ends - Stolen from /bkt/ script
+var q240480 = $('li[title="240"],li[title="480"]');
+socket.on("mediaUpdate", function(data) {
+	if (Math.abs(data.currentTime - CurrentVideoTime) > 5.1) {
+		updateEndTimes(Math.floor(data.currentTime));
+	}
+	CurrentVideoTime = data.currentTime;
+	if (PLAYER.mediaType == "gd") {
+		q240480.hide();
+	} else if (q240480.css("display") == "none") {
+		q240480.show();
+	}
+});
+socket.on("changeMedia", function(data) {
+    updateEndTimes(Math.floor(data.currentTime));
+	videoLength = data.seconds;
+	changeTitle();
+	setModeAfterVideoChange();
+	$("#findtime").text() !== 'Video Time' ? $("#findtime").click() : '';
+	if (!$("#videowrap").length) {
+		TitleBarDescription_Caption.length < 1 ? TitleBarDescription_Caption = 'Currently Playing:' : '';
+		$("#currenttitle").text(TitleBarDescription_Caption + " " + data.title);
+	}
+});
+function getCurrentPlayerTime() {
+	try {
+		if (typeof PLAYER.player !== "undefined") {
+			return PLAYER.player.currentTime(); // "FilePlayer, Vimeo"
+		} else if (typeof PLAYER.yt !== "undefined") { // "YouTube"
+			return PLAYER.yt.getCurrentTime(); // "YouTube"
+		} else if (typeof PLAYER.dm !== "undefined") {
+			return PLAYER.dm.currentTime; // "Daily Motion"
+		}
+	} catch {
+		return CurrentVideoTime;
+	}
+}
+var CurrentVideoTime = 0;
+socket.on("delete", function() {
+	setTimeout(function() {
+		updateEndTimes(getCurrentPlayerTime());
+	}, 750); // hopefully this fixes the issue..
+});
+
+socket.on("moveVideo", function() {
+	setTimeout(function() {
+		updateEndTimes(getCurrentPlayerTime());
+	}, 750);
+});
+function makeQueueEntry(item, addbtns) {
+    var video = item.media;
+    var li = $("<li/>");
+    li.addClass("queue_entry");
+    li.addClass("pluid-" + item.uid);
+    li.data("uid", item.uid);
+    li.data("media", video);
+    li.data("temp", item.temp);
+    if(video.thumb) {
+        $("<img/>").attr("src", video.thumb.url)
+            .css("float", "left")
+            .css("clear", "both")
+            .appendTo(li);
+    }
+    var title = $("<a/>").addClass("qe_title").appendTo(li)
+        .text(video.title)
+        .attr("href", formatURL(video))
+        .attr("target", "_blank");
+    var time = $("<span/>").addClass("qe_time").appendTo(li);
+    time.text(video.duration);
+    var userAdded = $("<span/>").addClass("qe_user").appendTo(li);
+    userAdded.text(item.queueby + " | ");
+	var endTime = $("<span/>").addClass("qe_endTime").appendTo(li);
+    var clear = $("<div/>").addClass("qe_clear").appendTo(li);
+    if(item.temp) {
+        li.addClass("queue_temp");
+    }
+
+    if(addbtns)
+        addQueueButtons(li);
+
+	setTimeout(function() {
+		updateEndTimes(getCurrentPlayerTime());
+	}, 100);
+    return li;
+}
+
+function updateEndTimesOnLoad() {
+    var PLTimeList = Array.from(document.getElementsByClassName("qe_time")).forEach(function (PLCurrElement) {
+        var qeEndTime = document.createElement("span");
+        qeEndTime.classList.add('qe_endTime');
+
+        PLCurrElement.parentElement.insertBefore(qeEndTime, PLCurrElement.nextSibling);
+
+        var qeuser = document.createElement("span");
+        qeuser.classList.add('qe_user');
+        qeuser.textContent = PLCurrElement.parentElement.getAttribute("title").replace("Added by: ", "") + " | ";
+
+        PLCurrElement.parentElement.insertBefore(qeuser, PLCurrElement.nextSibling);
+    });
+}
+
+function updateEndTimes(CurrentVideoTime) {
+    var currentTime = new Date().getTime();
+    var activeItemPosition = Array.from(document.getElementById("queue").children).indexOf(document.getElementsByClassName("queue_active")[0]);
+
+	if (activeItemPosition === -1) {
+		setTimeout(function() {
+			updateEndTimes(CurrentVideoTime);
+		}, 250);
+	} else {
+		var PLTimeList = document.querySelectorAll("#queue .qe_time");
+		var PLEndTimeList = document.getElementsByClassName("qe_endTime") || false;
+		var PLSeconds = 0;
+
+		if (PLTimeList.length !== 0) {
+			if (PLEndTimeList.length === 0) {
+				updateEndTimesOnLoad();
+			}
+
+			if (activeItemPosition > 0) {
+				for (var j = 0; j < activeItemPosition; j++) {
+					PLEndTimeList[j].textContent = "";
+				}
+			}
+
+			var maxItems = 50;
+			var maxPosition = 0;
+
+			if (PLTimeList.length < activeItemPosition + maxItems) {
+				maxPosition = PLTimeList.length;
+			} else {
+				maxPosition = activeItemPosition + maxItems;
+				for (var j = maxPosition; j < PLTimeList.length; j++) {
+					PLEndTimeList[j].textContent = "";
+				}
+			}
+
+			var noTime = false;
+
+			for (var i = activeItemPosition; i < maxPosition; i++) {
+				var currSplitTime = PLTimeList[i].textContent.split(":");
+
+				if (currSplitTime[0] !== "--" && !noTime) {
+					if (currSplitTime.length === 3) {
+						PLSeconds += parseInt(currSplitTime[0]) * 60 * 60;
+					}
+					PLSeconds += parseInt(currSplitTime[currSplitTime.length-2]) * 60;
+					PLSeconds += parseInt(currSplitTime[currSplitTime.length-1]);
+					PLSeconds += 3; //video player delay
+
+					if (i === activeItemPosition) {
+						PLSeconds = PLSeconds - CurrentVideoTime;
+					}
+
+					var updatedTime = new Date(currentTime + PLSeconds * 1000);
+					var isPM = updatedTime.getHours() >= 12;
+					var isMidday = updatedTime.getHours() == 12;
+
+					var updatedHours = updatedTime.getHours() - (isPM && !isMidday ? 12 : 0);
+					if (updatedHours === 0) {
+						updatedHours = 12;
+					}
+
+					var updatedMins = updatedTime.getMinutes().toString();
+					if (updatedMins.length === 1) {
+						updatedMins = "0" + updatedMins;
+					}
+					var updatedSecs = updatedTime.getSeconds().toString();
+					if (updatedSecs.length === 1) {
+						updatedSecs = "0" + updatedSecs;
+					}
+
+					PLEndTimeList[i].textContent = "Ends at " + updatedHours + ":" + updatedMins + ":" + updatedSecs + (isPM ? ' PM' : ' AM') + " | ";
+				} else {
+					if (!noTime) {
+						PLEndTimeList[i].textContent = "Never ends | ";
+					} else {
+						PLEndTimeList[i].textContent = "";
+					}
+					noTime = true;
+				}
+			}
+		}
+	}
+}
