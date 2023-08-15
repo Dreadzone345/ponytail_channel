@@ -37,11 +37,24 @@ body {
     scrollbar-width: none;
 }
 .userlist_owner {
-    color: #A1C5FF;
+    color: #c8c8c8;
     font-weight: normal;
 }
 .userlist_pixel {
-    height: 16px !important;
+    height: 16px;
+    padding-left: 2px;
+}
+div.userlist_item.userlist_afk span span.glyphicon.glyphicon-time {
+    display: none !important;
+}
+.userlist_item.userlist_afk span {
+    font-style: normal;
+}
+
+
+.chat_pixel {
+    height: 21px;
+    padding-bottom: 2px
 }
 /*Adds funny image before name in chat - Eventually will script this into not benus*/
 .username::before{
