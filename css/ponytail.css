@@ -43,7 +43,7 @@ body {
 .userlist_pixel {
     height: 16px !important;
 }
-/*Adds funny image before name in chat*/
+/*Adds funny image before name in chat - Eventually will script this into not benus*/
 .username::before{
 	content:"AA";
 	background:url('https://media.discordapp.net/attachments/926181552805777558/1140120983936712774/image.png');
@@ -61,7 +61,9 @@ DIV#plmeta, DIV#chatheader, P#currenttitle, DIV#plmeta, #videowrap-header {backg
 #messagebuffer div:nth-child(odd) {background-color: #272B30;}
 #messagebuffer div.nick-hover{ background-color: #111122;}
 #messagebuffer div.nick-highlight, #messagebuffer div.nick-highlight > a{ color: #FFFFFF;}
-
+/*Resizing somet stuff in chat*/
+#messagebuffer.linewrap img, #messagebuffer.linewrap video{max-width: 60%; max-height: 60%;}
+.modal-dialog{width: 90%;}
      
 /*Cursors */
 body a:hover{cursor:url(http://i.imgur.com/G9Q7JW4.png), auto;}
