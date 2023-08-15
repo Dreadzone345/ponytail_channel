@@ -7,7 +7,7 @@ var Favicon_URL = '';
 var TitleBarDescription_Caption = '>Streaming:'; //Not working; will fix
 var JoinText_Message = 'has made contact with the server.';
 var LeaveText_Message = 'has tried the restarting.';
-
+var defaultUserlistImage = 'https://cdn.discordapp.com/attachments/827754897754685501/1140881579883905039/b.png'
 /*Navbar*/
 //wip - probably want to make this a proper dropdown with other info?
 $('#nav-collapsible ul:first-child').prepend("<li class='dropdown'><a target='_blank' href='https://docs.google.com/spreadsheets/d/1tvK0EiLc1RJ6IbPF7CEHMUmys8ljAJcgoEIIPpCMh3A/'>Schedule</a></li>");
@@ -52,17 +52,17 @@ var Shortcuts = {		// FORMAT: Keycode:'INSERT TEXT',	http://www.cambiaresearch.c
 //usernames should be lowercase
 //This will need filled out (obviously)
 var pixelArr = [
-	['dreadzone', 'https://cdn.discordapp.com/attachments/942639553120972820/948129632543195187/Aoyama.png'],
-	['haly', 'https://media.discordapp.net/attachments/888275831217090620/1047503101571125338/Hitori_longer_anim_t3.gif'],
-	['literallyme', 'https://cdn.discordapp.com/attachments/942639553120972820/948129704685240350/Shinobu.png'],
-	['thepaizurikid', 'https://cdn.discordapp.com/attachments/1059317496227823646/1075156730398380032/Perrine_Revue_ver2.png'],
-	['colin_mochrie','https://cdn.discordapp.com/attachments/926181552805777558/1140021789381107722/Chen_v2.png'],
-	['gasp','https://cdn.discordapp.com/attachments/988611450073403422/1056480314043682816/Fubuki_v3-Messi.png'],
-	['okonogi','https://cdn.discordapp.com/attachments/926181552805777558/1140021808167387206/Keropoyo_v3.png'],
-	['sarlacc','https://cdn.discordapp.com/attachments/942639553120972820/1040386126009090138/Louise_winter.png'],
-	['shimarin','https://cdn.discordapp.com/attachments/942639553120972820/948454629618905088/Shima_rin.png'],
-	['speedy','https://cdn.discordapp.com/attachments/926181552805777558/1140021833467433080/Yukikaze_v3.png'],
-	['nonohara','https://cdn.discordapp.com/attachments/994346520633684068/1075516832666095696/nonohara.png']
+	['dreadzone', 'https://cdn.discordapp.com/attachments/942639553120972820/948129632543195187/Aoyama.png',''],
+	['haly', 'https://media.discordapp.net/attachments/888275831217090620/1047503101571125338/Hitori_longer_anim_t3.gif','https://media.discordapp.net/attachments/354127755761156106/874877703076085840/smug_50.png'],
+	['literallyme', 'https://cdn.discordapp.com/attachments/942639553120972820/948129704685240350/Shinobu.png', 'https://cdn.discordapp.com/attachments/875570835732176956/875571124438700043/naellis_01.png','https://files.catbox.moe/q0qpr4.png'],
+	['thepaizurikid', 'https://cdn.discordapp.com/attachments/1059317496227823646/1075156730985590866/Perrine_v3-cat-update.png', 'https://cdn.discordapp.com/attachments/807397543415250958/874874304871940156/sidebarRinne.png'],
+	['colin_mochrie', 'https://cdn.discordapp.com/attachments/926181552805777558/1140021789381107722/Chen_v2.png', ''],
+	['gasp', 'https://cdn.discordapp.com/attachments/988611450073403422/1056480314043682816/Fubuki_v3-Messi.png', ''],
+	['okonogi', 'https://cdn.discordapp.com/attachments/926181552805777558/1140021808167387206/Keropoyo_v3.png', 'https://files.catbox.moe/pcsar7.png','https://files.catbox.moe/q7lqtl.png'],
+	['sarlacc', 'https://cdn.discordapp.com/attachments/942639553120972820/1040386126009090138/Louise_winter.png', ''],
+	['shimarin', 'https://cdn.discordapp.com/attachments/942639553120972820/948454629618905088/Shima_rin.png', 'https://cdn.discordapp.com/attachments/741854976967704579/875174053688770631/Mikan_sidebar.png'],
+	['speedy', 'https://cdn.discordapp.com/attachments/926181552805777558/1140021833467433080/Yukikaze_v3.png', 'https://cdn.discordapp.com/attachments/410511471894593537/874818707300417556/bktside1v5.png'],
+	['nonohara', 'https://cdn.discordapp.com/attachments/994346520633684068/1075516832666095696/nonohara.png', '']
 ]
 
 /*Overwrite the custom media load function to skip the warning message if the URL is angelthump*/
@@ -84,6 +84,7 @@ var messages = document.querySelector("#messagebuffer.linewrap");
 //Runs when Chat changes - might not be efficient but MutationObserver is relatively lightweight
 var observer = new MutationObserver(entries => {
 	chatImageToVideo($("#messagebuffer"))
+	chatPixels()
 });
 observer.observe(messages, {
 	childList: true,
@@ -266,25 +267,65 @@ $("#chatline").on("keydown", function (ev) {
 		return false
 	}
 })
+
 //observer for user count
 var userListCount = document.querySelector('#chatheader')
 //observer runs whenever usercount changes
-var observer = new MutationObserver(entries => {
+var userObserver = new MutationObserver(entries => {
 	userlistPixels()
 })
 //watches for changes in the chatheader
-observer.observe(userListCount.childNodes[1], {
+userObserver.observe(userListCount.childNodes[1], {
 	childList: true,
 	characterData: true
 })
+var clientIndex;
+$('document').ready(function () {
+	userlistPixels()
+	userlistImage(clientIndex)
+}) 
+
 
 //assignment of userlist pixels
-function userlistPixels () {
+function userlistPixels() {
 	for (let i = 0; i < $('#userlist').children().length; i++) {
-		var user = $('#userlist').children()[i]
-		var userIndex = pixelArr.findIndex(arr => arr.includes(user.innerText.toLowerCase()))
-		if (userIndex != -1 && !user.childNodes[0].hasChildNodes()) {
-			$('#userlist').children().eq(i).children().eq(0).append($('<img/>', { 'class': 'userlist_pixel' }).attr("src", pixelArr[userIndex][1]))
+		var user = $('#userlist').children().eq(i).children().eq(1)
+		var userIndex = pixelArr.findIndex(arr => arr.includes(user.text().toLowerCase()))
+		if (CLIENT.name == user.text())
+			clientIndex = userIndex;
+		if (userIndex != -1 && user.children().length < 1) {
+			$('#userlist').children().eq(i).children().eq(1).prepend($('<img/>', { 'class': 'userlist_pixel' }).attr("src", pixelArr[userIndex][1]))
+		}
+	}
+}
+function userlistImage(clientIndex) {
+	if (clientIndex != -1) {
+		//randomization for users with more than one userlist image
+		if (pixelArr[clientIndex].length > 3) {
+			var usedImg = Math.floor(Math.random() * (pixelArr[clientIndex].length - 3 + 1) + 2)
+		}
+		else {
+			var usedImg = 2
+		}
+
+		if (pixelArr[clientIndex][usedImg] == '')
+			link = defaultUserlistImage
+		else
+			link = pixelArr[clientIndex][usedImg]
+	}
+	else {
+		link = defaultUserlistImage
+	}
+	$("#userlist").css({ 'background-image': 'url("' + link + '")', 'background-repeat': 'no-repeat', 'background-position': 'left bottom' })
+}
+
+function chatPixels() {
+	for (let i = 0; i < $('#messagebuffer').eq(0).children().length; i++) {
+		var msg = $('#messagebuffer').eq(0).children().eq(i)
+		if (/(?<=chat-msg-).*/.test(msg.attr('class')) != false) {
+			var chatterIndex = pixelArr.findIndex(arr => arr.includes(/(?<=chat-msg-).*/.exec(msg.attr('class'))[0].toLowerCase()))
+			if (chatterIndex != -1 && msg.children().eq(0).children().length == 0)
+				$('#messagebuffer').eq(0).children().eq(i).children().eq(0).append($('<img/>', { 'class': 'chat_pixel' }).attr("src", pixelArr[chatterIndex][1]))
 		}
 	}
 }
