@@ -51,7 +51,7 @@ var Shortcuts = {		// FORMAT: Keycode:'INSERT TEXT',	http://www.cambiaresearch.c
 //Format = [username,pixelurl]
 //usernames should be lowercase
 //This will need filled out (obviously)
-var pixelArr = [
+var userArr = [
 	['dreadzone', 'https://cdn.discordapp.com/attachments/942639553120972820/948129632543195187/Aoyama.png',''],
 	['haly', 'https://media.discordapp.net/attachments/888275831217090620/1047503101571125338/Hitori_longer_anim_t3.gif','https://media.discordapp.net/attachments/354127755761156106/874877703076085840/smug_50.png'],
 	['literallyme', 'https://cdn.discordapp.com/attachments/942639553120972820/948129704685240350/Shinobu.png', 'https://cdn.discordapp.com/attachments/875570835732176956/875571124438700043/naellis_01.png','https://files.catbox.moe/q0qpr4.png'],
@@ -290,28 +290,28 @@ $('document').ready(function () {
 function userlistPixels() {
 	for (let i = 0; i < $('#userlist').children().length; i++) {
 		var user = $('#userlist').children().eq(i).children().eq(1)
-		var userIndex = pixelArr.findIndex(arr => arr.includes(user.text().toLowerCase()))
+		var userIndex = userArr.findIndex(arr => arr.includes(user.text().toLowerCase()))
 		if (CLIENT.name == user.text())
 			clientIndex = userIndex;
 		if (userIndex != -1 && user.children().length < 1) {
-			$('#userlist').children().eq(i).children().eq(1).prepend($('<img/>', { 'class': 'userlist_pixel' }).attr("src", pixelArr[userIndex][1]))
+			$('#userlist').children().eq(i).children().eq(1).prepend($('<img/>', { 'class': 'userlist_pixel' }).attr("src", userArr[userIndex][1]))
 		}
 	}
 }
 function userlistImage(clientIndex) {
 	if (clientIndex != -1) {
 		//randomization for users with more than one userlist image
-		if (pixelArr[clientIndex].length > 3) {
-			var usedImg = Math.floor(Math.random() * (pixelArr[clientIndex].length - 3 + 1) + 2)
+		if (userArr[clientIndex].length > 3) {
+			var usedImg = Math.floor(Math.random() * (userArr[clientIndex].length - 3 + 1) + 2)
 		}
 		else {
 			var usedImg = 2
 		}
 
-		if (pixelArr[clientIndex][usedImg] == '')
+		if (userArr[clientIndex][usedImg] == '')
 			link = defaultUserlistImage
 		else
-			link = pixelArr[clientIndex][usedImg]
+			link = userArr[clientIndex][usedImg]
 	}
 	else {
 		link = defaultUserlistImage
@@ -323,9 +323,9 @@ function chatPixels() {
 	for (let i = 0; i < $('#messagebuffer').eq(0).children().length; i++) {
 		var msg = $('#messagebuffer').eq(0).children().eq(i)
 		if (/(?<=chat-msg-).*/.test(msg.attr('class')) != false) {
-			var chatterIndex = pixelArr.findIndex(arr => arr.includes(/(?<=chat-msg-).*/.exec(msg.attr('class'))[0].toLowerCase()))
-			if (chatterIndex != -1 && msg.children().eq(0).children().length == 0)
-				$('#messagebuffer').eq(0).children().eq(i).children().eq(0).append($('<img/>', { 'class': 'chat_pixel' }).attr("src", pixelArr[chatterIndex][1]))
+			var userIndex = userArr.findIndex(arr => arr.includes(/(?<=chat-msg-).*/.exec(msg.attr('class'))[0].toLowerCase()))
+			if (userIndex != -1 && msg.children().eq(0).children().length == 0)
+				$('#messagebuffer').eq(0).children().eq(i).children().eq(0).append($('<img/>', { 'class': 'chat_pixel' }).attr("src", userArr[userIndex][1]))
 		}
 	}
 }
