@@ -54,7 +54,9 @@ div.userlist_item.userlist_afk span span.glyphicon.glyphicon-time {
 
 .chat_pixel {
     height: 21px;
-    padding-bottom: 2px
+    padding-bottom: 2px;
+    padding-right:3px;
+    padding-left: 1px;
 }
 /*Adds funny image before name in chat - Eventually will script this into not benus*/
 .username::before{
