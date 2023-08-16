@@ -322,8 +322,8 @@ function userlistImage(clientIndex) {
 function chatPixels() {
 	for (let i = 0; i < $('#messagebuffer').eq(0).children().length; i++) {
 		var msg = $('#messagebuffer').eq(0).children().eq(i)
-		if (/(?<=chat-msg-).*/.test(msg.attr('class')) != false) {
-			var userIndex = userArr.findIndex(arr => arr.includes(/(?<=chat-msg-).*/.exec(msg.attr('class'))[0].toLowerCase()))
+		if (/(?<=chat-msg-).([^\s]*)/.test(msg.attr('class')) != false) {
+			var userIndex = userArr.findIndex(arr => arr.includes(/(?<=chat-msg-).([^\s]*)/.exec(msg.attr('class'))[0].toLowerCase()))
 			if (userIndex != -1 && msg.children().eq(0).children().length == 0)
 				$('#messagebuffer').eq(0).children().eq(i).children().eq(0).append($('<img/>', { 'class': 'chat_pixel' }).attr("src", userArr[userIndex][1]))
 		}
