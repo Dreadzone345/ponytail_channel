@@ -334,6 +334,56 @@ function chatPixels() {
 //to do
 
 /*Playlist*/
+//Grabs raw filenames and sets them as title
+var playListData = "";
+function selectRandomLink(data) {
+	if (typeof data.id !== "undefined") {
+		$('.serverLinks').remove();
+		if (data.type === "fi") {
+			if (data.id.indexOf(PlaylistDelimiter) > -1) {
+				LeaderLink = data.id;
+				var rdmLinks = data.id.split(PlaylistDelimiter);
+				playListData = data;
+				for(var i=0;i<rdmLinks.length;i++){
+					$("<button class='btn btn-sm btn-default serverLinks' title='" + rdmLinks[i] + "' leaderLink='" + LeaderLink + "'>Server " + (i+1) + "</button>").appendTo("#playercontrols").on("click",function(){
+						$('.serverLinks').removeClass('btn-success');
+						$(this).addClass('btn-success');
+						let LeaderLink = $(this).attr('LeaderLink');
+						setTimeout(function () {
+							PLAYER.mediaId = LeaderLink; // Media ID must match playlist link or else this does not let you set the time.
+						}, 1000);
+						let data = playListData;
+						data.id = $(this).attr('title');
+						if (typeof data.type !== "undefined") {
+							if (data.type === "fi") {
+								videoElement = document.getElementById("ytapiplayer_html5_api") || false;
+							}
+						}
+						_handleMediaUpdate(data);
+					});
+					if(i==0)
+						$(".serverLinks").addClass('btn-success');
+				}
+			}
+		}
+	}
+}
+
+$("#mediaurl").on("paste", function() {
+	setTimeout(function() {
+		if ($("#addfromurl-title-val").length !== 0) {
+			var mediaUrl = decodeURIComponent($("#mediaurl")[0].value).split("/");
+			mediaUrl = mediaUrl[mediaUrl.length-1].split("?")[0].split(".");
+			var mediaTitle = "";
+			for (i = 0; i < mediaUrl.length-1; i++) {
+				mediaTitle += mediaUrl[i] + ".";
+			}
+			mediaTitle = mediaTitle.substring(0, mediaTitle.length-1);
+			$("#addfromurl-title-val")[0].value = mediaTitle;
+		}
+	}, 250);
+});
+
 //Timing for when each video in the playlist ends - Stolen from /bkt/ script
 var q240480 = $('li[title="240"],li[title="480"]');
 socket.on("mediaUpdate", function(data) {
