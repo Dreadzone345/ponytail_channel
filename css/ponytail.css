@@ -37,8 +37,8 @@ body {
     scrollbar-width: none;
 }
 .userlist_owner {
-    color: #c8c8c8;
-    font-weight: normal;
+    color: #c8c8c8 !important;
+    font-weight: normal !important;
 }
 .userlist_pixel {
     height: 16px;
