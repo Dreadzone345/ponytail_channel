@@ -1,9 +1,11 @@
 ﻿/*Kuyashii*/
 /*Basic Details and Config*/
-$('.navbar-brand').text('Ponytails R Moe').css('padding', '0 10px 0 10px'); //Replaces var ChannelName_Caption = "Ponytails 'R' Moe";
+//Favicon
+$('<link id="favicon" href="https://cdn.discordapp.com/attachments/941880564665958441/1141569583732494346/lazyfavicon.png" type="image/x-icon" rel="shortcut icon" />').appendTo("head");
+//Navbar Branding and Header
+$('.navbar-brand').attr('href','https://ponytailsare.moe').text('Ponytails R Moe').css('padding', '0 10px 0 10px').prepend('<img src="https://cdn.discordapp.com/attachments/941880564665958441/1141569583732494346/lazyfavicon.png" style="display: inline;" height="20"/>'); 
 var Usercount_Text = "revuefag";
 var SpoilerImg = 'http://i.imgur.com/xzD4vqc.png';
-var Favicon_URL = '';
 var TitleBarDescription_Caption = '>Streaming:'; //Not working; will fix
 var JoinText_Message = 'has made contact with the server.';
 var LeaveText_Message = 'has tried the restarting.';
