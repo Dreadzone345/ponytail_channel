@@ -50,7 +50,7 @@ var Shortcuts = {		// FORMAT: Keycode:'INSERT TEXT',	http://www.cambiaresearch.c
 };
 
 //Array of all users and their pixel
-//Format = [username,pixelurl]
+//Format = [username,pixel url,userlist image url]
 //usernames should be lowercase
 //This will need filled out (obviously)
 var userArr = [
@@ -248,15 +248,13 @@ function insertText(a) {
 
 //keybind changes
 $("#chatline").on("keydown", function (ev) {
-	
 	if (ev.which == 13) {
-		//not currently working properly
-		/*ev.preventDefault()
-		msg = $("#chatline").val()
-		console.log(msg)
-		meta = {}
-		meta.modflair = CLIENT.rank;
-		socket.emit("chatMsg", { msg: msg, meta: meta })*/
+		if (CHATHIST[CHATHISTIDX - 1].indexOf('!') == 0) {
+			msg = chatBot(CHATHIST[CHATHISTIDX - 1])
+			if (msg != CHATHIST[CHATHISTIDX - 1]) {
+				socket.emit('chatMsg', { msg: '➥ ' + msg })
+			}
+		}
 	}
 	else if (Shortcuts.ctrl[ev.which] !== undefined && ev.ctrlKey && !ev.shiftKey && !ev.altKey) {
 		insertText(Shortcuts.ctrl[ev.which])
@@ -269,7 +267,6 @@ $("#chatline").on("keydown", function (ev) {
 		return false
 	}
 })
-
 //observer for user count
 var userListCount = document.querySelector('#chatheader')
 //observer runs whenever usercount changes
@@ -296,7 +293,7 @@ function userlistPixels() {
 		if (CLIENT.name == user.text())
 			clientIndex = userIndex;
 		if (userIndex != -1 && user.children().length < 1) {
-			$('#userlist').children().eq(i).children().eq(1).prepend($('<img/>', { 'class': 'userlist_pixel' }).attr("src", userArr[userIndex][1]))
+			$('#userlist').children().eq(i).children().eq(1).append($('<img/>', { 'class': 'userlist_pixel' }).attr("src", userArr[userIndex][1]))
 		}
 	}
 }
@@ -331,9 +328,117 @@ function chatPixels() {
 		}
 	}
 }
+//Bot Answers
+	var askResponse = ['yes','no','maybe']
+	//quotes are not yet implemented
+    var quotes = []
 
 //Bot functions
-//to do
+function chatBot(msg) {
+	cmdcheck = msg.split(" ");
+	cmdcheck[0] = cmdcheck[0].toLowerCase();
+	cmdcheck[1] = cmdcheck.slice(1).join(' ');
+
+	if (cmdcheck[0] === '!ask') {
+		msg = askResponse[Math.floor(Math.random() * askResponse.length)]
+	}
+	else if (cmdcheck[0] === '!now') {
+		console.log('!now')
+		msg = $('#currenttitle')[0].innerText
+	}
+	else if (cmdcheck[0] === "!calc" && cmdcheck[1].length > 0) {
+		try {
+			msg = '' + eval(cmdcheck[1]);
+		} catch (e) {
+			msg = 'Please use a valid equation.'
+		}
+	}
+	else if (cmdcheck[0] === "!pick" && cmdcheck[1].length > 0) {
+		arr = cmdcheck[1].split(",");
+		a = Math.round(Math.random() * (arr.length - 1));
+		msg = arr[a].trim();
+	}
+	else if (cmdcheck[0] === '!pickuser') {
+		var pickUsers = []
+		for (i = 0; i < userlist.childElementCount; i++) {
+			pickUsers.push(userlist.childNodes[i].innerText)
+		}
+		msg = pickUsers[Math.floor(Math.random() * pickUsers.length)]
+	}
+	//this one can probably be simplified
+	//too much brain power required right now though
+	else if (cmdcheck[0] == '!roll' && cmdcheck[1].length > 0) {
+		cmdcheck[1] = cmdcheck[1].replace(/ /g, "");
+		d6 = cmdcheck[1].toLowerCase().indexOf("d");
+		psign = cmdcheck[1].indexOf("+");
+		msign = cmdcheck[1].indexOf("*");
+		ssign = cmdcheck[1].indexOf("-");
+		dsign = cmdcheck[1].indexOf("/");
+		xroll = xdice = xplus = xsub = max = a = roll = 0;
+		xmulti = xdiv = 1;
+		if (d6 > -1) {
+			xdice = parseInt(cmdcheck[1].substr(0, d6));
+			xroll = parseInt(cmdcheck[1].substr(d6 + 1, (psign > -1 ? psign : cmdcheck[1].length)));
+			isNaN(xdice) ? xdice = 1 : "";
+			isNaN(xroll) ? xroll = 6 : "";
+			if (psign > -1) {
+				for (var i = psign + 1; i <= cmdcheck[1].length; i++) {
+					if (isNaN(cmdcheck[1][i])) {
+						xplus = parseInt(cmdcheck[1].substr(psign + 1, i));
+						break;
+					}
+				}
+				isNaN(xplus) ? xplus = 0 : "";
+			}
+			if (ssign > -1) {
+				for (var i = ssign + 1; i <= cmdcheck[1].length; i++) {
+					if (isNaN(cmdcheck[1][i])) {
+						xsub = parseInt(cmdcheck[1].substr(ssign + 1, i));
+						break;
+					}
+				}
+				isNaN(xsub) ? xsub = 0 : "";
+			}
+			if (msign > -1) {
+				for (var i = msign + 1; i <= cmdcheck[1].length; i++) {
+					if (isNaN(cmdcheck[1][i])) {
+						xmulti = parseInt(cmdcheck[1].substr(msign + 1, i));
+						break;
+					}
+				}
+				isNaN(xmulti) ? xmulti = 1 : "";
+			}
+			if (dsign > -1) {
+				for (var i = dsign + 1; i <= cmdcheck[1].length; i++) {
+					if (isNaN(cmdcheck[1][i])) {
+						xdiv = parseInt(cmdcheck[1].substr(dsign + 1, i));
+						break;
+					}
+				}
+				isNaN(xdiv) ? xdiv = 1 : "";
+			}
+		}
+		d6test = d6 > -1 && !isNaN(xdice) && !isNaN(xroll);
+		drolls = "";
+		if (d6test) {
+			for (var i = 0; i < xdice; i++) {
+				roll = Math.ceil(Math.random() * xroll);
+				a += roll;
+				drolls += (drolls.length > 0 ? " + " : "") + roll;
+			}
+			a = a * xmulti / xdiv + xplus - xsub;
+			max = xdice * xroll * xmulti / xdiv + xplus - xsub;
+		} else {
+			max = parseInt(cmdcheck[1]);
+			isNaN(max) ? max = 100 : '';
+			a = Math.ceil(Math.random() * max);
+		}
+
+		msg = a + ' out of ' + max + (!isNaN(cmdcheck[1]) ? "" : " (Rolled: " + drolls + ")");
+	}
+	return msg
+}
+
 
 /*Playlist*/
 //Grabs raw filenames and sets them as title
@@ -570,4 +675,50 @@ function updateEndTimes(CurrentVideoTime) {
 			}
 		}
 	}
+}
+
+/* Layout */
+
+if (localStorage.getItem('playerSide') == null) {
+	localStorage.setItem('playerSide', "LEFT")
+}
+else {
+	loadPlayerSide()
+}
+//Button for swaping sides
+//can be moved
+$('<span id ="swap" class="label label-default pull-right pointer" style ="">Swap Player</span>')
+	.insertAfter('#usercount')
+	.on('click', function () {
+		swapPlayerSide()
+	})
+//swaps player sides then saves the position 
+function swapPlayerSide() {
+	if (localStorage.getItem('playerSide') == 'LEFT') {
+		right = '#chatwrap'
+		left = '#videowrap'
+		localStorage.setItem('playerSide', 'RIGHT')
+	}
+	else if (localStorage.getItem('playerSide') == 'RIGHT') {
+		right = '#videowrap'
+		left = '#chatwrap'
+		localStorage.setItem('playerSide', 'LEFT')
+	}
+	$(right).each(function () {
+		$(this).insertAfter($(this).parent().find(left))
+	});
+} 
+//loads the saved preference
+function loadPlayerSide() {
+	if (localStorage.getItem('playerSide') == 'RIGHT') {
+		$('#chatwrap').each(function () {
+			$(this).insertAfter($(this).parent().find('#videowrap'))
+		});
+	}
+	else {
+		$('#videowrap').each(function () {
+			$(this).insertAfter($(this).parent().find('#chatwrap'))
+		});
+	}
+	
 }
