@@ -55,14 +55,14 @@ var Shortcuts = {		// FORMAT: Keycode:'INSERT TEXT',	http://www.cambiaresearch.c
 //This will need filled out (obviously)
 var userArr = [
 	['dreadzone', 'https://cdn.discordapp.com/attachments/942639553120972820/948129632543195187/Aoyama.png',''],
-	['haly', 'https://media.discordapp.net/attachments/888275831217090620/1047503101571125338/Hitori_longer_anim_t3.gif','https://media.discordapp.net/attachments/354127755761156106/874877703076085840/smug_50.png'],
+	['haly', 'https://media.discordapp.net/attachments/781382439359873044/840414880913555466/Hina_ponytail.png','https://media.discordapp.net/attachments/354127755761156106/874877703076085840/smug_50.png'],
 	['literallyme', 'https://cdn.discordapp.com/attachments/942639553120972820/948129704685240350/Shinobu.png', 'https://cdn.discordapp.com/attachments/875570835732176956/875571124438700043/naellis_01.png','https://files.catbox.moe/q0qpr4.png'],
 	['thepaizurikid', 'https://cdn.discordapp.com/attachments/1059317496227823646/1075156730985590866/Perrine_v3-cat-update.png', 'https://cdn.discordapp.com/attachments/807397543415250958/874874304871940156/sidebarRinne.png'],
 	['colin_mochrie', 'https://cdn.discordapp.com/attachments/926181552805777558/1140021789381107722/Chen_v2.png', ''],
 	['gasp', 'https://cdn.discordapp.com/attachments/988611450073403422/1056480314043682816/Fubuki_v3-Messi.png', ''],
 	['okonogi', 'https://cdn.discordapp.com/attachments/926181552805777558/1140021808167387206/Keropoyo_v3.png', 'https://files.catbox.moe/pcsar7.png','https://files.catbox.moe/q7lqtl.png'],
 	['sarlacc', 'https://cdn.discordapp.com/attachments/942639553120972820/1040386126009090138/Louise_winter.png', ''],
-	['shimarin', 'https://cdn.discordapp.com/attachments/942639553120972820/948454629618905088/Shima_rin.png', 'https://cdn.discordapp.com/attachments/741854976967704579/875174053688770631/Mikan_sidebar.png'],
+	['shimarin', 'https://media.discordapp.net/attachments/944043842456395837/1141203262947733616/ozVtWZEh.png', 'https://cdn.discordapp.com/attachments/741854976967704579/875174053688770631/Mikan_sidebar.png'],
 	['speedy', 'https://cdn.discordapp.com/attachments/926181552805777558/1140021833467433080/Yukikaze_v3.png', 'https://cdn.discordapp.com/attachments/410511471894593537/874818707300417556/bktside1v5.png'],
 	['nonohara', 'https://cdn.discordapp.com/attachments/994346520633684068/1075516832666095696/nonohara.png', '']
 ]
