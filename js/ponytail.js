@@ -286,6 +286,7 @@ $('document').ready(function () {
 
 
 //assignment of userlist pixels
+//will need to figure out how to resort usernames properly
 function userlistPixels() {
 	for (let i = 0; i < $('#userlist').children().length; i++) {
 		var user = $('#userlist').children().eq(i).children().eq(1)
@@ -293,7 +294,7 @@ function userlistPixels() {
 		if (CLIENT.name == user.text())
 			clientIndex = userIndex;
 		if (userIndex != -1 && user.children().length < 1) {
-			$('#userlist').children().eq(i).children().eq(1).append($('<img/>', { 'class': 'userlist_pixel' }).attr("src", userArr[userIndex][1]))
+			$('#userlist').children().eq(i).children().eq(1).prepend($('<img/>', { 'class': 'userlist_pixel' }).attr("src", userArr[userIndex][1]))
 		}
 	}
 }
