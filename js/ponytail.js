@@ -177,6 +177,9 @@ function chatTabComplete() {
 	//Name completion 
 	else {
 		current = words[words.length - 1].toLowerCase();
+		if (!current.match(/^[\w-]{1,20}$/)) {
+			return;
+		}
 		var __slice = Array.prototype.slice;
 		var usersWithCap = __slice.call($("#userlist").children()).map(function (elem) {
 			var formatName = elem.children[1].innerHTML;
