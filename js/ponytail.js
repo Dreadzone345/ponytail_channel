@@ -165,10 +165,7 @@ function chatTabComplete() {
 			current = current.replace(":pic", ":sp");
 		}
 		else if (current.indexOf(":sp") > -1) {
-			current = current.replace(":sp", ":webm");
-		}
-		else if (current.indexOf(":webm") > -1) {
-			current = current.replace(":webm", "");
+			current = current.replace(":sp", "");
 		}
 		else {
 			current += ":pic";
