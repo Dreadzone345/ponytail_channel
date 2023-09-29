@@ -56,15 +56,16 @@ var Shortcuts = {		// FORMAT: Keycode:'INSERT TEXT',	http://www.cambiaresearch.c
 var userArr = [
 	['dreadzone', 'https://cdn.discordapp.com/attachments/942639553120972820/948129632543195187/Aoyama.png',''],
 	['haly', 'https://media.discordapp.net/attachments/781382439359873044/840414880913555466/Hina_ponytail.png','https://media.discordapp.net/attachments/354127755761156106/874877703076085840/smug_50.png'],
-	['literallyme', 'https://cdn.discordapp.com/attachments/942639553120972820/948129704685240350/Shinobu.png', 'https://cdn.discordapp.com/attachments/875570835732176956/875571124438700043/naellis_01.png','https://files.catbox.moe/q0qpr4.png'],
+	['literallyme', 'https://cdn.discordapp.com/attachments/942639553120972820/948129704685240350/Shinobu.png', 'https://cdn.discordapp.com/attachments/988611450073403422/1157090863399309432/naellis_01.png','https://files.catbox.moe/q0qpr4.png'],
 	['thepaizurikid', 'https://cdn.discordapp.com/attachments/1059317496227823646/1075156730985590866/Perrine_v3-cat-update.png', 'https://cdn.discordapp.com/attachments/807397543415250958/874874304871940156/sidebarRinne.png'],
 	['colin_mochrie', 'https://cdn.discordapp.com/attachments/926181552805777558/1140021789381107722/Chen_v2.png', ''],
 	['gasp', 'https://cdn.discordapp.com/attachments/988611450073403422/1056480314043682816/Fubuki_v3-Messi.png', ''],
-	['okonogi', 'https://cdn.discordapp.com/attachments/926181552805777558/1140021808167387206/Keropoyo_v3.png', 'https://files.catbox.moe/pcsar7.png','https://files.catbox.moe/q7lqtl.png'],
+	['okonogi', 'https://cdn.discordapp.com/attachments/926181552805777558/1140021808167387206/Keropoyo_v3.png', 'https://cdn.discordapp.com/attachments/988611450073403422/1157133475497906246/3dfa8p.png','https://cdn.discordapp.com/attachments/988611450073403422/1157133475749568543/pbpn3e.png'],
 	['sarlacc', 'https://cdn.discordapp.com/attachments/942639553120972820/1040386126009090138/Louise_winter.png', ''],
 	['shimarin', 'https://media.discordapp.net/attachments/944043842456395837/1141203262947733616/ozVtWZEh.png', 'https://cdn.discordapp.com/attachments/741854976967704579/875174053688770631/Mikan_sidebar.png'],
 	['speedy', 'https://cdn.discordapp.com/attachments/926181552805777558/1140021833467433080/Yukikaze_v3.png', 'https://cdn.discordapp.com/attachments/410511471894593537/874818707300417556/bktside1v5.png'],
-	['nonohara', 'https://cdn.discordapp.com/attachments/994346520633684068/1075516832666095696/nonohara.png', '']
+	['nonohara', 'https://cdn.discordapp.com/attachments/994346520633684068/1075516832666095696/nonohara.png', ''],
+	['laterbunns','https://cdn.discordapp.com/attachments/237970174148345859/883940512954998804/bunns_or_die_2.png','']
 ]
 
 /*Overwrite the custom media load function to skip the warning message if the URL is angelthump*/
@@ -103,7 +104,7 @@ function chatImageToVideo(div){
 				var toReplace = $(img).parent("a[href='" + img.src + "']");
 				if(toReplace.length == 0)
 					toReplace = $(img);
-				toReplace.replaceWith("<video controls autoplay loop muted src=\"" + img.src + "\">" + img.src + "</video>");
+				toReplace.replaceWith("<video controls autoplay loop muted src=\"" + img.src + "\" style='max-width: 300px; max-height: 300px'>" + img.src + "</video>");
 				
 				if (SCROLLCHAT) {
 					scrollChat();
@@ -138,8 +139,6 @@ Callbacks.usercount = function (count) {
 	}
 	$("#usercount").text(text);
 }
-//don't think this is necessary
-//Callbacks.usercount(CHANNEL.usercount)
 
 //Join message
 JoinText_Message === "" ? JoinText_Message = "joined" : ''
@@ -155,6 +154,7 @@ window.onbeforeunload = function () {
 		LEFT = true
 	}
 }
+
 //Tab completion cases
 function chatTabComplete() {
 	var words = $("#chatline").val().split(" ");
@@ -286,7 +286,6 @@ $('document').ready(function () {
 
 
 //assignment of userlist pixels
-//will need to figure out how to resort usernames properly
 function userlistPixels() {
 	for (let i = 0; i < $('#userlist').children().length; i++) {
 		var user = $('#userlist').children().eq(i).children().eq(1)
@@ -307,9 +306,19 @@ function userlistImage(clientIndex) {
 		else {
 			var usedImg = 2
 		}
-
-		if (userArr[clientIndex][usedImg] == '')
-			link = defaultUserlistImage
+		if (userArr[clientIndex][usedImg] == '') { 
+			//randomization for users without a userlist image
+			userImgArr = []
+			for (let i = 0; i < userArr.length; i++) {
+				UA = userArr[i].slice(2)
+				if (userArr[i][2].length != 0) {
+					for (let i = 0; i < UA.length; i++) {
+						userImgArr.push(UA[i])
+					}
+				}
+			}
+			link = userImgArr[Math.floor(Math.random() * userImgArr.length)]
+		}
 		else
 			link = userArr[clientIndex][usedImg]
 	}
@@ -330,22 +339,42 @@ function chatPixels() {
 	}
 }
 //Bot Answers
-	var askResponse = ['yes','no','maybe']
+var askResponse = ['yes', 'no', 'maybe']
 	//quotes are not yet implemented
-    var quotes = []
+    //var quotes = []
 
 //Bot functions
+
 function chatBot(msg) {
 	cmdcheck = msg.split(" ");
 	cmdcheck[0] = cmdcheck[0].toLowerCase();
 	cmdcheck[1] = cmdcheck.slice(1).join(' ');
-
+	
 	if (cmdcheck[0] === '!ask') {
-		msg = askResponse[Math.floor(Math.random() * askResponse.length)]
+		amsg = askResponse[Math.floor(Math.random() * askResponse.length)]
+		//update this to correct response
+		if (amsg === "I'd like to use a life line") {
+			msg = amsg + ': ' + pickUser() + ' Help me out!'
+		}
+		else
+		msg = amsg
 	}
 	else if (cmdcheck[0] === '!now') {
-		console.log('!now')
 		msg = $('#currenttitle')[0].innerText
+	}
+	else if (cmdcheck[0] === '!next') {
+		if ($("#queue")[0].children.length > 0) { 
+			for (let i = 0; i < $("#queue")[0].children.length; i++) {
+				if ($("#queue")[0].children[i].classList.contains("queue_active")) { 
+					if ($("#queue")[0].children[i+1] != null)
+						msg = $("#queue")[0].children[1].children[0].innerText 
+					else
+						msg = "Stream's over buddy."
+				}
+			}
+		}
+		else 
+			msg = "Stream's over buddy."
 	}
 	else if (cmdcheck[0] === "!calc" && cmdcheck[1].length > 0) {
 		try {
@@ -360,11 +389,7 @@ function chatBot(msg) {
 		msg = arr[a].trim();
 	}
 	else if (cmdcheck[0] === '!pickuser') {
-		var pickUsers = []
-		for (i = 0; i < userlist.childElementCount; i++) {
-			pickUsers.push(userlist.childNodes[i].innerText)
-		}
-		msg = pickUsers[Math.floor(Math.random() * pickUsers.length)]
+		msg = pickUser();
 	}
 	//this one can probably be simplified
 	//too much brain power required right now though
@@ -438,6 +463,21 @@ function chatBot(msg) {
 		msg = a + ' out of ' + max + (!isNaN(cmdcheck[1]) ? "" : " (Rolled: " + drolls + ")");
 	}
 	return msg
+}
+
+function pickUser() {
+	var pickUsers = []
+	for (i = 0; i < userlist.childElementCount; i++) {
+		if (userlist.childNodes[i].innerText != CLIENT.name)
+			pickUsers.push(userlist.childNodes[i].innerText)
+	}
+	if (pickUsers.length === 0) {
+		return "You're alone loser."
+	}
+	else {
+		return pickUsers[Math.floor(Math.random() * pickUsers.length)]
+	}
+	
 }
 
 
