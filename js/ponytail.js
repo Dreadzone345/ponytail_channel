@@ -3,7 +3,7 @@
 //Favicon
 $('<link id="favicon" href="https://cdn.discordapp.com/attachments/941880564665958441/1141569583732494346/lazyfavicon.png" type="image/x-icon" rel="shortcut icon" />').appendTo("head");
 //Navbar Branding and Header
-$('.navbar-brand').attr('href','https://ponytailsare.moe').text('Ponytails R Moe').css('padding', '0 10px 0 10px').prepend('<img src="https://cdn.discordapp.com/attachments/941880564665958441/1141569583732494346/lazyfavicon.png" style="display: inline;" height="20"/>'); 
+$('.navbar-brand').attr('href','https://ponytailsare.moe').attr('target','_blank').text('Ponytails R Moe').css('padding', '0 10px 0 10px').prepend('<img src="https://cdn.discordapp.com/attachments/941880564665958441/1141569583732494346/lazyfavicon.png" style="display: inline;" height="20"/>'); 
 var Usercount_Text = "revuefag";
 var SpoilerImg = 'http://i.imgur.com/xzD4vqc.png';
 var TitleBarDescription_Caption = '>Streaming:'; //Not working; will fix
@@ -54,18 +54,18 @@ var Shortcuts = {		// FORMAT: Keycode:'INSERT TEXT',	http://www.cambiaresearch.c
 //usernames should be lowercase
 //This will need filled out (obviously)
 var userArr = [
-	['dreadzone', 'https://cdn.discordapp.com/attachments/942639553120972820/948129632543195187/Aoyama.png',''],
-	['haly', 'https://media.discordapp.net/attachments/781382439359873044/840414880913555466/Hina_ponytail.png','https://media.discordapp.net/attachments/354127755761156106/874877703076085840/smug_50.png'],
-	['literallyme', 'https://cdn.discordapp.com/attachments/942639553120972820/948129704685240350/Shinobu.png', 'https://cdn.discordapp.com/attachments/988611450073403422/1157090863399309432/naellis_01.png','https://files.catbox.moe/q0qpr4.png'],
-	['thepaizurikid', 'https://cdn.discordapp.com/attachments/1059317496227823646/1075156730985590866/Perrine_v3-cat-update.png', 'https://cdn.discordapp.com/attachments/807397543415250958/874874304871940156/sidebarRinne.png'],
-	['colin_mochrie', 'https://cdn.discordapp.com/attachments/926181552805777558/1140021789381107722/Chen_v2.png', ''],
-	['gasp', 'https://cdn.discordapp.com/attachments/988611450073403422/1056480314043682816/Fubuki_v3-Messi.png', ''],
-	['okonogi', 'https://cdn.discordapp.com/attachments/926181552805777558/1140021808167387206/Keropoyo_v3.png', 'https://cdn.discordapp.com/attachments/988611450073403422/1157133475497906246/3dfa8p.png','https://cdn.discordapp.com/attachments/988611450073403422/1157133475749568543/pbpn3e.png'],
-	['sarlacc', 'https://cdn.discordapp.com/attachments/942639553120972820/1040386126009090138/Louise_winter.png', ''],
-	['shimarin', 'https://media.discordapp.net/attachments/944043842456395837/1141203262947733616/ozVtWZEh.png', 'https://cdn.discordapp.com/attachments/741854976967704579/875174053688770631/Mikan_sidebar.png'],
-	['speedy', 'https://cdn.discordapp.com/attachments/926181552805777558/1140021833467433080/Yukikaze_v3.png', 'https://cdn.discordapp.com/attachments/410511471894593537/874818707300417556/bktside1v5.png'],
-	['nonohara', 'https://cdn.discordapp.com/attachments/994346520633684068/1075516832666095696/nonohara.png', ''],
-	['laterbunns','https://cdn.discordapp.com/attachments/237970174148345859/883940512954998804/bunns_or_die_2.png','']
+	['dreadzone', 'https://ponytailsare.moe/ponytail/Pixels/Aoyama.png',''],
+	['haly', 'https://ponytailsare.moe/ponytail/Pixels/Hina_ponytail.png','https://ponytailsare.moe/ponytail/Userlist/smug_50.png'],
+	['literallyme', 'https://ponytailsare.moe/ponytail/Pixels/Shinobu.png', 'https://ponytailsare.moe/ponytail/Userlist/naellis_01.png','https://files.catbox.moe/q0qpr4.png'],
+	['thepaizurikid', 'https://ponytailsare.moe/ponytail/Pixels/Perrine_v3-cat-update.png', 'https://ponytailsare.moe/ponytail/Userlist/sidebarRinne.png'],
+	['colin_mochrie', 'https://ponytailsare.moe/ponytail/Pixels/Chen_v2.png', ''],
+	['gasp', 'https://ponytailsare.moe/ponytail/Pixels/Fubuki_v3-Messi.png', 'https://ponytailsare.moe/ponytail/Userlist/1687019262749431-op.png'],
+	['okonogi', 'https://ponytailsare.moe/ponytail/Pixels/Keropoyo_v3.png', 'https://ponytailsare.moe/ponytail/Userlist/3dfa8p.png','https://ponytailsare.moe/ponytail/Userlist/pbpn3e.png'],
+	['sarlacc', 'https://ponytailsare.moe/ponytail/Pixels/Louise_winter.png', ''],
+	['shimarin', 'https://ponytailsare.moe/ponytail/Pixels/Shimarinrin.png', 'https://ponytailsare.moe/ponytail/Userlist/Mikan_sidebar.png'],
+	['speedy', 'https://ponytailsare.moe/ponytail/Pixels/Yukikaze_v3.png', 'https://ponytailsare.moe/ponytail/Userlist/bktside1v5.png'],
+	['nonohara', 'https://ponytailsare.moe/ponytail/Pixels/nonohara.png', ''],
+	['laterbunns','https://ponytailsare.moe/ponytail/Pixels/bunns_or_die_2.png','']
 ]
 
 /*Overwrite the custom media load function to skip the warning message if the URL is angelthump*/
@@ -339,7 +339,7 @@ function chatPixels() {
 	}
 }
 //Bot Answers
-var askResponse = ['yes', 'no', 'maybe']
+var askResponse = ['Yes', "Yes, definitely", 'Signs point to yes', "As I see it, yes", 'No', 'Very doubtful', 'Better not tell you now', 'Maybe', 'Ask again later', 'Reply hazy try again', "I'd like to use a life line" , "Sorry, could you speak up?"]
 	//quotes are not yet implemented
     //var quotes = []
 
