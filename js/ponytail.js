@@ -49,23 +49,64 @@ var Shortcuts = {		// FORMAT: Keycode:'INSERT TEXT',	http://www.cambiaresearch.c
 	altshift:{}
 };
 
-//Array of all users and their pixel
-//Format = [username,pixel url,userlist image url]
-//usernames should be lowercase
-//This will need filled out (obviously)
+//User Information/Settings
+//Format = [username,[pixel array],[userlist image array],[options array]]
+//options array format [userlist pixel id,minipixel id, randomize pixel(0/1)]
+//usernames should be lower case
 var userArr = [
-	['dreadzone', 'https://ponytailsare.moe/ponytail/Pixels/Aoyama.png',''],
-	['haly', 'https://ponytailsare.moe/ponytail/Pixels/Hina_ponytail.png','https://ponytailsare.moe/ponytail/Userlist/smug_50.png'],
-	['literallyme', 'https://ponytailsare.moe/ponytail/Pixels/Shinobu.png', 'https://ponytailsare.moe/ponytail/Userlist/naellis_01.png','https://files.catbox.moe/q0qpr4.png'],
-	['thepaizurikid', 'https://ponytailsare.moe/ponytail/Pixels/Perrine_v3-cat-update.png', 'https://ponytailsare.moe/ponytail/Userlist/sidebarRinne.png'],
-	['colin_mochrie', 'https://ponytailsare.moe/ponytail/Pixels/Chen_v2.png', ''],
-	['gasp', 'https://ponytailsare.moe/ponytail/Pixels/Fubuki_v3-Messi.png', 'https://ponytailsare.moe/ponytail/Userlist/1687019262749431-op.png'],
-	['okonogi', 'https://ponytailsare.moe/ponytail/Pixels/Keropoyo_v3.png', 'https://ponytailsare.moe/ponytail/Userlist/3dfa8p.png','https://ponytailsare.moe/ponytail/Userlist/pbpn3e.png'],
-	['sarlacc', 'https://ponytailsare.moe/ponytail/Pixels/Louise_winter.png', ''],
-	['shimarin', 'https://ponytailsare.moe/ponytail/Pixels/Shimarinrin.png', 'https://ponytailsare.moe/ponytail/Userlist/Mikan_sidebar.png'],
-	['speedy', 'https://ponytailsare.moe/ponytail/Pixels/Yukikaze_v3.png', 'https://ponytailsare.moe/ponytail/Userlist/bktside1v5.png'],
-	['nonohara', 'https://ponytailsare.moe/ponytail/Pixels/nonohara.png', ''],
-	['laterbunns','https://ponytailsare.moe/ponytail/Pixels/bunns_or_die_2.png','']
+	/*example
+	['paizuri',
+		['', ''],
+		['', ''],
+		[0,0,0]],*/
+	['dreadzone',
+		['https://ponytailsare.moe/ponytail/Pixels/Aoyama.png'],
+		[''],
+		[0, 0, 0]],
+	['haly',
+		['https://ponytailsare.moe/ponytail/Pixels/Hina_ponytail.png'],
+		['https://ponytailsare.moe/ponytail/Userlist/smug_50.png'],
+		[0, 0, 0]],
+	['literallyme',
+		['https://ponytailsare.moe/ponytail/Pixels/Shinobu.png'],
+		['https://ponytailsare.moe/ponytail/Userlist/naellis_01.png', 'https://files.catbox.moe/q0qpr4.png'],
+		[0, 0, 0]],
+	['thepaizurikid',
+		['https://ponytailsare.moe/ponytail/Pixels/Perrine_v3-cat-update.png'],
+		['https://ponytailsare.moe/ponytail/Userlist/sidebarRinne.png'],
+		[0, 0, 0]],
+	['colin_mochrie',
+		['https://ponytailsare.moe/ponytail/Pixels/Chen_v2.png'],
+		[''],
+		[0, 0, 0]],
+	['gasp',
+		['https://ponytailsare.moe/ponytail/Pixels/Fubuki_v3-Messi.png'],
+		['https://ponytailsare.moe/ponytail/Userlist/1687019262749431-op.png'],
+		[0, 0, 0]],
+	['okonogi',
+		['https://ponytailsare.moe/ponytail/Pixels/Keropoyo_v3.png'],
+		['https://ponytailsare.moe/ponytail/Userlist/3dfa8p.png', 'https://ponytailsare.moe/ponytail/Userlist/pbpn3e.png'],
+		[0, 0, 0]],
+	['sarlacc',
+		['https://ponytailsare.moe/ponytail/Pixels/Louise_winter.png'],
+		[''],
+		[0, 0, 0]],
+	['shimarin',
+		['https://ponytailsare.moe/ponytail/Pixels/Shimarinrin.png'],
+		['https://ponytailsare.moe/ponytail/Userlist/Mikan_sidebar.png'],
+		[0, 0, 0]],
+	['speedy',
+		['https://ponytailsare.moe/ponytail/Pixels/Yukikaze_v3.png'],
+		['https://ponytailsare.moe/ponytail/Userlist/bktside1v5.png'],
+		[0, 0, 0]],
+	['nonohara',
+		['https://ponytailsare.moe/ponytail/Pixels/nonohara.png'],
+		[''],
+		[0, 0, 0]],
+	['laterbunns',
+		['https://ponytailsare.moe/ponytail/Pixels/bunns_or_die_2.png'],
+		[''],
+		[0, 0, 0]]
 ]
 
 /*Overwrite the custom media load function to skip the warning message if the URL is angelthump*/
@@ -100,7 +141,7 @@ function chatImageToVideo(div){
 	var videoFileTypes = [ ".webm", ".mp4", '.mov' ];
 	div.find("a>img")
 		.each(function(index, img){ 
-			if(videoFileTypes.some(function(ext){ return img.src.endsWith(ext);	})){
+			if(videoFileTypes.some(function(ext){ return img.src.includes(ext);	})){
 				var toReplace = $(img).parent("a[href='" + img.src + "']");
 				if(toReplace.length == 0)
 					toReplace = $(img);
@@ -293,25 +334,25 @@ function userlistPixels() {
 		if (CLIENT.name == user.text())
 			clientIndex = userIndex;
 		if (userIndex != -1 && user.children().length < 1) {
-			$('#userlist').children().eq(i).children().eq(1).prepend($('<img/>', { 'class': 'userlist_pixel' }).attr("src", userArr[userIndex][1]))
+			$('#userlist').children().eq(i).children().eq(1).prepend($('<img/>', { 'class': 'userlist_pixel' }).attr("src", userArr[userIndex][1][userArr[userIndex][3][0]]))
 		}
 	}
 }
 function userlistImage(clientIndex) {
 	if (clientIndex != -1) {
 		//randomization for users with more than one userlist image
-		if (userArr[clientIndex].length > 3) {
-			var usedImg = Math.floor(Math.random() * (userArr[clientIndex].length - 3 + 1) + 2)
+		if (userArr[clientIndex][2].length > 1) {
+			var usedImg = Math.floor(Math.random() * (userArr[clientIndex][2].length))
 		}
 		else {
-			var usedImg = 2
+			var usedImg = 0
 		}
-		if (userArr[clientIndex][usedImg] == '') { 
+		if (userArr[clientIndex][2][0] == '') { 
 			//randomization for users without a userlist image
 			userImgArr = []
 			for (let i = 0; i < userArr.length; i++) {
-				UA = userArr[i].slice(2)
-				if (userArr[i][2].length != 0) {
+				UA = userArr[i][2].slice()
+				if (userArr[i][2] != '') {
 					for (let i = 0; i < UA.length; i++) {
 						userImgArr.push(UA[i])
 					}
@@ -320,7 +361,7 @@ function userlistImage(clientIndex) {
 			link = userImgArr[Math.floor(Math.random() * userImgArr.length)]
 		}
 		else
-			link = userArr[clientIndex][usedImg]
+			link = userArr[clientIndex][2][usedImg]
 	}
 	else {
 		link = defaultUserlistImage
@@ -334,7 +375,7 @@ function chatPixels() {
 		if (/(?<=chat-msg-).([^\s]*)/.test(msg.attr('class')) != false) {
 			var userIndex = userArr.findIndex(arr => arr.includes(/(?<=chat-msg-).([^\s]*)/.exec(msg.attr('class'))[0].toLowerCase()))
 			if (userIndex != -1 && msg.children().eq(0).children().length == 0)
-				$('#messagebuffer').eq(0).children().eq(i).children().eq(0).append($('<img/>', { 'class': 'chat_pixel' }).attr("src", userArr[userIndex][1]))
+				$('#messagebuffer').eq(0).children().eq(i).children().eq(0).append($('<img/>', { 'class': 'chat_pixel' }).attr("src", userArr[userIndex][1][userArr[userIndex][3][1]]))
 		}
 	}
 }
@@ -367,7 +408,7 @@ function chatBot(msg) {
 			for (let i = 0; i < $("#queue")[0].children.length; i++) {
 				if ($("#queue")[0].children[i].classList.contains("queue_active")) { 
 					if ($("#queue")[0].children[i+1] != null)
-						msg = $("#queue")[0].children[1].children[0].innerText 
+						msg = $("#queue")[0].children[i+1].children[0].innerText 
 					else
 						msg = "Stream's over buddy."
 				}
