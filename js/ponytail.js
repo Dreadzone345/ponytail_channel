@@ -510,7 +510,7 @@ function pickUser() {
 	var pickUsers = []
 	for (i = 0; i < userlist.childElementCount; i++) {
 		if (userlist.childNodes[i].innerText != CLIENT.name)
-			pickUsers.push(userlist.childNodes[i].innerText)
+			pickUsers.push(userlist.childNodes[i].childNodes[1].innerText)
 	}
 	if (pickUsers.length === 0) {
 		return "You're alone loser."
