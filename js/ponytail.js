@@ -324,7 +324,10 @@ $('document').ready(function () {
 	userlistPixels()
 	userlistImage(clientIndex)
 }) 
-
+//needs to load seprately for some reason 
+setTimeout(function () {
+	getEndTimePL()
+}, 2500);
 
 //assignment of userlist pixels
 function userlistPixels() {
@@ -573,30 +576,8 @@ $("#mediaurl").on("paste", function() {
 	}, 250);
 });
 
-//Timing for when each video in the playlist ends - Stolen from /bkt/ script
-var q240480 = $('li[title="240"],li[title="480"]');
-socket.on("mediaUpdate", function(data) {
-	if (Math.abs(data.currentTime - CurrentVideoTime) > 5.1) {
-		updateEndTimes(Math.floor(data.currentTime));
-	}
-	CurrentVideoTime = data.currentTime;
-	if (PLAYER.mediaType == "gd") {
-		q240480.hide();
-	} else if (q240480.css("display") == "none") {
-		q240480.show();
-	}
-});
-socket.on("changeMedia", function(data) {
-    updateEndTimes(Math.floor(data.currentTime));
-	videoLength = data.seconds;
-	changeTitle();
-	setModeAfterVideoChange();
-	$("#findtime").text() !== 'Video Time' ? $("#findtime").click() : '';
-	if (!$("#videowrap").length) {
-		TitleBarDescription_Caption.length < 1 ? TitleBarDescription_Caption = 'Currently Playing:' : '';
-		$("#currenttitle").text(TitleBarDescription_Caption + " " + data.title);
-	}
-});
+/* New Video End Times */
+
 function getCurrentPlayerTime() {
 	try {
 		if (typeof PLAYER.player !== "undefined") {
@@ -610,154 +591,138 @@ function getCurrentPlayerTime() {
 		return CurrentVideoTime;
 	}
 }
-var CurrentVideoTime = 0;
-socket.on("delete", function() {
-	setTimeout(function() {
-		updateEndTimes(getCurrentPlayerTime());
-	}, 750); // hopefully this fixes the issue..
+//these three work perfectly 
+socket.on("delete", function () {
+	setTimeout(function () {
+		getEndTimePL()
+	}, 750); 
 });
-
-socket.on("moveVideo", function() {
-	setTimeout(function() {
-		updateEndTimes(getCurrentPlayerTime());
+socket.on("moveVideo", function () {
+	setTimeout(function () {
+		getEndTimePL()
 	}, 750);
 });
-function makeQueueEntry(item, addbtns) {
-    var video = item.media;
-    var li = $("<li/>");
-    li.addClass("queue_entry");
-    li.addClass("pluid-" + item.uid);
-    li.data("uid", item.uid);
-    li.data("media", video);
-    li.data("temp", item.temp);
-    if(video.thumb) {
-        $("<img/>").attr("src", video.thumb.url)
-            .css("float", "left")
-            .css("clear", "both")
-            .appendTo(li);
-    }
-    var title = $("<a/>").addClass("qe_title").appendTo(li)
-        .text(video.title)
-        .attr("href", formatURL(video))
-        .attr("target", "_blank");
-    var time = $("<span/>").addClass("qe_time").appendTo(li);
-    time.text(video.duration);
-    var userAdded = $("<span/>").addClass("qe_user").appendTo(li);
-    userAdded.text(item.queueby + " | ");
-	var endTime = $("<span/>").addClass("qe_endTime").appendTo(li);
-    var clear = $("<div/>").addClass("qe_clear").appendTo(li);
-    if(item.temp) {
-        li.addClass("queue_temp");
-    }
+socket.on("mediaUpdate", function (data) {
+	if (Math.abs(data.currentTime - CurrentVideoTime) > 5.1) {
+		getEndTimePL();
+	}
+	CurrentVideoTime = data.currentTime;
+});
+socket.on("changeMedia", function (data) {
+	setTimeout(function () {
+		getEndTimePL()
+	}, 750);
+});
 
-    if(addbtns)
-        addQueueButtons(li);
-
-	setTimeout(function() {
-		updateEndTimes(getCurrentPlayerTime());
-	}, 100);
-    return li;
+var PlaylistInfo
+var VidPosition 
+var PLTimeList
+//gets the length of playlist item in seconds
+function getTime(queuePosition) {
+	var delay = 3;
+	var TimeSplit = (PLTimeList[queuePosition].textContent.split(":"))
+	for (var i = TimeSplit.length - 1; i >= 0; i--) {
+		if (i == TimeSplit.length - 1) {
+			var addSeconds = parseInt(TimeSplit[i])
+		}
+		else if (i == TimeSplit.length - 2) {
+			var addMinutes = parseInt(TimeSplit[i] * 60)
+		}
+		else if (i == TimeSplit.length - 3) {
+			var addHours = parseInt(TimeSplit[i] * 3600)
+		}
+	}
+	if (TimeSplit.length > 2) {
+		addTime = addSeconds + addMinutes + addHours
+	}
+	else {
+		addTime =  addSeconds + addMinutes
+	}
+	if (addTime == 0) {
+		return "inf"
+	}
+	else
+		return addTime+delay;
 }
-
+//calculates the end time of the playlist item from the currently playing item
+function calcEndTimePL(endAddTime) {
+	var secs = Math.round(Date.now() / 1000) + endAddTime
+	var end = new Date(secs * 1000)
+	var isPM = end.getHours() >= 12;
+	var isMidday = end.getHours() == 12;
+	var hrLeadZero = end.getHours() - (isPM && !isMidday ? 12 : 0);
+	if (hrLeadZero === 0) 
+		hrLeadZero = 12;
+	var minLeadZero = String(end.getMinutes()).padStart(2, '0');
+	var secLeadZero = String(end.getSeconds()).padStart(2, '0');
+	var endTimeString = "Ends at " + hrLeadZero + ":" + minLeadZero + ":" + secLeadZero + (isPM ? ' PM' : ' AM') + " | "
+	return endTimeString
+}
 function updateEndTimesOnLoad() {
-    var PLTimeList = Array.from(document.getElementsByClassName("qe_time")).forEach(function (PLCurrElement) {
-        var qeEndTime = document.createElement("span");
-        qeEndTime.classList.add('qe_endTime');
+	var PLTimeList = Array.from(document.getElementsByClassName("qe_time")).forEach(function (PLCurrElement) {
+		var qeEndTime = document.createElement("span");
+		qeEndTime.classList.add('qe_endTime');
 
-        PLCurrElement.parentElement.insertBefore(qeEndTime, PLCurrElement.nextSibling);
+		PLCurrElement.parentElement.insertBefore(qeEndTime, PLCurrElement.nextSibling);
 
-        var qeuser = document.createElement("span");
-        qeuser.classList.add('qe_user');
-        qeuser.textContent = PLCurrElement.parentElement.getAttribute("title").replace("Added by: ", "") + " | ";
+		var qeuser = document.createElement("span");
+		qeuser.classList.add('qe_user');
+		qeuser.textContent = PLCurrElement.parentElement.getAttribute("title").replace("Added by: ", "") + " | ";
 
-        PLCurrElement.parentElement.insertBefore(qeuser, PLCurrElement.nextSibling);
-    });
+		PLCurrElement.parentElement.insertBefore(qeuser, PLCurrElement.nextSibling);
+	});
 }
-
-function updateEndTimes(CurrentVideoTime) {
-    var currentTime = new Date().getTime();
-    var activeItemPosition = Array.from(document.getElementById("queue").children).indexOf(document.getElementsByClassName("queue_active")[0]);
-
-	if (activeItemPosition === -1) {
-		setTimeout(function() {
-			updateEndTimes(CurrentVideoTime);
-		}, 250);
-	} else {
-		var PLTimeList = document.querySelectorAll("#queue .qe_time");
-		var PLEndTimeList = document.getElementsByClassName("qe_endTime") || false;
-		var PLSeconds = 0;
-
-		if (PLTimeList.length !== 0) {
-			if (PLEndTimeList.length === 0) {
-				updateEndTimesOnLoad();
+function getEndTimePL() {
+	PlaylistInfo = Array.from(document.getElementById("queue").children)
+	for (var i = 0; i < PlaylistInfo.length; i++) {
+		if (PlaylistInfo[i].className == "ui-effects-placeholder") {
+			PlaylistInfo.splice(i, 1)
+		}
+	} 
+	VidPosition = PlaylistInfo.indexOf(document.getElementsByClassName("queue_active")[0])
+	PLTimeList = document.querySelectorAll("#queue .qe_time");
+	var PLEndTimeList = document.getElementsByClassName("qe_endTime") || false;
+	var maxPosition = 50
+	var time = 0;
+	var live = false;
+	if (PLTimeList.length !== 0 && PLEndTimeList.length === 0) 
+		updateEndTimesOnLoad();
+	for (var i = VidPosition ; i < maxPosition + VidPosition; i++) {
+		if (i == VidPosition) {
+			if (getTime(i) == "inf") {
+				PLEndTimeList[i].textContent = "Never Ends |";
+				live = true;
 			}
-
-			if (activeItemPosition > 0) {
-				for (var j = 0; j < activeItemPosition; j++) {
-					PLEndTimeList[j].textContent = "";
-				}
+			else if (live == true) {
+				PLEndTimeList[i].textContent = "";
 			}
-
-			var maxItems = 50;
-			var maxPosition = 0;
-
-			if (PLTimeList.length < activeItemPosition + maxItems) {
-				maxPosition = PLTimeList.length;
-			} else {
-				maxPosition = activeItemPosition + maxItems;
-				for (var j = maxPosition; j < PLTimeList.length; j++) {
-					PLEndTimeList[j].textContent = "";
-				}
+			else {
+				PLEndTimeList[i].textContent = calcEndTimePL(getTime(i) - getCurrentPlayerTime())
+				time += getTime(i) - getCurrentPlayerTime();
 			}
-
-			var noTime = false;
-
-			for (var i = activeItemPosition; i < maxPosition; i++) {
-				var currSplitTime = PLTimeList[i].textContent.split(":");
-
-				if (currSplitTime[0] !== "--" && !noTime) {
-					if (currSplitTime.length === 3) {
-						PLSeconds += parseInt(currSplitTime[0]) * 60 * 60;
-					}
-					PLSeconds += parseInt(currSplitTime[currSplitTime.length-2]) * 60;
-					PLSeconds += parseInt(currSplitTime[currSplitTime.length-1]);
-					PLSeconds += 3; //video player delay
-
-					if (i === activeItemPosition) {
-						PLSeconds = PLSeconds - CurrentVideoTime;
-					}
-
-					var updatedTime = new Date(currentTime + PLSeconds * 1000);
-					var isPM = updatedTime.getHours() >= 12;
-					var isMidday = updatedTime.getHours() == 12;
-
-					var updatedHours = updatedTime.getHours() - (isPM && !isMidday ? 12 : 0);
-					if (updatedHours === 0) {
-						updatedHours = 12;
-					}
-
-					var updatedMins = updatedTime.getMinutes().toString();
-					if (updatedMins.length === 1) {
-						updatedMins = "0" + updatedMins;
-					}
-					var updatedSecs = updatedTime.getSeconds().toString();
-					if (updatedSecs.length === 1) {
-						updatedSecs = "0" + updatedSecs;
-					}
-
-					PLEndTimeList[i].textContent = "Ends at " + updatedHours + ":" + updatedMins + ":" + updatedSecs + (isPM ? ' PM' : ' AM') + " | ";
-				} else {
-					if (!noTime) {
-						PLEndTimeList[i].textContent = "Never ends | ";
-					} else {
-						PLEndTimeList[i].textContent = "";
-					}
-					noTime = true;
-				}
+		}
+		else {
+			if (getTime(i) == "inf") {
+				PLEndTimeList[i].textContent = "Never Ends |";
+				live = true;
+			}
+			else if (live == true) {
+				PLEndTimeList[i].textContent = "";
+			}
+			else {
+				PLEndTimeList[i].textContent = calcEndTimePL(getTime(i) + time)
+				time += getTime(i);
 			}
 		}
 	}
+	for (var i = 0; i < VidPosition; i++) {
+		PLEndTimeList[i].textContent = "";
+	}
 }
+
+
+
+
 
 /* Layout */
 
