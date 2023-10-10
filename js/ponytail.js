@@ -327,7 +327,7 @@ $('document').ready(function () {
 //needs to load seprately for some reason 
 setTimeout(function () {
 	getEndTimePL()
-}, 2500);
+}, 2750);
 
 //assignment of userlist pixels
 function userlistPixels() {
@@ -660,7 +660,7 @@ function calcEndTimePL(endAddTime) {
 	return endTimeString
 }
 function updateEndTimesOnLoad() {
-	PLTimeList = Array.from(document.getElementsByClassName("qe_time")).forEach(function (PLCurrElement) {
+	var PLTimeList = Array.from(document.getElementsByClassName("qe_time")).forEach(function (PLCurrElement) {
 		var qeEndTime = document.createElement("span");
 		qeEndTime.classList.add('qe_endTime');
 
@@ -723,8 +723,10 @@ function getEndTimePL() {
 	var maxPosition = 50
 	var time = 0;
 	var live = false;
-	if (PLTimeList.length !== 0 && PLEndTimeList.length === 0)
+	if (PLTimeList.length !== 0 && PLEndTimeList.length === 0) {
 		updateEndTimesOnLoad();
+	}
+		
 	for (var i = VidPosition; i < maxPosition + VidPosition; i++) {
 		if (i == VidPosition) {
 			if (getTime(i) == "inf") {
