@@ -3,7 +3,7 @@
 //Favicon
 $('<link id="favicon" href="https://cdn.discordapp.com/attachments/941880564665958441/1141569583732494346/lazyfavicon.png" type="image/x-icon" rel="shortcut icon" />').appendTo("head");
 //Navbar Branding and Header
-$('.navbar-brand').attr('href','https://ponytailsare.moe').attr('target','_blank').text('Ponytails R Moe').css('padding', '0 10px 0 10px').prepend('<img src="https://cdn.discordapp.com/attachments/941880564665958441/1141569583732494346/lazyfavicon.png" style="display: inline;" height="20"/>'); 
+$('.navbar-brand').attr('href', 'https://ponytailsare.moe').attr('target', '_blank').text('Ponytails R Moe').css('padding', '0 10px 0 10px').prepend('<img src="https://cdn.discordapp.com/attachments/941880564665958441/1141569583732494346/lazyfavicon.png" style="display: inline;" height="20"/>');
 var Usercount_Text = "revuefag";
 var SpoilerImg = 'http://i.imgur.com/xzD4vqc.png';
 var TitleBarDescription_Caption = '>Streaming:'; //Not working; will fix
@@ -14,39 +14,39 @@ var defaultUserlistImage = 'https://cdn.discordapp.com/attachments/8277548977546
 //wip - probably want to make this a proper dropdown with other info?
 $('#nav-collapsible ul:first-child').prepend("<li class='dropdown'><a target='_blank' href='https://docs.google.com/spreadsheets/d/1tvK0EiLc1RJ6IbPF7CEHMUmys8ljAJcgoEIIPpCMh3A/'>Schedule</a></li>");
 //Nests default Cytube Buttons under Cytube Settings
-$('.dropdown-toggle').each(function(){
-	if ($(this).text() == 'Account'){
+$('.dropdown-toggle').each(function () {
+	if ($(this).text() == 'Account') {
 		var name = $('#welcome').text().replace('Welcome, ', '');
 		$('#welcome').text('Welcome, ');
-		$('#welcome').append('<a class="dropdown-toggle" href="#" data-toggle="dropdown">' + name + ' <b class="caret"></b></a>'); 
+		$('#welcome').append('<a class="dropdown-toggle" href="#" data-toggle="dropdown">' + name + ' <b class="caret"></b></a>');
 		$('#welcome').addClass('dropdown');
 		$(this).parent().find('.dropdown-menu').detach().appendTo('#welcome');
 		$(this).parent().remove();
-	} 
-	else if ($(this).text() == 'Layout'){ 
-		$(this).html($(this).html().replace('Layout','Cytube Settings</b>'));
-		$(this).parent().attr('ID','settingsMenu');
-		$('li a').each(function(){
-			if($(this).text() == 'Options'){
+	}
+	else if ($(this).text() == 'Layout') {
+		$(this).html($(this).html().replace('Layout', 'Cytube Settings</b>'));
+		$(this).parent().attr('ID', 'settingsMenu');
+		$('li a').each(function () {
+			if ($(this).text() == 'Options') {
 				$(this).text('User Settings').detach().appendTo('#settingsMenu .dropdown-menu').wrap('<li></li>');
 			}
 		});
-	}		
+	}
 });
 
 //Dropdown menu
 
 //Chat shortcuts
 var Shortcuts = {		// FORMAT: Keycode:'INSERT TEXT',	http://www.cambiaresearch.com/articles/15/javascript-char-codes-key-codes
-	ctrl:{
-		83:'[sp]',		// Spoiler
-	}, 
-	alt:{
-        	83:'[/]'		// End shortcut
-    },
-	ctrlshift:{},
-	ctrlalt:{},
-	altshift:{}
+	ctrl: {
+		83: '[sp]',		// Spoiler
+	},
+	alt: {
+		83: '[/]'		// End shortcut
+	},
+	ctrlshift: {},
+	ctrlalt: {},
+	altshift: {}
 };
 
 //User Information/Settings
@@ -112,13 +112,13 @@ var userArr = [
 /*Overwrite the custom media load function to skip the warning message if the URL is angelthump*/
 var playerType = window.CustomEmbedPlayer;
 playerType.prototype.originalLoad = playerType.prototype.load;
-playerType.prototype.load = function(data) { 
-    return ['https://player.angelthump.com/?channel=',].some(s => data.meta.embed.src.startsWith(s))  //Can add other links in array here
-        ? playerType.__super__.load.call(this, data) 
-        : playerType.prototype.originalLoad.call(this, data); 
+playerType.prototype.load = function (data) {
+	return ['https://player.angelthump.com/?channel=',].some(s => data.meta.embed.src.startsWith(s))  //Can add other links in array here
+		? playerType.__super__.load.call(this, data)
+		: playerType.prototype.originalLoad.call(this, data);
 }
 //Click the embed button if the alert is already on the page before this runs
-$('#ytapiplayer a[href^="https://player.angelthump.com/?channel="] ~ button').click(); 
+$('#ytapiplayer a[href^="https://player.angelthump.com/?channel="] ~ button').click();
 
 /*Convert :pic to Video if link contains video*/
 //Loads Videos already in Chat
@@ -136,17 +136,17 @@ observer.observe(messages, {
 	subtree: true
 });
 //convert image embeds that are actually videos to video embeds
-function chatImageToVideo(div){
+function chatImageToVideo(div) {
 	div = $('#messagebuffer')
-	var videoFileTypes = [ ".webm", ".mp4", '.mov' ];
+	var videoFileTypes = [".webm", ".mp4", '.mov'];
 	div.find("a>img")
-		.each(function(index, img){ 
-			if(videoFileTypes.some(function(ext){ return img.src.includes(ext);	})){
+		.each(function (index, img) {
+			if (videoFileTypes.some(function (ext) { return img.src.includes(ext); })) {
 				var toReplace = $(img).parent("a[href='" + img.src + "']");
-				if(toReplace.length == 0)
+				if (toReplace.length == 0)
 					toReplace = $(img);
 				toReplace.replaceWith("<video controls autoplay loop muted src=\"" + img.src + "\" style='max-width: 300px; max-height: 300px'>" + img.src + "</video>");
-				
+
 				if (SCROLLCHAT) {
 					scrollChat();
 				} else if ($(this).position().top < 0) {
@@ -157,15 +157,15 @@ function chatImageToVideo(div){
 }
 
 /*Image Overlay*/
-$('#messagebuffer').off('click').click(e => { 
+$('#messagebuffer').off('click').click(e => {
 	let t = e.target, p = t.parentElement;
-	if(e.button != 0) return;
-	if(t.className == 'channel-emote')
+	if (e.button != 0) return;
+	if (t.className == 'channel-emote')
 		$('#chatline').val((i, v) => v + ' ' + e.target.title).focus();
-	else if(t.tagName == "IMG") {
+	else if (t.tagName == "IMG") {
 		e.preventDefault();
 		$('<div id="picoverlay"></div>').click(f => $('#picoverlay').remove()).prependTo('body').append($(p).clone());
-	} else if(t.tagName == "VIDEO") {
+	} else if (t.tagName == "VIDEO") {
 		e.preventDefault();
 		$('<div id="picoverlay"></div>').click(f => $('#picoverlay').remove()).prependTo('body').append($('<video autoplay controls/>').attr('src', t.src));
 	}
@@ -323,7 +323,7 @@ var clientIndex;
 $('document').ready(function () {
 	userlistPixels()
 	userlistImage(clientIndex)
-}) 
+})
 //needs to load seprately for some reason 
 setTimeout(function () {
 	getEndTimePL()
@@ -350,7 +350,7 @@ function userlistImage(clientIndex) {
 		else {
 			var usedImg = 0
 		}
-		if (userArr[clientIndex][2][0] == '') { 
+		if (userArr[clientIndex][2][0] == '') {
 			//randomization for users without a userlist image
 			userImgArr = []
 			for (let i = 0; i < userArr.length; i++) {
@@ -383,9 +383,9 @@ function chatPixels() {
 	}
 }
 //Bot Answers
-var askResponse = ['Yes', "Yes, definitely", 'Signs point to yes', "As I see it, yes", 'No', 'Very doubtful', 'Better not tell you now', 'Maybe', 'Ask again later', 'Reply hazy try again', "I'd like to use a life line" , "Sorry, could you speak up?"]
-	//quotes are not yet implemented
-    //var quotes = []
+var askResponse = ['Yes', "Yes, definitely", 'Signs point to yes', "As I see it, yes", 'No', 'Very doubtful', 'Better not tell you now', 'Maybe', 'Ask again later', 'Reply hazy try again', "I'd like to use a life line", "Sorry, could you speak up?"]
+//quotes are not yet implemented
+//var quotes = []
 
 //Bot functions
 
@@ -393,7 +393,7 @@ function chatBot(msg) {
 	cmdcheck = msg.split(" ");
 	cmdcheck[0] = cmdcheck[0].toLowerCase();
 	cmdcheck[1] = cmdcheck.slice(1).join(' ');
-	
+
 	if (cmdcheck[0] === '!ask') {
 		amsg = askResponse[Math.floor(Math.random() * askResponse.length)]
 		//update this to correct response
@@ -401,23 +401,23 @@ function chatBot(msg) {
 			msg = amsg + ': ' + pickUser() + ' Help me out!'
 		}
 		else
-		msg = amsg
+			msg = amsg
 	}
 	else if (cmdcheck[0] === '!now') {
 		msg = $('#currenttitle')[0].innerText
 	}
 	else if (cmdcheck[0] === '!next') {
-		if ($("#queue")[0].children.length > 0) { 
+		if ($("#queue")[0].children.length > 0) {
 			for (let i = 0; i < $("#queue")[0].children.length; i++) {
-				if ($("#queue")[0].children[i].classList.contains("queue_active")) { 
-					if ($("#queue")[0].children[i+1] != null)
-						msg = $("#queue")[0].children[i+1].children[0].innerText 
+				if ($("#queue")[0].children[i].classList.contains("queue_active")) {
+					if ($("#queue")[0].children[i + 1] != null)
+						msg = $("#queue")[0].children[i + 1].children[0].innerText
 					else
 						msg = "Stream's over buddy."
 				}
 			}
 		}
-		else 
+		else
 			msg = "Stream's over buddy."
 	}
 	else if (cmdcheck[0] === "!calc" && cmdcheck[1].length > 0) {
@@ -521,7 +521,7 @@ function pickUser() {
 	else {
 		return pickUsers[Math.floor(Math.random() * pickUsers.length)]
 	}
-	
+
 }
 
 
@@ -536,8 +536,8 @@ function selectRandomLink(data) {
 				LeaderLink = data.id;
 				var rdmLinks = data.id.split(PlaylistDelimiter);
 				playListData = data;
-				for(var i=0;i<rdmLinks.length;i++){
-					$("<button class='btn btn-sm btn-default serverLinks' title='" + rdmLinks[i] + "' leaderLink='" + LeaderLink + "'>Server " + (i+1) + "</button>").appendTo("#playercontrols").on("click",function(){
+				for (var i = 0; i < rdmLinks.length; i++) {
+					$("<button class='btn btn-sm btn-default serverLinks' title='" + rdmLinks[i] + "' leaderLink='" + LeaderLink + "'>Server " + (i + 1) + "</button>").appendTo("#playercontrols").on("click", function () {
 						$('.serverLinks').removeClass('btn-success');
 						$(this).addClass('btn-success');
 						let LeaderLink = $(this).attr('LeaderLink');
@@ -553,7 +553,7 @@ function selectRandomLink(data) {
 						}
 						_handleMediaUpdate(data);
 					});
-					if(i==0)
+					if (i == 0)
 						$(".serverLinks").addClass('btn-success');
 				}
 			}
@@ -561,16 +561,16 @@ function selectRandomLink(data) {
 	}
 }
 
-$("#mediaurl").on("paste", function() {
-	setTimeout(function() {
+$("#mediaurl").on("paste", function () {
+	setTimeout(function () {
 		if ($("#addfromurl-title-val").length !== 0) {
 			var mediaUrl = decodeURIComponent($("#mediaurl")[0].value).split("/");
-			mediaUrl = mediaUrl[mediaUrl.length-1].split("?")[0].split(".");
+			mediaUrl = mediaUrl[mediaUrl.length - 1].split("?")[0].split(".");
 			var mediaTitle = "";
-			for (i = 0; i < mediaUrl.length-1; i++) {
+			for (i = 0; i < mediaUrl.length - 1; i++) {
 				mediaTitle += mediaUrl[i] + ".";
 			}
-			mediaTitle = mediaTitle.substring(0, mediaTitle.length-1);
+			mediaTitle = mediaTitle.substring(0, mediaTitle.length - 1);
 			$("#addfromurl-title-val")[0].value = mediaTitle;
 		}
 	}, 250);
@@ -591,11 +591,10 @@ function getCurrentPlayerTime() {
 		return CurrentVideoTime;
 	}
 }
-//these three work perfectly 
 socket.on("delete", function () {
 	setTimeout(function () {
 		getEndTimePL()
-	}, 750); 
+	}, 750);
 });
 socket.on("moveVideo", function () {
 	setTimeout(function () {
@@ -608,6 +607,7 @@ socket.on("mediaUpdate", function (data) {
 	}
 	CurrentVideoTime = data.currentTime;
 });
+
 socket.on("changeMedia", function (data) {
 	setTimeout(function () {
 		getEndTimePL()
@@ -615,8 +615,9 @@ socket.on("changeMedia", function (data) {
 });
 
 var PlaylistInfo
-var VidPosition 
+var VidPosition
 var PLTimeList
+
 //gets the length of playlist item in seconds
 function getTime(queuePosition) {
 	var delay = 3;
@@ -636,13 +637,13 @@ function getTime(queuePosition) {
 		addTime = addSeconds + addMinutes + addHours
 	}
 	else {
-		addTime =  addSeconds + addMinutes
+		addTime = addSeconds + addMinutes
 	}
 	if (addTime == 0) {
 		return "inf"
 	}
 	else
-		return addTime+delay;
+		return addTime + delay;
 }
 //calculates the end time of the playlist item from the currently playing item
 function calcEndTimePL(endAddTime) {
@@ -651,7 +652,7 @@ function calcEndTimePL(endAddTime) {
 	var isPM = end.getHours() >= 12;
 	var isMidday = end.getHours() == 12;
 	var hrLeadZero = end.getHours() - (isPM && !isMidday ? 12 : 0);
-	if (hrLeadZero === 0) 
+	if (hrLeadZero === 0)
 		hrLeadZero = 12;
 	var minLeadZero = String(end.getMinutes()).padStart(2, '0');
 	var secLeadZero = String(end.getSeconds()).padStart(2, '0');
@@ -659,7 +660,7 @@ function calcEndTimePL(endAddTime) {
 	return endTimeString
 }
 function updateEndTimesOnLoad() {
-	var PLTimeList = Array.from(document.getElementsByClassName("qe_time")).forEach(function (PLCurrElement) {
+	PLTimeList = Array.from(document.getElementsByClassName("qe_time")).forEach(function (PLCurrElement) {
 		var qeEndTime = document.createElement("span");
 		qeEndTime.classList.add('qe_endTime');
 
@@ -672,22 +673,59 @@ function updateEndTimesOnLoad() {
 		PLCurrElement.parentElement.insertBefore(qeuser, PLCurrElement.nextSibling);
 	});
 }
+function makeQueueEntry(item, addbtns) {
+	var video = item.media;
+	var li = $("<li/>");
+	li.addClass("queue_entry");
+	li.addClass("pluid-" + item.uid);
+	li.data("uid", item.uid);
+	li.data("media", video);
+	li.data("temp", item.temp);
+	if (video.thumb) {
+		$("<img/>").attr("src", video.thumb.url)
+			.css("float", "left")
+			.css("clear", "both")
+			.appendTo(li);
+	}
+	var title = $("<a/>").addClass("qe_title").appendTo(li)
+		.text(video.title)
+		.attr("href", formatURL(video))
+		.attr("target", "_blank");
+	var time = $("<span/>").addClass("qe_time").appendTo(li);
+	time.text(video.duration);
+	var userAdded = $("<span/>").addClass("qe_user").appendTo(li);
+	userAdded.text(item.queueby + " | ");
+	var endTime = $("<span/>").addClass("qe_endTime").appendTo(li);
+	var clear = $("<div/>").addClass("qe_clear").appendTo(li);
+	if (item.temp) {
+		li.addClass("queue_temp");
+	}
+
+	if (addbtns)
+		addQueueButtons(li);
+
+	setTimeout(function () {
+		getEndTimePL();
+	}, 100);
+	return li;
+}
+
 function getEndTimePL() {
 	PlaylistInfo = Array.from(document.getElementById("queue").children)
 	for (var i = 0; i < PlaylistInfo.length; i++) {
 		if (PlaylistInfo[i].className == "ui-effects-placeholder") {
 			PlaylistInfo.splice(i, 1)
 		}
-	} 
+	}
 	VidPosition = PlaylistInfo.indexOf(document.getElementsByClassName("queue_active")[0])
 	PLTimeList = document.querySelectorAll("#queue .qe_time");
 	var PLEndTimeList = document.getElementsByClassName("qe_endTime") || false;
 	var maxPosition = 50
 	var time = 0;
 	var live = false;
-	if (PLTimeList.length !== 0 && PLEndTimeList.length === 0) 
+	if (PLTimeList.length !== 0 && PLEndTimeList.length === 0)
 		updateEndTimesOnLoad();
-	for (var i = VidPosition ; i < maxPosition + VidPosition; i++) {
+	for (var i = VidPosition; i < maxPosition + VidPosition; i++) {
 		if (i == VidPosition) {
 			if (getTime(i) == "inf") {
 				PLEndTimeList[i].textContent = "Never Ends |";
@@ -754,7 +792,7 @@ function swapPlayerSide() {
 	$(right).each(function () {
 		$(this).insertAfter($(this).parent().find(left))
 	});
-} 
+}
 //loads the saved preference
 function loadPlayerSide() {
 	if (localStorage.getItem('playerSide') == 'RIGHT') {
@@ -767,5 +805,5 @@ function loadPlayerSide() {
 			$(this).insertAfter($(this).parent().find('#chatwrap'))
 		});
 	}
-	
+
 }
