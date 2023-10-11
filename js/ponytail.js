@@ -383,7 +383,8 @@ function chatPixels() {
 	}
 }
 //Bot Answers
-var askResponse = ['Yes', "Yes, definitely", 'Signs point to yes', "As I see it, yes", 'No', 'Very doubtful', 'Better not tell you now', 'Maybe', 'Ask again later', 'Reply hazy try again', "I'd like to use a life line", "Sorry, could you speak up?"]
+var askResponse = ['Yes', "Yes, definitely", 'Signs point to yes', "As I see it, yes", 'No', 'Very doubtful', "Outlook is grim", 
+			'Better not tell you now', 'Maybe', 'Reply hazy try again',"I'd like to use a life line", "Sorry, could you speak up?"]
 //quotes are not yet implemented
 //var quotes = []
 
