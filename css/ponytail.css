@@ -43,7 +43,12 @@ body {
     scrollbar-width: none;
     overflow: hidden;
 }
+/*Admins & Mod Colors*/
 .userlist_owner {
+    color: #c8c8c8 !important;
+    font-weight: normal !important;
+}
+.userlist_op {
     color: #c8c8c8 !important;
     font-weight: normal !important;
 }
@@ -64,6 +69,10 @@ div.userlist_item.userlist_afk span span.glyphicon.glyphicon-time {
     padding-bottom: 2px;
     padding-right:3px;
     padding-left: 1px;
+}
+.channel-emote{
+	max-width:25px;
+	max-height:64px !important;
 }
 
 #messagebuffer {
