@@ -3,7 +3,7 @@
 //Favicon
 $('<link id="favicon" href="https://cdn.discordapp.com/attachments/941880564665958441/1141569583732494346/lazyfavicon.png" type="image/x-icon" rel="shortcut icon" />').appendTo("head");
 //Navbar Branding and Header
-$('.navbar-brand').attr('href', 'https://ponytailsare.moe').attr('target', '_blank').text('Ponytails R Moe').css('padding', '0 10px 0 10px').prepend('<img src="https://cdn.discordapp.com/attachments/941880564665958441/1141569583732494346/lazyfavicon.png" style="display: inline;" height="20"/>');
+$('.navbar-brand').attr('href', 'https://ponytailsare.moe').attr('target', '_blank').text('Ponytails R Moe').css('padding', '0 10px 0 10px').prepend('<img src="https://ponytailsare.moe/ponytail/Resources/lazyfavicon.png" style="display: inline;" height="20"/>');
 var Usercount_Text = "revuefag";
 var SpoilerImg = 'http://i.imgur.com/xzD4vqc.png';
 var TitleBarDescription_Caption = '>Streaming:'; //Not working; will fix
