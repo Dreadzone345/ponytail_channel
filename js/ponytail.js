@@ -1,7 +1,7 @@
 ﻿/*Kuyashii*/
 /*Basic Details and Config*/
 //Favicon
-$('<link id="favicon" href="https://cdn.discordapp.com/attachments/941880564665958441/1141569583732494346/lazyfavicon.png" type="image/x-icon" rel="shortcut icon" />').appendTo("head");
+$('<link id="favicon" href="https://ponytailsare.moe/ponytail/Resources/lazyfavicon.png" type="image/x-icon" rel="shortcut icon" />').appendTo("head");
 //Navbar Branding and Header
 $('.navbar-brand').attr('href', 'https://ponytailsare.moe').attr('target', '_blank').text('Ponytails R Moe').css('padding', '0 10px 0 10px').prepend('<img src="https://ponytailsare.moe/ponytail/Resources/lazyfavicon.png" style="display: inline;" height="20"/>');
 var Usercount_Text = "revuefag";
