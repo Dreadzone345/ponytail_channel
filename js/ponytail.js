@@ -383,8 +383,8 @@ function chatPixels() {
 	}
 }
 //Bot Answers
-var askResponse = ['Yes', "Yes, definitely", 'Signs point to yes', "As I see it, yes", 'No', 'Very doubtful', "Outlook is grim", 
-			'Better not tell you now', 'Maybe', 'Reply hazy try again',"I'd like to use a life line", "Sorry, could you speak up?"]
+var askResponse = ['Yes', "Yes, definitely", 'Signs point to yes', "As I see it, yes", 'No', 'Very doubtful', "Outlook is grim",
+	'Better not tell you now', 'Maybe', 'Reply hazy try again', "I'd like to use a life line", "Sorry, could you speak up?"]
 //quotes are not yet implemented
 //var quotes = []
 
@@ -577,8 +577,56 @@ $("#mediaurl").on("paste", function () {
 	}, 250);
 });
 
-/* New Video End Times */
+/* Current Video Time */
+var ADDONESECOND = '';
+function currentVideoTime(data) {
+	clearInterval(ADDONESECOND);
+	hour = Math.floor(data.currentTime / 3600);
+	minute = Math.floor(data.currentTime / 60 % 60);
+	second = Math.floor(data.currentTime % 60);
+	second < 10 ? second = '0' + second : '';
+	if (hour === 0) {
+		$("#findtime").text(minute + ':' + second);
+	} else {
+		minute < 10 ? minute = '0' + minute : '';
+		$("#findtime").text(hour + ':' + minute + ':' + second);
+	}
+	ADDONESECOND = setInterval(function () {
+		if (!PLAYER.paused) {
+			second = parseInt(second, 10) + 1;
+			minute = parseInt(minute, 10);
+			if (second === 60) {
+				second = 0;
+				minute++;
+				if (minute === 60) {
+					minute = 0;
+					hour = parseInt(hour, 10) + 1;
+				}
+			}
+			second < 10 ? second = '0' + second : '';
+			if (hour === 0) {
+				$("#findtime").text(minute + ':' + second);
+			} else {
+				minute < 10 ? minute = '0' + minute : '';
+				$("#findtime").text(hour + ':' + minute + ':' + second);
+			}
+		}
+	}, 1000);
+}
 
+currenttimebtn = $('<span id="findtime" class="label label-default pull-right pointer" title="Find current video time">Video Time</button>')
+	.insertBefore('#swap')
+	.on("click", function () {
+		if ($(this).text() !== 'Video Time') {
+			$(this).text('Video Time');
+			clearInterval(ADDONESECOND);
+			socket.removeListener("mediaUpdate", currentVideoTime);
+		} else {
+			socket.on("mediaUpdate", currentVideoTime);
+		}
+	});
+
+/* New Video End Times */
 function getCurrentPlayerTime() {
 	try {
 		if (typeof PLAYER.player !== "undefined") {
@@ -592,6 +640,8 @@ function getCurrentPlayerTime() {
 		return CurrentVideoTime;
 	}
 }
+var CurrentVideoTime = 0;
+
 socket.on("delete", function () {
 	setTimeout(function () {
 		getEndTimePL()
@@ -617,7 +667,7 @@ socket.on("changeMedia", function (data) {
 
 var PlaylistInfo
 var VidPosition
-var PLTimeList
+var PLTimeList 
 
 //gets the length of playlist item in seconds
 function getTime(queuePosition) {
@@ -660,6 +710,7 @@ function calcEndTimePL(endAddTime) {
 	var endTimeString = "Ends at " + hrLeadZero + ":" + minLeadZero + ":" + secLeadZero + (isPM ? ' PM' : ' AM') + " | "
 	return endTimeString
 }
+
 function updateEndTimesOnLoad() {
 	var PLTimeList = Array.from(document.getElementsByClassName("qe_time")).forEach(function (PLCurrElement) {
 		var qeEndTime = document.createElement("span");
@@ -674,6 +725,7 @@ function updateEndTimesOnLoad() {
 		PLCurrElement.parentElement.insertBefore(qeuser, PLCurrElement.nextSibling);
 	});
 }
+
 function makeQueueEntry(item, addbtns) {
 	var video = item.media;
 	var li = $("<li/>");
@@ -711,8 +763,9 @@ function makeQueueEntry(item, addbtns) {
 	return li;
 }
 
+//calculates the end times for each entry in the playlist
 function getEndTimePL() {
-	PlaylistInfo = Array.from(document.getElementById("queue").children)
+	var PlaylistInfo = Array.from(document.getElementById("queue").children)
 	for (var i = 0; i < PlaylistInfo.length; i++) {
 		if (PlaylistInfo[i].className == "ui-effects-placeholder") {
 			PlaylistInfo.splice(i, 1)
@@ -720,15 +773,14 @@ function getEndTimePL() {
 	}
 	VidPosition = PlaylistInfo.indexOf(document.getElementsByClassName("queue_active")[0])
 	PLTimeList = document.querySelectorAll("#queue .qe_time");
-	var PLEndTimeList = document.getElementsByClassName("qe_endTime") || false;
-	var maxPosition = 50
+	var PLEndTimeList = document.getElementsByClassName("qe_endTime");
 	var time = 0;
 	var live = false;
 	if (PLTimeList.length !== 0 && PLEndTimeList.length === 0) {
 		updateEndTimesOnLoad();
 	}
-		
-	for (var i = VidPosition; i < maxPosition + VidPosition; i++) {
+
+	for (var i = VidPosition; i < PLEndTimeList.length; i++) {
 		if (i == VidPosition) {
 			if (getTime(i) == "inf") {
 				PLEndTimeList[i].textContent = "Never Ends |";

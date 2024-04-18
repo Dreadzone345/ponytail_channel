@@ -11,6 +11,8 @@
 .navbar{min-height:0;box-shadow: -5px 1px 10px rgba(0, 0, 0, 0.20);border:none;}
 .profile-box{right:0 !important;}
 .navbar-brand > img {padding-right: 5px;}
+/*Navbar script buttons*/
+#findtime:hover, #swap:hover {background-color: #3e8e41}
 
 /*Layout tweaks*/
 #chatwrap {
