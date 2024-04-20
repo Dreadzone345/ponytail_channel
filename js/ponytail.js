@@ -9,7 +9,7 @@ var SpoilerImg = 'http://i.imgur.com/xzD4vqc.png';
 var TitleBarDescription_Caption = '>Streaming:'; //Not working; will fix
 var JoinText_Message = 'has made contact with the server.';
 var LeaveText_Message = 'has tried the restarting.';
-var defaultUserlistImage = 'https://cdn.discordapp.com/attachments/827754897754685501/1140881579883905039/b.png'
+var defaultUserlistImage = 'https://files.catbox.moe/ecq9f4.png'
 /*Navbar*/
 //wip - probably want to make this a proper dropdown with other info?
 $('#nav-collapsible ul:first-child').prepend("<li class='dropdown'><a target='_blank' href='https://docs.google.com/spreadsheets/d/1tvK0EiLc1RJ6IbPF7CEHMUmys8ljAJcgoEIIPpCMh3A/'>Schedule</a></li>");
@@ -58,7 +58,7 @@ var userArr = [
 	['paizuri',
 		['', ''],
 		['', ''],
-		[0,0,0]],*/
+		[0,0,0]],
 	['dreadzone',
 		['https://ponytailsare.moe/ponytail/Pixels/Aoyama.png'],
 		[''],
@@ -105,6 +105,54 @@ var userArr = [
 		[0, 0, 0]],
 	['laterbunns',
 		['https://ponytailsare.moe/ponytail/Pixels/bunns_or_die_2.png'],
+		[''],
+		[0, 0, 0]]*/
+	['dreadzone',
+		['https://files.catbox.moe/58tbo0.png'],
+		[''],
+		[0, 0, 0]],
+	['haly',
+		['https://files.catbox.moe/vobk3g.gif'],
+		['https://ponytailsare.moe/ponytail/Userlist/smug_50.png'],
+		[0, 0, 0]],
+	['literallyme',
+		['https://files.catbox.moe/22utzw.png'],
+		['https://ponytailsare.moe/ponytail/Userlist/naellis_01.png', 'https://files.catbox.moe/q0qpr4.png'],
+		[0, 0, 0]],
+	['thepaizurikid',
+		['https://files.catbox.moe/t_96l215.png'],
+		['https://ponytailsare.moe/ponytail/Userlist/sidebarRinne.png'],
+		[0, 0, 0]],
+	['colin_mochrie',
+		['https://files.catbox.moe/t_isktj9.png'],
+		[''],
+		[0, 0, 0]],
+	['gasp',
+		['https://files.catbox.moe/xkyxxe.png'],
+		['https://ponytailsare.moe/ponytail/Userlist/1687019262749431-op.png'],
+		[0, 0, 0]],
+	['okonogi',
+		['https://files.catbox.moe/9ldcvy.png'],
+		['https://ponytailsare.moe/ponytail/Userlist/3dfa8p.png', 'https://ponytailsare.moe/ponytail/Userlist/pbpn3e.png'],
+		[0, 0, 0]],
+	['sarlacc',
+		['https://files.catbox.moe/2ygz5e.png'],
+		[''],
+		[0, 0, 0]],
+	['shimarin',
+		['https://files.catbox.moe/nlfqec.png'],
+		['https://ponytailsare.moe/ponytail/Userlist/Mikan_sidebar.png'],
+		[0, 0, 0]],
+	['speedy',
+		['https://files.catbox.moe/162idg.png	'],
+		['https://ponytailsare.moe/ponytail/Userlist/bktside1v5.png'],
+		[0, 0, 0]],
+	['nonohara',
+		['https://files.catbox.moe/h7vsap.png'],
+		[''],
+		[0, 0, 0]],
+	['laterbunns',
+		['https://files.catbox.moe/xcljmx.png'],
 		[''],
 		[0, 0, 0]]
 ]
