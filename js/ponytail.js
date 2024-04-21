@@ -662,18 +662,6 @@ function currentVideoTime(data) {
 	}, 1000);
 }
 
-currenttimebtn = $('<span id="findtime" class="label label-default pull-right pointer" title="Find current video time">Video Time</button>')
-	.insertBefore('#swap')
-	.on("click", function () {
-		if ($(this).text() !== 'Video Time') {
-			$(this).text('Video Time');
-			clearInterval(ADDONESECOND);
-			socket.removeListener("mediaUpdate", currentVideoTime);
-		} else {
-			socket.on("mediaUpdate", currentVideoTime);
-		}
-	});
-
 /* New Video End Times */
 function getCurrentPlayerTime() {
 	try {
@@ -866,7 +854,6 @@ function getEndTimePL() {
 
 
 /* Layout */
-
 if (localStorage.getItem('playerSide') == null) {
 	localStorage.setItem('playerSide', "LEFT")
 }
@@ -910,3 +897,15 @@ function loadPlayerSide() {
 	}
 
 }
+//Button for creating current video timer
+$('<span id="findtime" class="label label-default pull-right pointer" style ="" title="Find current video time">Video Time</button>')
+	.insertBefore('#swap')
+	.on("click", function () {
+		if ($(this).text() !== 'Video Time') {
+			$(this).text('Video Time');
+			clearInterval(ADDONESECOND);
+			socket.removeListener("mediaUpdate", currentVideoTime);
+		} else {
+			socket.on("mediaUpdate", currentVideoTime);
+		}
+	})
