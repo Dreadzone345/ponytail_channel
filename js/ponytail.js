@@ -1,7 +1,7 @@
 ﻿/*Kuyashii*/
 /*Basic Details and Config*/
 //Favicon
-$('<link id="favicon" href="https://ponytailsare.moe/ponytail/Resources/lazyfavicon.png" type="image/x-icon" rel="shortcut icon" />').appendTo("head");
+$('<link id="favicon" href="https://i.imgur.com/CFcvGRB.png" type="image/x-icon" rel="shortcut icon" />').appendTo("head");
 //Navbar Branding and Header
 $('.navbar-brand').attr('href', 'https://ponytailsare.moe').attr('target', '_blank').text('Ponytails R Moe').css('padding', '0 10px 0 10px').prepend('<img src="https://ponytailsare.moe/ponytail/Resources/lazyfavicon.png" style="display: inline;" height="20"/>');
 var Usercount_Text = "revuefag";
@@ -9,7 +9,7 @@ var SpoilerImg = 'http://i.imgur.com/xzD4vqc.png';
 var TitleBarDescription_Caption = '>Streaming:'; //Not working; will fix
 var JoinText_Message = 'has made contact with the server.';
 var LeaveText_Message = 'has tried the restarting.';
-var defaultUserlistImage = 'https://files.catbox.moe/ecq9f4.png'
+var defaultUserlistImage = 'https://poniteru.moe/pam-resources/Userlist/benus%20opa.png'
 /*Navbar*/
 //wip - probably want to make this a proper dropdown with other info?
 $('#nav-collapsible ul:first-child').prepend("<li class='dropdown'><a target='_blank' href='https://docs.google.com/spreadsheets/d/1tvK0EiLc1RJ6IbPF7CEHMUmys8ljAJcgoEIIPpCMh3A/'>Schedule</a></li>");
@@ -108,51 +108,51 @@ var userArr = [
 		[''],
 		[0, 0, 0]]*/
 	['dreadzone',
-		['https://files.catbox.moe/58tbo0.png'],
+		['https://poniteru.moe/pam-resources/Pixels/Aoyama.png'],
 		[''],
 		[0, 0, 0]],
 	['haly',
-		['https://files.catbox.moe/vobk3g.gif'],
-		['https://ponytailsare.moe/ponytail/Userlist/smug_50.png'],
+		['https://poniteru.moe/pam-resources/Pixels/Hitori_longer_anim_t3.gif'],
+		['https://poniteru.moe/pam-resources/Userlist/smug_50.png'],
 		[0, 0, 0]],
 	['literallyme',
-		['https://files.catbox.moe/22utzw.png'],
-		['https://ponytailsare.moe/ponytail/Userlist/naellis_01.png', 'https://files.catbox.moe/q0qpr4.png'],
+		['https://poniteru.moe/pam-resources/Pixels/Shinobu.png'],
+		['https://ponytailsare.moe/ponytail/Userlist/naellis_01.png', 'https://poniteru.moe/pam-resources/Userlist/q0qpr4.png'],
 		[0, 0, 0]],
 	['thepaizurikid',
-		['https://files.catbox.moe/t_96l215.png'],
-		['https://ponytailsare.moe/ponytail/Userlist/sidebarRinne.png'],
+		['https://poniteru.moe/pam-resources/Pixels/Perrine_v3-cat-update.png'],
+		['https://poniteru.moe/pam-resources/Userlist/sidebarRinne.png'],
 		[0, 0, 0]],
 	['colin_mochrie',
-		['https://files.catbox.moe/t_isktj9.png'],
+		['https://poniteru.moe/pam-resources/Pixels/Chen_v2.png'],
 		[''],
 		[0, 0, 0]],
 	['gasp',
-		['https://files.catbox.moe/xkyxxe.png'],
-		['https://ponytailsare.moe/ponytail/Userlist/1687019262749431-op.png'],
+		['https://poniteru.moe/pam-resources/Pixels/Fubuki_v3-Messi.png'],
+		['https://poniteru.moe/pam-resources/Userlist/1687019262749431-op.png'],
 		[0, 0, 0]],
 	['okonogi',
-		['https://files.catbox.moe/9ldcvy.png'],
-		['https://ponytailsare.moe/ponytail/Userlist/3dfa8p.png', 'https://ponytailsare.moe/ponytail/Userlist/pbpn3e.png'],
+		['https://poniteru.moe/pam-resources/Pixels/Keropoyo_v3.png'],
+		['https://poniteru.moe/pam-resources/Userlist/3dfa8p.png', 'https://poniteru.moe/pam-resources/Userlist/pbpn3e.png'],
 		[0, 0, 0]],
 	['sarlacc',
-		['https://files.catbox.moe/2ygz5e.png'],
+		['https://poniteru.moe/pam-resources/Pixels/Louise_winter.png'],
 		[''],
 		[0, 0, 0]],
 	['shimarin',
-		['https://files.catbox.moe/nlfqec.png'],
-		['https://ponytailsare.moe/ponytail/Userlist/Mikan_sidebar.png'],
+		['https://poniteru.moe/pam-resources/Pixels/ozVtWZEh.png'],
+		['https://poniteru.moe/pam-resources/Userlist/Mikan_sidebar.png'],
 		[0, 0, 0]],
 	['speedy',
 		['https://files.catbox.moe/162idg.png	'],
-		['https://ponytailsare.moe/ponytail/Userlist/bktside1v5.png'],
+		['https://poniteru.moe/pam-resources/Userlist/bktside1v5.png'],
 		[0, 0, 0]],
 	['nonohara',
-		['https://files.catbox.moe/h7vsap.png'],
+		['https://poniteru.moe/pam-resources/Pixels/nonohara.png'],
 		[''],
 		[0, 0, 0]],
 	['laterbunns',
-		['https://files.catbox.moe/xcljmx.png'],
+		['https://poniteru.moe/pam-resources/Pixels/bunns_or_die_2.png'],
 		[''],
 		[0, 0, 0]]
 ]
