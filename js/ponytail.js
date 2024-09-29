@@ -1,9 +1,9 @@
-﻿/*Kuyashii*/
+/*Kuyashii*/
 /*Basic Details and Config*/
 //Favicon
-$('<link id="favicon" href="https://i.imgur.com/CFcvGRB.png" type="image/x-icon" rel="shortcut icon" />').appendTo("head");
+$('<link id="favicon" href="https://files.catbox.moe/f0073v.png" type="image/x-icon" rel="shortcut icon" />').appendTo("head");
 //Navbar Branding and Header
-$('.navbar-brand').attr('href', 'https://ponytailsare.moe').attr('target', '_blank').text('Ponytails R Moe').css('padding', '0 10px 0 10px').prepend('<img src="https://i.imgur.com/CFcvGRB.png" style="display: inline;" height="20"/>');
+$('.navbar-brand').attr('href', 'https://ponytailsare.moe').attr('target', '_blank').text('Ponytails R Moe').css('padding', '0 10px 0 10px').prepend('<img src="https://poniteru.moe/pam/pooks.png" style="display: inline;" height="20"/>');
 var Usercount_Text = "revuefag";
 var SpoilerImg = 'http://i.imgur.com/xzD4vqc.png';
 var TitleBarDescription_Caption = '>Streaming:'; //Not working; will fix
@@ -154,7 +154,11 @@ var userArr = [
 	['laterbunns',
 		['https://poniteru.moe/pam-resources/Pixels/bunns_or_die_2.png'],
 		[''],
-		[0, 0, 0]]
+		[0, 0, 0]],
+	['doctortimewarp',
+		['https://poniteru.moe/pam-resources/Pixels/Hibiki_-_doctortimewarp.png'],
+		[''],
+		[0, 0, 0]]	
 ]
 
 /*Overwrite the custom media load function to skip the warning message if the URL is angelthump*/
@@ -432,7 +436,7 @@ function chatPixels() {
 }
 //Bot Answers
 var askResponse = ['Yes', "Yes, definitely", 'Signs point to yes', "As I see it, yes", 'No', 'Very doubtful', "Outlook is grim",
-	'Better not tell you now', 'Maybe', 'Reply hazy try again', "I'd like to use a life line", "Sorry, could you speak up?"]
+	'Better not tell you now', 'Maybe', 'Reply hazy try again', ":sushi:", ":dekinai:"]
 //quotes are not yet implemented
 //var quotes = []
 
