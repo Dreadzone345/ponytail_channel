@@ -856,6 +856,7 @@ function getEndTimePL() {
 
 
 
+//add a theme dropdown
 
 /* Layout */
 if (localStorage.getItem('playerSide') == null) {
@@ -877,11 +878,24 @@ function swapPlayerSide() {
 		right = '#chatwrap'
 		left = '#videowrap'
 		localStorage.setItem('playerSide', 'RIGHT')
+		$('#newpollbtn').removeClass('right')
+		$('#emotelistbtn').removeClass('right')
+		$('#videocontrols').removeClass('right')
+		$('#newpollbtn').addClass('left')
+		$('#emotelistbtn').addClass('left')
+		$('#videocontrols').addClass('left')
 	}
 	else if (localStorage.getItem('playerSide') == 'RIGHT') {
 		right = '#videowrap'
 		left = '#chatwrap'
 		localStorage.setItem('playerSide', 'LEFT')
+		$('#newpollbtn').removeClass('left')
+		$('#emotelistbtn').removeClass('left')
+		$('#videocontrols').removeClass('left')
+		$('#newpollbtn').addClass('right')
+		$('#emotelistbtn').addClass('right')
+		$('#videocontrols').addClass('right')
+
 	}
 	$(right).each(function () {
 		$(this).insertAfter($(this).parent().find(left))
@@ -893,11 +907,18 @@ function loadPlayerSide() {
 		$('#chatwrap').each(function () {
 			$(this).insertAfter($(this).parent().find('#videowrap'))
 		});
+		$('#newpollbtn').addClass('left')
+		$('#emotelistbtn').addClass('left')
+		$('#videocontrols').addClass('left')
 	}
 	else {
 		$('#videowrap').each(function () {
 			$(this).insertAfter($(this).parent().find('#chatwrap'))
 		});
+		$('#newpollbtn').addClass('right')
+		$('#emotelistbtn').addClass('right')
+		$('#videocontrols').addClass('right')
+
 	}
 
 }
@@ -913,3 +934,75 @@ $('<span id="findtime" class="label label-default pull-right pointer" style ="" 
 			socket.on("mediaUpdate", currentVideoTime);
 		}
 	})
+
+/* effects */
+
+//scanlines
+
+//button for toggling the effect
+scanline = $('<button id="scanline" class="btn btn-sm btn-default" title="Add Scanlines"><span class="glyphicon glyphicon-sd-video"></span></button>')
+	.appendTo("#videocontrols")
+	.on("click", function () {
+		$(this).hasClass('btn-success') ? scanPlayerFlicker() : $(this).hasClass('btn-warning') ? unScanPlayer() : scanPlayer()
+	})
+
+
+//enable the effect
+//change this so it's not adding new rules every time.
+function scanPlayer() {
+	$("#videowrap").addClass('relative');
+	scanCover = $('<div id="scanCover" />')
+		.insertAfter($("#ytapiplayer"));
+	document.styleSheets[0].addRule('#scanCover:before', 'content: " "; display: block; position: absolute; top: 0; left: 0; bottom: 0; right: 0; background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),\
+   linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06)); z-index: 2; background-size: 100% 2px, 3px 100%; pointer-events: none;');
+	document.styleSheets[0].addRule('#scanCover:after', 'content: " "; display: block; position: absolute; top: 0; left: 0; bottom: 0; right: 0; background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),\
+   linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06)); z-index: 2; background-size: 100% 4px, 2px 100%; pointer-events: none;');
+	scanline.addClass('btn-success').attr('title', 'Add Flicker');
+	$('#videowrap').append($('#videocontrols'))
+	$('#videowrap').append($('#leftcontrols').children(0))
+	$('body').addClass('w98')
+
+//button to turn off the theme (temp for first week, later the scanlines won't force the theme on)
+removeTheme = $('<button id="default" class="btn btn-sm btn-default" title="Return Default Theme"><span class="glyphicon glyphicon-share-alt"></span></button>')
+	.appendTo("#videocontrols")
+	.on("click", function () {
+		$('body').removeClass('w98')
+		$('#default').remove();
+		$('#rightcontrols').append($('#videocontrols'));
+		$('#leftcontrols').append($('#newpollbtn'), $('#emotelistbtn'))
+	})
+}
+//enable the flickering 
+function scanPlayerFlicker() {
+	scanCover.css({
+		'animation': 'flicker 0.15s infinite'
+	})
+	scanline.removeClass('btn-success').attr('title', 'Remove Scanlines');
+	scanline.addClass('btn-warning');
+}
+
+let dynamicStyles = null;
+function addFlicker(body) {
+	if (!dynamicStyles) {
+		dynamicStyles = document.createElement('style');
+		dynamicStyles.type = 'text/css';
+		document.head.appendChild(dynamicStyles);
+	}
+	dynamicStyles.sheet.insertRule(body, dynamicStyles.length);
+}
+
+addFlicker('@keyframes flicker {0% {opacity: 0.27861;} 5% {opacity: 0.34769;} 10% {opacity: 0.23604;} 15% {opacity: 0.90626;} 20% {opacity: 0.18128;} 25% {opacity: 0.83891;} 30% {opacity: 0.65583;} 35% {opacity: 0.67807;} 40% {opacity: 0.26559;} 45% {opacity: 0.84693;}\
+   50% {opacity: 0.96019;} 55% {opacity: 0.08594;} 60% {opacity: 0.20313;} 65% {opacity: 0.71988;} 70% {opacity: 0.53455;} 75% {opacity: 0.37288;} 80% {opacity: 0.71428;} 85% {opacity: 0.70419;} 90% {opacity: 0.7003;} 95% {opacity: 0.36108;} 100% {opacity: 0.24387;}');
+
+
+//turns the effect off 
+function unScanPlayer() {
+	scanCover.remove();
+	scanline.removeClass('btn-warning').attr('title', 'Add Scanlines');
+	$('body').removeClass('w98')
+	$("#videowrap").removeClass('relative');
+	$('#rightcontrols').append($('#videocontrols'));
+	$('#leftcontrols').append($('#newpollbtn'), $('#emotelistbtn'))
+	//temp
+	$('#default').remove();
+}
