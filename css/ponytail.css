@@ -147,3 +147,365 @@ body a:hover{cursor:url(http://i.imgur.com/G9Q7JW4.png), auto;}
     background-color: #000A;
     z-index: 1;
 }
+
+/*some setting stuff is still a bit fucky but I can't be assed*/
+
+.w98 .navbar-inverse,
+.w98 ul.dropdown-menu {
+    border-radius: 0 !important;
+    background-image: unset !important;
+    background-color: #c0c0c0 !important;
+    color: #000 !important;
+    border-width: 2px !Important;
+    border-style: none none ridge none !important;
+    border-color: white
+}
+
+.w98 .navbar-inverse,
+.w98 .navbar-brand,
+.w98 .navbar-inverse .navbar-nav > li > a,
+.w98 #logoutform,
+.w98 #logout,
+.w98 a.dropdown-toggle,
+.w98 .dropdown-menu > li > a,
+.w98 #chatheader > .label.label-default.pull-right.pointer {
+    color: #000 !important;
+    font-weight: unset !important;
+    border-radius: 0 !important;
+}
+
+.w98 .navbar-brand,
+.w98 .navbar-inverse .navbar-nav > li > a,
+.w98 #welcome.dropdown a.dropdown-toggle,
+.w98 #logout.navbar-link,
+.w98 #chatheader > .label.label-default.pull-right.pointer,
+.w98 .btn-group > .btn,
+.w98 #leftcontrols .btn,
+.w98 #newpollbtn,
+.w98 #emotelistbtn,
+.w98 ul.pagination > li > a,
+.w98 .pagination > .disabled > a,
+.w98 .pagination > .disabled > a:focus,
+.w98 .pagination > .disabled > a:hover,
+.w98 .pagination > .disabled > span,
+.w98 .pagination > .disabled > span:focus,
+.w98 .pagination > .disabled > span:hover,
+.w98 table.emotelist-table > tbody > tr > td,
+.w98 .poll-menu > .btn,
+.w98 .input-group-btn button,
+div.modal-header ul.nav.nav-tabs li > a {
+    background-color: #c0c0c0 !important;
+    border-width: 1px !important;
+    border-style: ridge groove groove ridge !important;
+    border-color: white black black white !important;
+    box-shadow: -1px -1px 0px #808080 inset !important;
+}
+
+.w98 .navbar-brand:hover,
+.w98 .navbar-inverse .navbar-nav > li > a:hover,
+.w98 .navbar-inverse .navbar-nav > .open > a,
+.w98 .navbar-inverse .navbar-nav > .open > a:focus,
+.w98 .navbar-inverse .navbar-nav > .open > a:hover,
+.w98 #welcome.dropdown a.dropdown-toggle:hover,
+.w98 #logout.navbar-link:hover,
+.w98 #welcome.dropdown.open a.dropdown-toggle,
+.w98 #chatheader > .label.label-default.pull-right.pointer:hover,
+.w98 .btn-group > .btn:hover,
+.w98 #newpollbtn:hover,
+.w98 #emotelistbtn:hover,
+.w98 ul.pagination > li > a:hover,
+.w98 table.emotelist-table > tbody > tr > td:hover,
+.w98 .poll-menu > .btn:hover,
+.w98 .input-group-btn button:hover,
+.w98 #customembed-content,
+.btn.btn-sm.btn-default.active,
+div.modal-header ul.nav.nav-tabs li.active > a,
+div.modal-header ul.nav.nav-tabs li > a:hover {
+    background-color: #c0c0c0 !important;
+    border-width: 1px !important;
+    border-style: ridge groove groove ridge !important;
+    border-color: black white white black !important;
+    box-shadow: 1px 1px 0px #808080 inset !important;
+}
+
+.w98 #customembed-title,
+.w98 input.form-control {
+    background-color: white !important;
+    border-width: 1px !important;
+    border-style: ridge groove groove ridge !important;
+    border-color: black white white black !important;
+    box-shadow: 1px 1px 0px #808080 inset !important;
+}
+
+.w98 #settingsMenu > ul {
+    padding: 0px !important;
+}
+
+.w98 .navbar-header {
+    height: auto !important;
+    padding: .3em .3em .2em .3em !important;
+}
+
+.w98 .navbar-nav > li > a {
+    line-height: 22px !important;
+}
+
+.w98 .navbar-nav > li {
+    padding: .3em .25em 0em .3em;
+}
+
+.w98 ul.nav > li:nth-child(3) {
+    padding: 0 !important;
+}
+
+body.w98 {
+    background-color: #008080;
+    font-family: "MS sans Serif" !important;
+}
+
+.w98 .dropdown-menu {
+    left: 4px !important;
+    border-radius: 0px;
+}
+
+.w98 li.dropdown.open ul.dropdown-menu li a {
+    border-width: 0px !important;
+    box-shadow: none !important;
+}
+
+.w98 .dropdown-menu > li > a:hover,
+.w98 li.dropdown.open ul.dropdown-menu li a:hover {
+    background-color: #020080 !important;
+    color: #fff !important;
+}
+
+.w98 .navbar-text.pull-right {
+    margin: .3em .25em 0em .3em !important;
+}
+
+.w98 #logoutform.navbar-text.pull-right,
+.w98 #welcome.dropdown a.dropdown-toggle {
+    line-height: 22px !important;
+    display: inline-block !important
+}
+
+.w98 #logout {
+    padding: 0 10px !important;
+}
+
+.w98 #chatheader > .label.label-default.pull-right.pointer {
+    line-height: 15px;
+}
+
+.w98 #swap {
+    margin-right: 9px !important;
+}
+
+.w98 #chatheader {
+    border-radius: 0;
+    line-height: 30px;
+    background-color: #020080 !important;
+    border-width: 3px 3px 15px 3px;
+    border-style: solid solid solid solid;
+    border-image: linear-gradient(to right,#aaaaaa,#b2b2b2)1;
+}
+
+.w98 #userlisttoggle {
+    margin-left: 1em
+}
+
+.w98 .userlist_item,
+.w98 .userlist_op,
+.w98 .userlist_owner {
+    color: black !Important;
+}
+
+.w98 #usercount {
+    margin-left: .55em;
+    font-size: 25px !important;
+    font-weight: 900;
+}
+
+.w98 #chatwrap {
+    border-radius: 0 !important;
+    border-width: 7px;
+    border-style: ridge !important;
+    border-color: white black black white !important;
+}
+
+.w98 #messagebuffer,
+.w98 #userlist,
+.w98 #chatwrap > form {
+    color: black !important;
+    background-color: white !important;
+    border-width: 5px;
+    border-style: ridge !important;
+    border-color: black white white black !Important;
+}
+
+.w98 #messagebuffer div {
+    background-color: unset !important;
+}
+
+.w98 #messagebuffer div:nth-child(2n+1) > span strong.username {
+    color: #ad161d !important;
+}
+
+.w98 #messagebuffer div:nth-child(2n) > span strong.username {
+    color: #2e37a0 !important;
+}
+
+.w98 input.form-control[type="text"],
+.w98 #customembed-content {
+    color: black !important;
+    background-color: white !important;
+    border-radius: 0px
+}
+
+.w98 #videowrap-header {
+    border-radius: 0;
+    line-height: 30px;
+    background-image: linear-gradient(to right, #000080,#1084d0);
+    font-size: 20px !important;
+    font-weight: 900;
+    border-width: 3px 3px 6px 3px;
+    border-style: solid solid solid solid;
+    border-image: linear-gradient(to right,#aaaaaa,#b2b2b2)1;
+}
+
+.w98 #videowrap-header #currenttitle {
+    margin-left: 1em;
+}
+
+.w98 #videowrap {
+    border-width: 7px;
+    border-style: ridge !important;
+    border-color: white white white white !Important;
+    padding: 0 !important;
+    background-color: #c0c0c0
+}
+
+.w98 .embed-responsive {
+    border-width: 2px;
+    border-style: ridge ridge none ridge !important;
+    border-color: black white white white !Important;
+}
+
+.w98 #queue > li,
+.w98 #userpl_list > li {
+    background-color: #c0c0c0;
+}
+
+.w98 #userpl_list > li > .qe_title {
+    padding-left: 5px;
+}
+
+.w98 #queue > li > a,
+.w98 #playlistrow,
+div.modal-header ul.nav.nav-tabs li > a {
+    color: black;
+}
+
+.w98 .btn-group > .btn,
+.w98 ul.pagination > li > a,
+.w98 ul.pagination > .disabled > a,
+.w98 .poll-menu > .btn,
+div.modal-header ul.nav.nav-tabs li.active > a {
+    border-radius: 0 !important;
+    color: black !important;
+    background-image: unset;
+    background-color: #c0c0c0 !important;
+}
+
+.btn-success {
+    background-image: linear-gradient(#78cc78,#62c462 60%,#53be53) !important;
+    background-repeat: no-repeat !important;
+}
+
+.btn-success:hover {
+    background-image: linear-gradient(#2f7d2f,#379337 40%,#3da23d) !important;
+    background-repeat: no-repeat !important;
+}
+
+.btn-warning {
+    background-image: linear-gradient(#faa123,#f89406 60%,#e48806) !important;
+    background-repeat: no-repeat !important;
+}
+
+.btn-warning:hover {
+    background-image: linear-gradient(#804d03,#9e5f04 40%,#b26a04) !important;
+    background-repeat: no-repeat !important;
+}
+
+.btn-danger {
+    background-image: linear-gradient(#f17a77,#ee5f5b 60%,#ec4d49) !important;
+    background-repeat: no-repeat !important;
+}
+
+.btn-danger:hover {
+    background-image: linear-gradient(#bb1813,#d71c16 40%,#e7201a) !important;
+    background-repeat: no-repeat !important;
+}
+
+.w98 .queue_active {
+    background-image: unset !important;
+    background-color: #020080 !important;
+}
+
+.w98 li.queue_entry.queue_active > a,
+.w98 li.queue_entry.queue_active > span {
+    color: white !important;
+}
+
+.w98 #plmeta,
+#cs-banlist > table,
+#cs-banlist > table *,
+table.table-condensed * {
+    background-color: #c0c0c0 !important;
+}
+
+.w98 div.modal-dialog > div,
+.w98 #newpollbtn,
+.w98 #emotelistbtn,
+.w98 .poll-menu,
+.w98 .input-group-btn button {
+    border-radius: 0 !important;
+    background-color: #c0c0c0 !important;
+    color: black;
+    background-image: unset !important;
+}
+
+.w98 #controlsrow {
+    margin-top: 2em !important;
+}
+
+.w98 #newpollbtn.right,
+.w98 #emotelistbtn.right {
+    float: right !Important;
+}
+
+.w98 #videocontrols.right {
+    float: left !important;
+}
+
+.w98 div.modal-dialog > div > div > h4 {
+    text-shadow: none !Important;
+    font-weight: 900;
+    font-size: 20px;
+}
+
+.w98 .pagination {
+    margin: 5px 0px 10px
+}
+
+.w98 table.emotelist-table {
+    background-color: unset !important;
+}
+
+.w98 .modal-footer {
+    border-top: 1px solid white
+}
+
+.w98 .modal-header {
+    border-bottom: 1px solid white
+}
