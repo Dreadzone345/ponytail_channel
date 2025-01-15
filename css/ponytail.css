@@ -161,76 +161,76 @@ body a:hover{cursor:url(http://i.imgur.com/G9Q7JW4.png), auto;}
     border-color: white
 }
 
-    .w98 .navbar-inverse,
-    .w98 .navbar-brand,
-    .w98 .navbar-inverse .navbar-nav > li > a,
-    .w98 #logoutform,
-    .w98 #logout,
-    .w98 a.dropdown-toggle,
-    .w98 .dropdown-menu > li > a,
-    .w98 #chatheader > .label.label-default.pull-right.pointer {
-        color: #000 !important;
-        font-weight: unset !important;
-        border-radius: 0 !important;
-    }
+.w98 .navbar-inverse,
+.w98 .navbar-brand,
+.w98 .navbar-inverse .navbar-nav > li > a,
+.w98 #logoutform,
+.w98 #logout,
+.w98 a.dropdown-toggle,
+.w98 .dropdown-menu > li > a,
+.w98 #chatheader > .label.label-default.pull-right.pointer {
+    color: #000 !important;
+    font-weight: unset !important;
+    border-radius: 0 !important;
+}
 
-        .w98 .navbar-brand,
-        .w98 .navbar-inverse .navbar-nav > li > a,
-        .w98 #welcome.dropdown a.dropdown-toggle,
-        .w98 #logout.navbar-link,
-        .w98 #chatheader > .label.label-default.pull-right.pointer,
-        .w98 .btn-group > .btn,
-        .w98 #leftcontrols .btn,
-        .w98 #newpollbtn,
-        .w98 #emotelistbtn,
-        .w98 ul.pagination > li > a,
-        .w98 .pagination > .disabled > a,
-        .w98 .pagination > .disabled > a:focus,
-        .w98 .pagination > .disabled > a:hover,
-        .w98 .pagination > .disabled > span,
-        .w98 .pagination > .disabled > span:focus,
-        .w98 .pagination > .disabled > span:hover,
-        .w98 table.emotelist-table > tbody > tr > td,
-        .w98 .poll-menu > .btn,
-        .w98 .input-group-btn button,
-        .w98 div.modal-header ul.nav.nav-tabs li > a,
-        .w98 div.option button.btn.btn-default.btn-sm,
-        .w98 div.well.active button.btn.btn-danger.btn-sm.pull-right {
-            background-color: #c0c0c0 !important;
-            border-width: 1px !important;
-            border-style: ridge groove groove ridge !important;
-            border-color: white black black white !important;
-            box-shadow: -1px -1px 0px #808080 inset !important;
-        }
+.w98 .navbar-brand,
+.w98 .navbar-inverse .navbar-nav > li > a,
+.w98 #welcome.dropdown a.dropdown-toggle,
+.w98 #logout.navbar-link,
+.w98 #chatheader > .label.label-default.pull-right.pointer,
+.w98 .btn-group > .btn,
+.w98 #leftcontrols .btn,
+.w98 #newpollbtn,
+.w98 #emotelistbtn,
+.w98 ul.pagination > li > a,
+.w98 .pagination > .disabled > a,
+.w98 .pagination > .disabled > a:focus,
+.w98 .pagination > .disabled > a:hover,
+.w98 .pagination > .disabled > span,
+.w98 .pagination > .disabled > span:focus,
+.w98 .pagination > .disabled > span:hover,
+.w98 table.emotelist-table > tbody > tr > td,
+.w98 .poll-menu > .btn,
+.w98 .input-group-btn button,
+.w98 div.modal-header ul.nav.nav-tabs li > a,
+.w98 div.option button.btn.btn-default.btn-sm,
+.w98 div.well.active button.btn.btn-danger.btn-sm.pull-right {
+    background-color: #c0c0c0 !important;
+    border-width: 1px !important;
+    border-style: ridge groove groove ridge !important;
+    border-color: white black black white !important;
+    box-shadow: -1px -1px 0px #808080 inset !important;
+}
 
-            .w98 .navbar-brand:hover,
-            .w98 .navbar-inverse .navbar-nav > li > a:hover,
-            .w98 .navbar-inverse .navbar-nav > .open > a,
-            .w98 .navbar-inverse .navbar-nav > .open > a:focus,
-            .w98 .navbar-inverse .navbar-nav > .open > a:hover,
-            .w98 #welcome.dropdown a.dropdown-toggle:hover,
-            .w98 #logout.navbar-link:hover,
-            .w98 #welcome.dropdown.open a.dropdown-toggle,
-            .w98 #chatheader > .label.label-default.pull-right.pointer:hover,
-            .w98 .btn-group > .btn:hover,
-            .w98 #newpollbtn:hover,
-            .w98 #emotelistbtn:hover,
-            .w98 ul.pagination > li > a:hover,
-            .w98 table.emotelist-table > tbody > tr > td:hover,
-            .w98 .poll-menu > .btn:hover,
-            .w98 .input-group-btn button:hover,
-            .w98 #customembed-content,
-            .w98 .btn.btn-sm.btn-default.active,
-            .w98 div.modal-header ul.nav.nav-tabs li.active > a,
-            .w98 div.modal-header ul.nav.nav-tabs li > a:hover,
-            .w98 div.option button.btn.btn-default.btn-sm:hover,
-            .w98 div.well.active button.btn.btn-danger.btn-sm.pull-right:hover {
-                background-color: #c0c0c0 !important;
-                border-width: 1px !important;
-                border-style: ridge groove groove ridge !important;
-                border-color: black white white black !important;
-                box-shadow: 1px 1px 0px #808080 inset !important;
-            }
+.w98 .navbar-brand:hover,
+.w98 .navbar-inverse .navbar-nav > li > a:hover,
+.w98 .navbar-inverse .navbar-nav > .open > a,
+.w98 .navbar-inverse .navbar-nav > .open > a:focus,
+.w98 .navbar-inverse .navbar-nav > .open > a:hover,
+.w98 #welcome.dropdown a.dropdown-toggle:hover,
+.w98 #logout.navbar-link:hover,
+.w98 #welcome.dropdown.open a.dropdown-toggle,
+.w98 #chatheader > .label.label-default.pull-right.pointer:hover,
+.w98 .btn-group > .btn:hover,
+.w98 #newpollbtn:hover,
+.w98 #emotelistbtn:hover,
+.w98 ul.pagination > li > a:hover,
+.w98 table.emotelist-table > tbody > tr > td:hover,
+.w98 .poll-menu > .btn:hover,
+.w98 .input-group-btn button:hover,
+.w98 #customembed-content,
+.w98 .btn.btn-sm.btn-default.active,
+.w98 div.modal-header ul.nav.nav-tabs li.active > a,
+.w98 div.modal-header ul.nav.nav-tabs li > a:hover,
+.w98 div.option button.btn.btn-default.btn-sm:hover,
+.w98 div.well.active button.btn.btn-danger.btn-sm.pull-right:hover {
+    background-color: #c0c0c0 !important;
+    border-width: 1px !important;
+    border-style: ridge groove groove ridge !important;
+    border-color: black white white black !important;
+    box-shadow: 1px 1px 0px #808080 inset !important;
+}
 
 .w98 #customembed-title,
 .w98 input.form-control {
@@ -277,11 +277,11 @@ body.w98 {
     box-shadow: none !important;
 }
 
-    .w98 .dropdown-menu > li > a:hover,
-    .w98 li.dropdown.open ul.dropdown-menu li a:hover {
-        background-color: #020080 !important;
-        color: #fff !important;
-    }
+.w98 .dropdown-menu > li > a:hover,
+.w98 li.dropdown.open ul.dropdown-menu li a:hover {
+    background-color: #020080 !important;
+    color: #fff !important;
+}
 
 .w98 .navbar-text.pull-right {
     margin: .3em .25em 0em .3em !important;
@@ -309,7 +309,7 @@ body.w98 {
     border-radius: 0;
     line-height: 30px;
     background-color: #020080 !important;
-    border-width: 3px 3px 15px 3px;
+    border-width: 3px 3px 18px 3px;
     border-style: solid solid solid solid;
     border-image: linear-gradient(to right,#aaaaaa,#b2b2b2)1;
 }
@@ -337,27 +337,27 @@ body.w98 {
     border-color: white black black white !important;
 }
 
-    .w98 #messagebuffer,
-    .w98 #userlist,
-    .w98 #chatwrap > form {
-        color: black !important;
-        background-color: white !important;
-        border-width: 5px;
-        border-style: ridge !important;
-        border-color: black white white black !Important;
-    }
+.w98 #messagebuffer,
+.w98 #userlist,
+.w98 #chatwrap > form {
+    color: black !important;
+    background-color: white !important;
+    border-width: 5px;
+    border-style: ridge !important;
+    border-color: black white white black !Important;
+}
 
-        .w98 #messagebuffer div {
-            background-color: unset !important;
-        }
+.w98 #messagebuffer div {
+    background-color: unset !important;
+}
 
-            .w98 #messagebuffer div:nth-child(2n+1) > span strong.username {
-                color: #ad161d !important;
-            }
+.w98 #messagebuffer div:nth-child(2n+1) > span strong.username {
+    color: #ad161d !important;
+}
 
-            .w98 #messagebuffer div:nth-child(2n) > span strong.username {
-                color: #2e37a0 !important;
-            }
+.w98 #messagebuffer div:nth-child(2n) > span strong.username {
+    color: #2e37a0 !important;
+}
 
 .w98 input.form-control[type="text"],
 .w98 #customembed-content {
@@ -377,9 +377,9 @@ body.w98 {
     border-image: linear-gradient(to right,#aaaaaa,#b2b2b2)1;
 }
 
-    .w98 #videowrap-header #currenttitle {
-        margin-left: 1em;
-    }
+.w98 #videowrap-header #currenttitle {
+    margin-left: 1em;
+}
 
 .w98 #videowrap {
     border-width: 7px;
@@ -400,15 +400,16 @@ body.w98 {
     background-color: #c0c0c0;
 }
 
-    .w98 #userpl_list > li > .qe_title {
-        padding-left: 5px;
-    }
+.w98 #userpl_list > li > .qe_title {
+    padding-left: 5px;
+}
 
-    .w98 #queue > li > a,
-    .w98 #playlistrow,
-    .w98 div.modal-header ul.nav.nav-tabs li > a {
-        color: black;
-    }
+.w98 #queue > li > a,
+.w98 #playlistrow,
+.w98 div.modal-header ul.nav.nav-tabs li > a,
+.w98 a {
+    color: black;
+}
 
 .w98 .btn-group > .btn,
 .w98 ul.pagination > li > a,
@@ -426,30 +427,30 @@ body.w98 {
     background-repeat: no-repeat !important;
 }
 
-    .btn-success:hover {
-        background-image: linear-gradient(#2f7d2f,#379337 40%,#3da23d) !important;
-        background-repeat: no-repeat !important;
-    }
+.btn-success:hover {
+    background-image: linear-gradient(#2f7d2f,#379337 40%,#3da23d) !important;
+    background-repeat: no-repeat !important;
+}
 
 .btn-warning {
     background-image: linear-gradient(#faa123,#f89406 60%,#e48806) !important;
     background-repeat: no-repeat !important;
 }
 
-    .btn-warning:hover {
-        background-image: linear-gradient(#804d03,#9e5f04 40%,#b26a04) !important;
-        background-repeat: no-repeat !important;
-    }
+.btn-warning:hover {
+    background-image: linear-gradient(#804d03,#9e5f04 40%,#b26a04) !important;
+    background-repeat: no-repeat !important;
+}
 
 .btn-danger {
     background-image: linear-gradient(#f17a77,#ee5f5b 60%,#ec4d49) !important;
     background-repeat: no-repeat !important;
 }
 
-    .btn-danger:hover {
-        background-image: linear-gradient(#bb1813,#d71c16 40%,#e7201a) !important;
-        background-repeat: no-repeat !important;
-    }
+.btn-danger:hover {
+    background-image: linear-gradient(#bb1813,#d71c16 40%,#e7201a) !important;
+    background-repeat: no-repeat !important;
+}
 
 .w98 .queue_active {
     background-image: unset !important;
