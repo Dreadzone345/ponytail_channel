@@ -264,6 +264,7 @@ body a:hover{cursor:url(http://i.imgur.com/G9Q7JW4.png), auto;}
 
 body.w98 {
     background-color: #008080 !important;
+    background-image: unset !important;
     font-family: "MS sans Serif" !important;
 }
 
