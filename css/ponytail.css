@@ -408,7 +408,8 @@ body.w98 {
 .w98 #queue > li > a,
 .w98 #playlistrow,
 .w98 div.modal-header ul.nav.nav-tabs li > a,
-.w98 a {
+.w98 a,
+.w98 #messagebuffer div.nick-highlight {
     color: black;
 }
 
