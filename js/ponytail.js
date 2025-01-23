@@ -856,7 +856,7 @@ function getEndTimePL() {
 
 
 
-//add a theme dropdown
+
 
 /* Layout */
 if (localStorage.getItem('playerSide') == null) {
@@ -935,6 +935,54 @@ $('<span id="findtime" class="label label-default pull-right pointer" style ="" 
 		}
 	})
 
+/* Theme Dropdown */
+//make this less hackey later maybe?
+$('#us-general > form:nth-child(2) > div:nth-child(2)').after([
+	$('<div>', { "class": "form-group" }).append([
+		$('<label>').addClass("control-label").addClass("col-sm-4").text('/pam/ Themes'),
+		$('<div>', { "class": "col-sm-8" }).append([
+			$('<select>').addClass("form-control").attr('id',"pam-themes")
+		])
+	])
+])
+
+//themes
+$("#pam-themes").append(new Option('Default', 'Default'))
+$("#pam-themes").append(new Option('Windows 98', 'PAMW98'))
+
+//load theme
+if (localStorage.getItem('pamTheme') == null) {
+	localStorage.setItem('pamTheme', "Default")
+}
+else {
+	loadTheme()
+}
+
+function loadTheme() {
+	if (localStorage.getItem('pamTheme') != "Default") {
+		$('body').addClass(localStorage.getItem('pamTheme'))
+		if (localStorage.pamTheme == 'PAMW98') {
+			$('#videowrap').append($('#videocontrols'))
+			$('#videowrap').append($('#leftcontrols').children(0))
+		}
+	}	
+	else {
+		var bodyClass = $('body').attr("class")
+		if (/\bPAM\w*\b/.test(bodyClass) == true)
+			$('body').removeClass(/\bPAM\w*\b/.exec(bodyClass)[0])
+		$('#rightcontrols').append($('#videocontrols'));
+		$('#leftcontrols').append($('#newpollbtn'), $('#emotelistbtn'))
+	}
+	$("#pam-themes").val(localStorage.pamTheme)
+}
+
+//change theme
+
+$('#pam-themes').change(function () {
+	localStorage.setItem('pamTheme' , $('#pam-themes').children('option:selected').val())
+	loadTheme()
+})
+
 /* effects */
 
 //scanlines
@@ -944,11 +992,10 @@ scanline = $('<button id="scanline" class="btn btn-sm btn-default" title="Add Sc
 	.appendTo("#videocontrols")
 	.on("click", function () {
 		$(this).hasClass('btn-success') ? scanPlayerFlicker() : $(this).hasClass('btn-warning') ? unScanPlayer() : scanPlayer()
-	})
+})
 
 
 //enable the effect
-//change this so it's not adding new rules every time.
 function scanPlayer() {
 	$("#videowrap").addClass('relative');
 	scanCover = $('<div id="scanCover" />')
@@ -958,19 +1005,6 @@ function scanPlayer() {
 	document.styleSheets[0].addRule('#scanCover:after', 'content: " "; display: block; position: absolute; top: 0; left: 0; bottom: 0; right: 0; background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),\
    linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06)); z-index: 2; background-size: 100% 4px, 2px 100%; pointer-events: none;');
 	scanline.addClass('btn-success').attr('title', 'Add Flicker');
-	$('#videowrap').append($('#videocontrols'))
-	$('#videowrap').append($('#leftcontrols').children(0))
-	$('body').addClass('w98')
-
-//button to turn off the theme (temp for first week, later the scanlines won't force the theme on)
-removeTheme = $('<button id="default" class="btn btn-sm btn-default" title="Return Default Theme"><span class="glyphicon glyphicon-share-alt"></span></button>')
-	.appendTo("#videocontrols")
-	.on("click", function () {
-		$('body').removeClass('w98')
-		$('#default').remove();
-		$('#rightcontrols').append($('#videocontrols'));
-		$('#leftcontrols').append($('#newpollbtn'), $('#emotelistbtn'))
-	})
 }
 //enable the flickering 
 function scanPlayerFlicker() {
@@ -999,10 +1033,6 @@ addFlicker('@keyframes flicker {0% {opacity: 0.27861;} 5% {opacity: 0.34769;} 10
 function unScanPlayer() {
 	scanCover.remove();
 	scanline.removeClass('btn-warning').attr('title', 'Add Scanlines');
-	$('body').removeClass('w98')
 	$("#videowrap").removeClass('relative');
-	$('#rightcontrols').append($('#videocontrols'));
-	$('#leftcontrols').append($('#newpollbtn'), $('#emotelistbtn'))
-	//temp
-	$('#default').remove();
+
 }

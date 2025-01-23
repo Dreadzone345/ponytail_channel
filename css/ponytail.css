@@ -150,8 +150,8 @@ body a:hover{cursor:url(http://i.imgur.com/G9Q7JW4.png), auto;}
 
 /*some setting stuff is still a bit fucky but I can't be assed*/
 
-.w98 .navbar-inverse,
-.w98 ul.dropdown-menu {
+.PAMW98 .navbar-inverse,
+.PAMW98 ul.dropdown-menu {
     border-radius: 0 !important;
     background-image: unset !important;
     background-color: #c0c0c0 !important;
@@ -161,41 +161,42 @@ body a:hover{cursor:url(http://i.imgur.com/G9Q7JW4.png), auto;}
     border-color: white
 }
 
-.w98 .navbar-inverse,
-.w98 .navbar-brand,
-.w98 .navbar-inverse .navbar-nav > li > a,
-.w98 #logoutform,
-.w98 #logout,
-.w98 a.dropdown-toggle,
-.w98 .dropdown-menu > li > a,
-.w98 #chatheader > .label.label-default.pull-right.pointer {
+.PAMW98 .navbar-inverse,
+.PAMW98 .navbar-brand,
+.PAMW98 .navbar-inverse .navbar-nav > li > a,
+.PAMW98 #logoutform,
+.PAMW98 #logout,
+.PAMW98 a.dropdown-toggle,
+.PAMW98 .dropdown-menu > li > a,
+.PAMW98 #chatheader > .label.label-default.pull-right.pointer {
     color: #000 !important;
     font-weight: unset !important;
     border-radius: 0 !important;
 }
 
-.w98 .navbar-brand,
-.w98 .navbar-inverse .navbar-nav > li > a,
-.w98 #welcome.dropdown a.dropdown-toggle,
-.w98 #logout.navbar-link,
-.w98 #chatheader > .label.label-default.pull-right.pointer,
-.w98 .btn-group > .btn,
-.w98 #leftcontrols .btn,
-.w98 #newpollbtn,
-.w98 #emotelistbtn,
-.w98 ul.pagination > li > a,
-.w98 .pagination > .disabled > a,
-.w98 .pagination > .disabled > a:focus,
-.w98 .pagination > .disabled > a:hover,
-.w98 .pagination > .disabled > span,
-.w98 .pagination > .disabled > span:focus,
-.w98 .pagination > .disabled > span:hover,
-.w98 table.emotelist-table > tbody > tr > td,
-.w98 .poll-menu > .btn,
-.w98 .input-group-btn button,
-.w98 div.modal-header ul.nav.nav-tabs li > a,
-.w98 div.option button.btn.btn-default.btn-sm,
-.w98 div.well.active button.btn.btn-danger.btn-sm.pull-right {
+.PAMW98 .navbar-brand,
+.PAMW98 .navbar-inverse .navbar-nav > li > a,
+.PAMW98 #welcome.dropdown a.dropdown-toggle,
+.PAMW98 #logout.navbar-link,
+.PAMW98 #chatheader > .label.label-default.pull-right.pointer,
+.PAMW98 .btn-group > .btn,
+.PAMW98 #leftcontrols .btn,
+.PAMW98 #newpollbtn,
+.PAMW98 #emotelistbtn,
+.PAMW98 ul.pagination > li > a,
+.PAMW98 .pagination > .disabled > a,
+.PAMW98 .pagination > .disabled > a:focus,
+.PAMW98 .pagination > .disabled > a:hover,
+.PAMW98 .pagination > .disabled > span,
+.PAMW98 .pagination > .disabled > span:focus,
+.PAMW98 .pagination > .disabled > span:hover,
+.PAMW98 table.emotelist-table > tbody > tr > td,
+.PAMW98 .poll-menu > .btn,
+.PAMW98 .input-group-btn button,
+.PAMW98 div.modal-header ul.nav.nav-tabs li > a,
+.PAMW98 div.option button.btn.btn-default.btn-sm,
+.PAMW98 div.well.active button.btn.btn-danger.btn-sm.pull-right,
+.PAMW98 .btn.btn-default {
     background-color: #c0c0c0 !important;
     border-width: 1px !important;
     border-style: ridge groove groove ridge !important;
@@ -203,28 +204,29 @@ body a:hover{cursor:url(http://i.imgur.com/G9Q7JW4.png), auto;}
     box-shadow: -1px -1px 0px #808080 inset !important;
 }
 
-.w98 .navbar-brand:hover,
-.w98 .navbar-inverse .navbar-nav > li > a:hover,
-.w98 .navbar-inverse .navbar-nav > .open > a,
-.w98 .navbar-inverse .navbar-nav > .open > a:focus,
-.w98 .navbar-inverse .navbar-nav > .open > a:hover,
-.w98 #welcome.dropdown a.dropdown-toggle:hover,
-.w98 #logout.navbar-link:hover,
-.w98 #welcome.dropdown.open a.dropdown-toggle,
-.w98 #chatheader > .label.label-default.pull-right.pointer:hover,
-.w98 .btn-group > .btn:hover,
-.w98 #newpollbtn:hover,
-.w98 #emotelistbtn:hover,
-.w98 ul.pagination > li > a:hover,
-.w98 table.emotelist-table > tbody > tr > td:hover,
-.w98 .poll-menu > .btn:hover,
-.w98 .input-group-btn button:hover,
-.w98 #customembed-content,
-.w98 .btn.btn-sm.btn-default.active,
-.w98 div.modal-header ul.nav.nav-tabs li.active > a,
-.w98 div.modal-header ul.nav.nav-tabs li > a:hover,
-.w98 div.option button.btn.btn-default.btn-sm:hover,
-.w98 div.well.active button.btn.btn-danger.btn-sm.pull-right:hover {
+.PAMW98 .navbar-brand:hover,
+.PAMW98 .navbar-inverse .navbar-nav > li > a:hover,
+.PAMW98 .navbar-inverse .navbar-nav > .open > a,
+.PAMW98 .navbar-inverse .navbar-nav > .open > a:focus,
+.PAMW98 .navbar-inverse .navbar-nav > .open > a:hover,
+.PAMW98 #welcome.dropdown a.dropdown-toggle:hover,
+.PAMW98 #logout.navbar-link:hover,
+.PAMW98 #welcome.dropdown.open a.dropdown-toggle,
+.PAMW98 #chatheader > .label.label-default.pull-right.pointer:hover,
+.PAMW98 .btn-group > .btn:hover,
+.PAMW98 #newpollbtn:hover,
+.PAMW98 #emotelistbtn:hover,
+.PAMW98 ul.pagination > li > a:hover,
+.PAMW98 table.emotelist-table > tbody > tr > td:hover,
+.PAMW98 .poll-menu > .btn:hover,
+.PAMW98 .input-group-btn button:hover,
+.PAMW98 #customembed-content,
+.PAMW98 .btn.btn-sm.btn-default.active,
+.PAMW98 div.modal-header ul.nav.nav-tabs li.active > a,
+.PAMW98 div.modal-header ul.nav.nav-tabs li > a:hover,
+.PAMW98 div.option button.btn.btn-default.btn-sm:hover,
+.PAMW98 div.well.active button.btn.btn-danger.btn-sm.pull-right:hover,
+.PAMW98 .btn.btn-default:hover{
     background-color: #c0c0c0 !important;
     border-width: 1px !important;
     border-style: ridge groove groove ridge !important;
@@ -232,8 +234,8 @@ body a:hover{cursor:url(http://i.imgur.com/G9Q7JW4.png), auto;}
     box-shadow: 1px 1px 0px #808080 inset !important;
 }
 
-.w98 #customembed-title,
-.w98 input.form-control {
+.PAMW98 #customembed-title,
+.PAMW98 input.form-control {
     background-color: white !important;
     border-width: 1px !important;
     border-style: ridge groove groove ridge !important;
@@ -241,72 +243,72 @@ body a:hover{cursor:url(http://i.imgur.com/G9Q7JW4.png), auto;}
     box-shadow: 1px 1px 0px #808080 inset !important;
 }
 
-.w98 #settingsMenu > ul {
+.PAMW98 #settingsMenu > ul {
     padding: 0px !important;
 }
 
-.w98 .navbar-header {
+.PAMW98 .navbar-header {
     height: auto !important;
     padding: .3em .3em .2em .3em !important;
 }
 
-.w98 .navbar-nav > li > a {
+.PAMW98 .navbar-nav > li > a {
     line-height: 22px !important;
 }
 
-.w98 .navbar-nav > li {
+.PAMW98 .navbar-nav > li {
     padding: .3em .25em 0em .3em;
 }
 
-.w98 ul.nav > li:nth-child(3) {
+.PAMW98 ul.nav > li:nth-child(3) {
     padding: 0 !important;
 }
 
-body.w98 {
+body.PAMW98 {
     background-color: #008080 !important;
     background-image: unset !important;
     font-family: "MS sans Serif" !important;
 }
 
-.w98 .dropdown-menu {
+.PAMW98 .dropdown-menu {
     left: 4px !important;
     border-radius: 0px;
 }
 
-.w98 li.dropdown.open ul.dropdown-menu li a {
+.PAMW98 li.dropdown.open ul.dropdown-menu li a {
     border-width: 0px !important;
     box-shadow: none !important;
 }
 
-.w98 .dropdown-menu > li > a:hover,
-.w98 li.dropdown.open ul.dropdown-menu li a:hover {
+.PAMW98 .dropdown-menu > li > a:hover,
+.PAMW98 li.dropdown.open ul.dropdown-menu li a:hover {
     background-color: #020080 !important;
     color: #fff !important;
 }
 
-.w98 .navbar-text.pull-right {
+.PAMW98 .navbar-text.pull-right {
     margin: .3em .25em 0em .3em !important;
 }
 
-.w98 #logoutform.navbar-text.pull-right,
-.w98 #welcome.dropdown a.dropdown-toggle {
+.PAMW98 #logoutform.navbar-text.pull-right,
+.PAMW98 #welcome.dropdown a.dropdown-toggle {
     line-height: 22px !important;
     display: inline-block !important
 }
 
-.w98 #logout {
+.PAMW98 #logout {
     padding: 0 10px !important;
 }
 
-.w98 #chatheader > .label.label-default.pull-right.pointer {
+.PAMW98 #chatheader > .label.label-default.pull-right.pointer {
     line-height: 15px;
 }
 
-.w98 #swap {
+.PAMW98 #swap {
     margin-right: 9px !important;
 }
 
-.w98 #chatheader {
+.PAMW98 #chatheader {
     border-radius: 0;
     line-height: 30px;
     background-color: #020080 !important;
@@ -315,32 +317,32 @@ body.w98 {
     border-image: linear-gradient(to right,#aaaaaa,#b2b2b2)1;
 }
 
-.w98 #userlisttoggle {
+.PAMW98 #userlisttoggle {
     margin-left: 1em
 }
 
-.w98 .userlist_item,
-.w98 .userlist_op,
-.w98 .userlist_owner {
+.PAMW98 .userlist_item,
+.PAMW98 .userlist_op,
+.PAMW98 .userlist_owner {
     color: black !Important;
 }
 
-.w98 #usercount {
+.PAMW98 #usercount {
     margin-left: .55em;
     font-size: 25px !important;
     font-weight: 900;
 }
 
-.w98 #chatwrap {
+.PAMW98 #chatwrap {
     border-radius: 0 !important;
     border-width: 7px;
     border-style: ridge !important;
     border-color: white black black white !important;
 }
 
-.w98 #messagebuffer,
-.w98 #userlist,
-.w98 #chatwrap > form {
+.PAMW98 #messagebuffer,
+.PAMW98 #userlist,
+.PAMW98 #chatwrap > form {
     color: black !important;
     background-color: white !important;
     border-width: 5px;
@@ -348,26 +350,26 @@ body.w98 {
     border-color: black white white black !Important;
 }
 
-.w98 #messagebuffer div {
+.PAMW98 #messagebuffer div {
     background-color: unset !important;
 }
 
-.w98 #messagebuffer div:nth-child(2n+1) > span strong.username {
+.PAMW98 #messagebuffer div:nth-child(2n+1) > span strong.username {
     color: #ad161d !important;
 }
 
-.w98 #messagebuffer div:nth-child(2n) > span strong.username {
+.PAMW98 #messagebuffer div:nth-child(2n) > span strong.username {
     color: #2e37a0 !important;
 }
 
-.w98 input.form-control[type="text"],
-.w98 #customembed-content {
+.PAMW98 input.form-control[type="text"],
+.PAMW98 #customembed-content {
     color: black !important;
     background-color: white !important;
     border-radius: 0px
 }
 
-.w98 #videowrap-header {
+.PAMW98 #videowrap-header {
     border-radius: 0;
     line-height: 30px;
     background-image: linear-gradient(to right, #000080,#1084d0);
@@ -378,11 +380,11 @@ body.w98 {
     border-image: linear-gradient(to right,#aaaaaa,#b2b2b2)1;
 }
 
-.w98 #videowrap-header #currenttitle {
+.PAMW98 #videowrap-header #currenttitle {
     margin-left: 1em;
 }
 
-.w98 #videowrap {
+.PAMW98 #videowrap {
     border-width: 7px;
     border-style: ridge !important;
     border-color: white white white white !Important;
@@ -390,34 +392,35 @@ body.w98 {
     background-color: #c0c0c0
 }
 
-.w98 .embed-responsive {
+.PAMW98 .embed-responsive {
     border-width: 2px;
     border-style: ridge ridge none ridge !important;
     border-color: black white white white !Important;
 }
 
-.w98 #queue > li,
-.w98 #userpl_list > li {
+.PAMW98 #queue > li,
+.PAMW98 #userpl_list > li {
     background-color: #c0c0c0;
 }
 
-.w98 #userpl_list > li > .qe_title {
+.PAMW98 #userpl_list > li > .qe_title {
     padding-left: 5px;
 }
 
-.w98 #queue > li > a,
-.w98 #playlistrow,
-.w98 div.modal-header ul.nav.nav-tabs li > a,
-.w98 a,
-.w98 #messagebuffer div.nick-highlight {
+.PAMW98 #queue > li > a,
+.PAMW98 #playlistrow,
+.PAMW98 div.modal-header ul.nav.nav-tabs li > a,
+.PAMW98 a,
+.PAMW98 #messagebuffer div.nick-highlight {
     color: black;
 }
 
-.w98 .btn-group > .btn,
-.w98 ul.pagination > li > a,
-.w98 ul.pagination > .disabled > a,
-.w98 div.modal-header ul.nav.nav-tabs li.active > a,
-.w98 div#pollwrap button {
+.PAMW98 .btn-group > .btn,
+.PAMW98 .btn.btn-default,
+.PAMW98 ul.pagination > li > a,
+.PAMW98 ul.pagination > .disabled > a,
+.PAMW98 div.modal-header ul.nav.nav-tabs li.active > a,
+.PAMW98 div#pollwrap button {
     border-radius: 0 !important;
     color: black !important;
     background-image: unset;
@@ -454,66 +457,66 @@ body.w98 {
     background-repeat: no-repeat !important;
 }
 
-.w98 .queue_active {
+.PAMW98 .queue_active {
     background-image: unset !important;
     background-color: #020080 !important;
 }
 
-.w98 li.queue_entry.queue_active > a,
-.w98 li.queue_entry.queue_active > span {
+.PAMW98 li.queue_entry.queue_active > a,
+.PAMW98 li.queue_entry.queue_active > span {
     color: white !important;
 }
 
-.w98 #plmeta,
-.w98 #cs-banlist > table,
-.w98 #cs-banlist > table *,
-.w98 table.table-condensed *,
-.w98 #pollwrap * {
+.PAMW98 #plmeta,
+.PAMW98 #cs-banlist > table,
+.PAMW98 #cs-banlist > table *,
+.PAMW98 table.table-condensed *,
+.PAMW98 #pollwrap * {
     background-color: #c0c0c0 !important;
 }
 
-.w98 div.modal-dialog > div,
-.w98 #newpollbtn,
-.w98 #emotelistbtn,
-.w98 .poll-menu,
-.w98 .input-group-btn button {
+.PAMW98 div.modal-dialog > div,
+.PAMW98 #newpollbtn,
+.PAMW98 #emotelistbtn,
+.PAMW98 .poll-menu,
+.PAMW98 .input-group-btn button {
     border-radius: 0 !important;
     background-color: #c0c0c0 !important;
     color: black;
     background-image: unset !important;
 }
 
-.w98 #controlsrow {
+.PAMW98 #controlsrow {
     margin-top: 2em !important;
 }
 
-.w98 #newpollbtn.right,
-.w98 #emotelistbtn.right {
+.PAMW98 #newpollbtn.right,
+.PAMW98 #emotelistbtn.right {
     float: right !Important;
 }
 
-.w98 #videocontrols.right {
+.PAMW98 #videocontrols.right {
     float: left !important;
 }
 
-.w98 div.modal-dialog > div > div > h4 {
+.PAMW98 div.modal-dialog > div > div > h4 {
     text-shadow: none !Important;
     font-weight: 900;
     font-size: 20px;
 }
 
-.w98 .pagination {
+.PAMW98 .pagination {
     margin: 5px 0px 10px
 }
 
-.w98 table.emotelist-table {
+.PAMW98 table.emotelist-table {
     background-color: unset !important;
 }
 
-.w98 .modal-footer {
+.PAMW98 .modal-footer {
     border-top: 1px solid white
 }
 
-.w98 .modal-header {
+.PAMW98 .modal-header {
     border-bottom: 1px solid white
 }
