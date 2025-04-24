@@ -144,7 +144,7 @@ var userArr = [
 		['https://poniteru.moe/pam-resources/Userlist/Mikan_sidebar.png'],
 		[0, 0, 0]],
 	['speedy',
-		['https://poniteru.moe/ponytail/Pixels/Yukikaze_v3.png'],
+		['https://poniteru.moe/pam-resources/Pixels/Yukikaze_v3.png'],
 		['https://poniteru.moe/pam-resources/Userlist/bktside1v5.png'],
 		[0, 0, 0]],
 	['nonohara',
