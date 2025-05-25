@@ -53,60 +53,13 @@ var Shortcuts = {		// FORMAT: Keycode:'INSERT TEXT',	http://www.cambiaresearch.c
 //Format = [username,[pixel array],[userlist image array],[options array]]
 //options array format [userlist pixel id,minipixel id, randomize pixel(0/1)]
 //usernames should be lower case
+/*example
+['paizuri',
+	['', ''],
+	['', ''],
+	[0,0,0]]
+*/
 var userArr = [
-	/*example
-	['paizuri',
-		['', ''],
-		['', ''],
-		[0,0,0]],
-	['dreadzone',
-		['https://ponytailsare.moe/ponytail/Pixels/Aoyama.png'],
-		[''],
-		[0, 0, 0]],
-	['haly',
-		['https://ponytailsare.moe/ponytail/Pixels/Hina_ponytail.png'],
-		['https://ponytailsare.moe/ponytail/Userlist/smug_50.png'],
-		[0, 0, 0]],
-	['literallyme',
-		['https://ponytailsare.moe/ponytail/Pixels/Shinobu.png'],
-		['https://ponytailsare.moe/ponytail/Userlist/naellis_01.png', 'https://files.catbox.moe/q0qpr4.png'],
-		[0, 0, 0]],
-	['thepaizurikid',
-		['https://ponytailsare.moe/ponytail/Pixels/Perrine_v3-cat-update.png'],
-		['https://ponytailsare.moe/ponytail/Userlist/sidebarRinne.png'],
-		[0, 0, 0]],
-	['colin_mochrie',
-		['https://ponytailsare.moe/ponytail/Pixels/Chen_v2.png'],
-		[''],
-		[0, 0, 0]],
-	['gasp',
-		['https://ponytailsare.moe/ponytail/Pixels/Fubuki_v3-Messi.png'],
-		['https://ponytailsare.moe/ponytail/Userlist/1687019262749431-op.png'],
-		[0, 0, 0]],
-	['okonogi',
-		['https://ponytailsare.moe/ponytail/Pixels/Keropoyo_v3.png'],
-		['https://ponytailsare.moe/ponytail/Userlist/3dfa8p.png', 'https://ponytailsare.moe/ponytail/Userlist/pbpn3e.png'],
-		[0, 0, 0]],
-	['sarlacc',
-		['https://ponytailsare.moe/ponytail/Pixels/Louise_winter.png'],
-		[''],
-		[0, 0, 0]],
-	['shimarin',
-		['https://ponytailsare.moe/ponytail/Pixels/Shimarinrin.png'],
-		['https://ponytailsare.moe/ponytail/Userlist/Mikan_sidebar.png'],
-		[0, 0, 0]],
-	['speedy',
-		['https://ponytailsare.moe/ponytail/Pixels/Yukikaze_v3.png'],
-		['https://ponytailsare.moe/ponytail/Userlist/bktside1v5.png'],
-		[0, 0, 0]],
-	['nonohara',
-		['https://ponytailsare.moe/ponytail/Pixels/nonohara.png'],
-		[''],
-		[0, 0, 0]],
-	['laterbunns',
-		['https://ponytailsare.moe/ponytail/Pixels/bunns_or_die_2.png'],
-		[''],
-		[0, 0, 0]]*/
 	['dreadzone',
 		['https://poniteru.moe/pam-resources/Pixels/Aoyama.png'],
 		[''],
@@ -158,7 +111,11 @@ var userArr = [
 	['doctortimewarp',
 		['https://poniteru.moe/pam-resources/Pixels/Hibiki_-_doctortimewarp.png'],
 		[''],
-		[0, 0, 0]]	
+		[0, 0, 0]],
+	['ojiojikan',
+		['https://ponytailsare.moe/Resources/Maho.png'],
+		[''],
+		[0, 0, 0]]
 ]
 
 /*Overwrite the custom media load function to skip the warning message if the URL is angelthump*/
