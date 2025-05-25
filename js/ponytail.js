@@ -3,7 +3,7 @@
 //Favicon
 $('<link id="favicon" href="https://files.catbox.moe/f0073v.png" type="image/x-icon" rel="shortcut icon" />').appendTo("head");
 //Navbar Branding and Header
-$('.navbar-brand').attr('href', 'https://ponytailsare.moe').attr('target', '_blank').text('Ponytails R Moe').css('padding', '0 10px 0 10px').prepend('<img src="https://poniteru.moe/pam/pooks.png" style="display: inline;" height="20"/>');
+$('.navbar-brand').attr('href', 'https://ponytailsare.moe').attr('target', '_blank').text('Ponytails R Moe').css('padding', '0 10px 0 10px').prepend('<img src="https://poniteru.moe/pam-resources/emotes/kappou.png" style="display: inline;" height="20"/>');
 var Usercount_Text = "revuefag";
 var SpoilerImg = 'http://i.imgur.com/xzD4vqc.png';
 var TitleBarDescription_Caption = '>Streaming:'; //Not working; will fix
@@ -97,7 +97,7 @@ var userArr = [
 		['https://poniteru.moe/pam-resources/Userlist/Mikan_sidebar.png'],
 		[0, 0, 0]],
 	['speedy',
-		['https://files.catbox.moe/162idg.png	'],
+		['https://poniteru.moe/pam-resources/Pixels/Yukikaze_v3.png'],
 		['https://poniteru.moe/pam-resources/Userlist/bktside1v5.png'],
 		[0, 0, 0]],
 	['nonohara',
