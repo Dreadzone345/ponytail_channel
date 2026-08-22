@@ -393,7 +393,7 @@ function chatPixels() {
 }
 //Bot Answers
 var askResponse = ['Yes', "Yes, definitely", 'Signs point to yes', "As I see it, yes", 'No', 'Very doubtful', "Outlook is grim",
-	'Better not tell you now', 'Maybe', 'Reply hazy try again', ":sushi:", ":dekinai:"]
+	'Better not tell you now', 'Maybe', 'Reply hazy try again', ":sushi:", ":dekinai:", 'st', 'ask Dreadzone']
 //quotes are not yet implemented
 //var quotes = []
 
