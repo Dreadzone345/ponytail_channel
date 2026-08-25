@@ -85,7 +85,8 @@ var userArr = [
 		['https://poniteru.moe/pam-resources/Userlist/1687019262749431-op.png'],
 		[0, 0, 0]],
 	['okonogi',
-		['https://poniteru.moe/pam-resources/Pixels/Keropoyo_v3.png'],
+		['https://files.catbox.moe/mm1u52.gif'],
+		//['https://poniteru.moe/pam-resources/Pixels/Keropoyo_v3.png'],
 		['https://poniteru.moe/pam-resources/Userlist/3dfa8p.png', 'https://poniteru.moe/pam-resources/Userlist/pbpn3e.png'],
 		[0, 0, 0]],
 	['sarlacc',
@@ -632,6 +633,8 @@ function getCurrentPlayerTime() {
 			return PLAYER.yt.getCurrentTime(); // "YouTube"
 		} else if (typeof PLAYER.dm !== "undefined") {
 			return PLAYER.dm.currentTime; // "Daily Motion"
+		} else if (typeof PLAYER.soundcloud != "undefined") {
+			return socket.on("mediaUpdate", data.currentTime);
 		}
 	} catch {
 		return CurrentVideoTime;
@@ -879,6 +882,7 @@ function loadPlayerSide() {
 	}
 
 }
+
 //Button for creating current video timer
 $('<span id="findtime" class="label label-default pull-right pointer" style ="" title="Find current video time">Video Time</button>')
 	.insertBefore('#swap')
