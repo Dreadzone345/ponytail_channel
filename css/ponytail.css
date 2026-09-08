@@ -38,12 +38,16 @@ body {
 #userlist {
     font-size: 7.61pt;
     background-color: #1C1E22;
-    /*background-image: url(https://media.discordapp.net/attachments/944043842456395837/1140113458742972567/smug_teio2_50.png); /*https://i.imgur.com/0urVgux.png*/
+    /*background-image: url(https://media.discordapp.net/attachments/944043842456395837/1140113458742972567/smug_teio2_50.png); /*https://i.imgur.com/0urVgux.png */
     background-position: bottom center;
     background-repeat: no-repeat;
     width: 10em;
     scrollbar-width: none;
     overflow: hidden;
+}
+/*On Hover Pixel Stuff*/
+.channel-emote[title="Unknownfool"]:hover {
+    content: url("https://poniteru.moe/pam-resources/Pixels/Senjougahara-alt.gif");
 }
 /*Admins & Mod Colors*/
 .userlist_owner {
