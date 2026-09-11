@@ -398,7 +398,7 @@ function chatPixels() {
 }
 //Bot Answers
 var askResponse = ['Yes', "Yes, definitely", 'Signs point to yes', "As I see it, yes", 'No', 'Very doubtful', "Outlook is grim",
-	'Better not tell you now', 'Maybe', 'Reply hazy try again', ":sushi:", ":dekinai:", 'st', 'ask Dreadzone']
+	'Better not tell you now', 'Maybe', 'Reply hazy try again', ":sushi:", ":dekinai:", 'st', 'ask']
 //quotes are not yet implemented
 //var quotes = []
 
@@ -412,8 +412,8 @@ function chatBot(msg) {
 	if (cmdcheck[0] === '!ask') {
 		amsg = askResponse[Math.floor(Math.random() * askResponse.length)]
 		//update this to correct response
-		if (amsg === "I'd like to use a life line") {
-			msg = amsg + ': ' + pickUser() + ' Help me out!'
+		if (amsg === "ask") {
+			msg = amsg + ' ' + pickUser()
 		}
 		else
 			msg = amsg
