@@ -113,7 +113,7 @@ var userArr = [
 		['https://poniteru.moe/pam-resources/Pixels/Hibiki_-_doctortimewarp.png'],
 		[''],
 		[0, 0, 0]],
-	['Unknownfool',
+	['unknownfool',
 		['https://poniteru.moe/pam-resources/Pixels/Senjougahara.gif'],
 		[''],
 		[0, 0, 0]],
